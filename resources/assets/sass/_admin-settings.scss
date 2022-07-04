@@ -1,0 +1,44 @@
+//antialiased,subpixel-antialiased,none
+$font-smoothing: antialiased;
+
+//auto,optimizeSpeed,optimizeLegibility,geometricPrecision
+$text-rendering: auto;
+
+$base-font-family: 'Roboto', sans-serif;
+
+$base-font-size: 14px;
+$base-font-color: #4b596a;
+$base-background-color: #f2f7f9;
+
+
+// Typography
+$font-family-sans-serif: Roboto, Arial, Helvetica, sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$color-accent: #39c8df;
+$color-primary: #fff;
+$color-secondary: #4b596a;
+
+
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$site-size: 1200px;
+
+$breakpoint-tablet: 1025px;
+$breakpoint-mobile: 768px;
+$breakpoint-sitesize: 1366px;$site-size: 1200px;
+
+$breakpoint-tablet: 1025px;
+$breakpoint-mobile: 768px;
+$breakpoint-sitesize: 1366px;

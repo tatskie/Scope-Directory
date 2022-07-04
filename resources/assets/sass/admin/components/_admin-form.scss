@@ -1,0 +1,74 @@
+.form {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.form-item {
+  display: block;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+}
+
+.form-input,
+.form-textarea {
+  @include bradius(all, 3px);
+  border: 1px solid rgba(#000, 0.125);
+  display: block;
+  position: relative;
+  width: 100%;
+
+  input, select, textarea {
+    display: block;
+    outline: 0;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    padding-right: 40px; 
+	font-size: 14px;
+  }
+
+  textarea { padding: 10px; }
+
+  &.-select {
+    &:before {
+      content: $ico-arrowdown;
+      font-family: 'icomoon' !important;
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+
+.form-input {
+  height: 32px;
+}
+
+.form-textarea {
+  height: 80px;
+}
+
+.form-btn {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.form-error {
+  color: #d63e3e;
+  margin-top: 5px;
+  display: block;
+}

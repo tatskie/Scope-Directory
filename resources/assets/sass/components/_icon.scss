@@ -1,0 +1,252 @@
+[class^="ico-"], [class*=" ico-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  display: block;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+  	display: block;
+  	position: relative;
+  }
+}
+
+$ico-user-o: '\e900';
+$ico-user-circle: '\e901';
+$ico-commenting: '\e902';
+$ico-comments: '\e903';
+$ico-list: '\e904';
+$ico-group-user: '\e905';
+$ico-user-group: '\e972';
+$ico-laptop: '\e906';
+$ico-shield: '\e907';
+$ico-certificate: '\e908';
+$ico-lock: '\e909';
+$ico-paypal: '\e90a';
+$ico-trophy: '\e90b';
+$ico-check-square: '\e90c';
+$ico-search: '\e90d';
+$ico-phone: '\e90e';
+$ico-envelop: '\e90f';
+$ico-circle: '\ea57';
+$ico-close: '\e910';
+$ico-x: '\e911';
+$ico-linkedin: '\f0e1';
+$ico-google: '\e912';
+$ico-fb: '\ea90';
+$ico-edit: '\e913';
+$ico-check: '\e915';
+$ico-question-circle: '\e914';
+$ico-logout: '\e91b';
+$ico-logout-2: '\e91a';
+$ico-pages: '\e916';
+$ico-product: '\e917';
+$ico-theme: '\e918';
+$ico-settings: '\e919';
+
+.ico-lock {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-lock;
+	}
+}
+
+
+.ico-trophy {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-trophy;
+	}
+}
+
+
+.ico-certificate {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-certificate;
+	}
+}
+
+.ico-shield {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-shield;
+	}
+}
+
+.ico-laptop {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-laptop;
+	}
+}
+
+.ico-paypal {
+	color: $color-primary;
+	font-size: 36px;
+	&:before {
+		content: $ico-paypal;
+	}
+}
+
+.ico-commenting {
+	&:before {
+		content: $ico-commenting;
+	}
+}
+
+.ico-user-o {
+	&:before {
+		content: $ico-user-o;
+	}
+}
+
+.ico-user-circle {
+	&:before {
+		content: $ico-user-circle;
+	}
+}
+
+.ico-group-user {
+	&:before {
+		content: $ico-group-user;
+	}
+}
+
+.ico-user-group {
+	&:before {
+		content: $ico-user-group;
+	}
+}
+
+.ico-list {
+	&:before {
+		content: $ico-list;
+	}
+}
+
+.ico-comments {
+	&:before {
+		content: $ico-comments;
+	}
+}
+
+.ico-check-square {
+	&:before {
+		content: $ico-check-square;
+	}
+}
+
+.ico-search {
+	&:before {
+		content: $ico-search;
+	}
+}
+
+.ico-phone {
+	&:before {
+		content: $ico-phone;
+	}
+}
+
+.ico-envelop {
+	&:before {
+		content: $ico-envelop;
+	}
+}
+
+.ico-circle {
+	&:before {
+		content: $ico-circle;
+	}
+}
+
+.ico-close {
+	&:before {
+		content: $ico-close;
+	}
+}
+
+.ico-linkedin {
+	&:before {
+		content: $ico-linkedin;/*url('https://api.iconify.design/icomoon-free:linkedin2.svg?height=16');
+		vertical-align: -0.125em;
+		color:#fff;*/
+	}
+}
+
+.ico-google {
+	&:before {
+		content: $ico-google;
+	}
+}
+
+.ico-fb {
+	&:before {
+		content: $ico-fb;
+	}
+}
+
+.ico-check {
+	&:before {
+		content: $ico-check;
+	}
+}
+
+.ico-lost-pass {
+	&:before {
+		content: $ico-question-circle;
+	}
+}
+.ico-edit {
+	&:before {
+		content: $ico-edit;
+	}
+}
+
+.ico-logout {
+	&:before {
+		content: $ico-logout;
+	}
+}
+
+.ico-cart {
+  border: 2px solid #232323;
+  display: block;
+  width: 30px;
+  position: absolute;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  height: 19px;
+
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 50%;
+    width: 18px;
+    height: 10px;
+    margin-right: -9px;
+    border: 2px solid #232323;
+    border-bottom: 0;
+    border-top-left-radius: 99px;
+    border-top-right-radius: 99px;
+    transition: all .2s ease-in-out;
+
+  }
+}

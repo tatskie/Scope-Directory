@@ -1,0 +1,129 @@
+.modal {
+  @include wh(100%, 100%);
+  @include fixed(0, null, null, 0);
+  align-items: center;
+  background-color: rgba(#000, 0.4);
+  display: flex;
+  justify-content: center;
+  overflow: {
+    x: hidden;
+    y: auto;
+  }
+  padding: 10px 0;
+  text-align: center;
+  z-index: 999;
+
+  .modal .modal-inner {
+    @include breakpoint(992px) {
+      max-width: 1060px;
+      width: 90%;
+    }
+  }
+}
+
+.modal-inner {
+  @include vm(inline-block);
+  border-radius: 3px;
+  box-shadow: 0 0 9px 0px rgba(#000, 0.50);
+  background-color: #fff;
+  border-color: 1px solid rfba(#fff, 0.125);
+  padding: 0;
+  pointer-events: initial;
+  position: relative;
+  text-align: left;
+  width: 94%;
+  z-index: 2;
+
+  @include breakpoint(768px) {
+    width: 60%;
+    max-width: 800px;
+  }
+
+}
+
+.modal__header,
+.modal__body,
+.modal__footer {
+  background-color: transparent;
+}
+
+
+.modal-header {
+  background-color: $color-primary;
+  color: $color-secondary;
+  height: 50px;
+  z-index: -1;
+}
+
+.modal-header-inner {
+  @include wh(100%, 100%);
+  @include vm(ghost, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > * {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  .modal-inner--button & {
+    justify-content: flex-end;
+  }
+  .-button & { text-align: right !important; }
+}
+
+
+
+.modal-title {
+  color: $color-primary;
+  font-size: em(30px);
+  font-family: $base-font-family;
+  font-weight: bold;
+  margin: 0;
+  text: {
+    align: left;
+    transform: uppercase;
+  }
+  padding-left: 10px;
+
+}
+
+.modal-buttons { z-index: 10; }
+
+.modal-body {
+  @extend .scroll;
+  overflow-y: auto;
+  font-size: 15px;
+  max-height: calc(100% - 50px);
+
+  .dp--open & { overflow-y: auto; }
+}
+
+.modal-body-inner {
+  // @extend %cf;
+  @extend .scroll;
+  @include wh(100%, 100%);
+  padding: 15px;
+  max-height: inherit;
+
+  .tab-contents-inner {
+    position: relative;
+    min-height: 157px;
+  }
+}
+
+
+.modal__footer {
+  .-left {
+    float: left;
+  }
+
+  .-right {
+    float: right;
+  }
+}
+.modal__footer-inner {
+  padding: 10px 15px;
+}

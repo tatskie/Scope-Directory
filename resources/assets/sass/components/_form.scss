@@ -1,0 +1,239 @@
+.form-wrap {
+  color: $color-sub-text;
+  display: block;
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.form-inner {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-con {
+  display: block;
+  position: relative;
+  width: 48%;
+}
+
+.form-input {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  color: $color-secondary;
+  display: block;
+  text-transform: none;
+  line-height: 32px;
+  letter-spacing: -1px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  margin-bottom: 15px;
+  position: relative;
+
+  strong { font-weight: 500; }
+
+  .-number {
+    display: inline-block;
+    margin-right: 25px;
+  }
+}
+
+.form-lbl {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-input-box {
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  display: block;
+  height: 34px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-style: normal;
+  color: #777;
+  font-size: 14px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.24s ease-in-out;
+  -moz-transition: opacity 0.24s ease-in-out;
+  transition: opacity 0.24s ease-in-out;
+
+  input, select {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    outline: 0;
+  }
+}
+
+.form-note {
+  display: block;
+  margin-top: 5px;
+  position: relative;
+  width: 100%;
+}
+
+.form-error {
+  color: red;
+  display: block;
+  margin-top: 5px;
+  position: relative;
+  width: 100%;
+}
+
+.form-check {
+  input {
+    display: block;
+    position: absolute;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 13px;
+    font-weight: 400;
+
+    &::before {
+      background: $color-mecury;
+      border: 1px solid #c1c1c1;
+      border-radius: 2px;
+
+      content: '';
+      display: block;
+      height: 16px;
+      margin-right: 10px;
+      width: 15px;
+      position: relative;
+    }
+
+    &::after {
+      color: $color-secondary;
+      border-radius: 2px;
+      content: $ico-check;
+      font-family: 'icomoon' !important;
+      display: block;
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      left: 2px;
+      font-size: 13px;
+      line-height: 1;
+      transform: scale(0);
+      opacity: 0;
+      top: 3px;
+      transform-origin: bottom left;
+      transition: all .3s $ease-cubic;
+    }
+  }
+
+  $input-checked-label-after: 'input:checked + label::after ';
+
+  #{$input-checked-label-after} {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.form-extra {
+  display: flex;
+  align-items: center;
+  // margin-bottom: 25px;
+  position: relative;
+  width: 100%;
+}
+
+.form-extra-link {
+  color: $color-secondary;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+
+  i { font-size: 14px; margin-right: 5px; }
+  span {
+        border-bottom: 1px solid transparent;
+      }
+
+  &:hover {
+    @include breakpoint($breakpoint-tablet) {
+      span {
+        border-bottom-color: $color-secondary;
+      }
+    }
+  }
+}
+
+.form-extra-link-register {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.form-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.form-login {
+  margin: 100px auto;
+  max-width: 900px;
+
+  .form-con { width: 42%; }
+
+  .form-inner {
+    &:before {
+      background: #e6e6e6;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: 80%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:after {
+      background: $color-white;
+      content: 'OR';
+      display: block;
+      position: absolute;
+      text-align: center;
+      padding: 10px 0;
+      width: 50px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+
+  .form-input-box {
+    height: 45px;
+    letter-spacing: 0px;
+
+    input, select {
+      display: block;
+      height: 100%;
+      width: 100%;
+      padding: 0 10px;
+      outline: 0;
+    }
+  }
+}

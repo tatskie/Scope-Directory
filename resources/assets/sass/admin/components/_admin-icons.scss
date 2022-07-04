@@ -1,0 +1,171 @@
+[class^="ico-"], [class*=" ico-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  display: block;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+  	display: block;
+  	position: relative;
+  }
+}
+
+$ico-user-o: '\e900';
+$ico-user-circle: '\e901';
+$ico-commenting: '\e902';
+$ico-comments: '\e903';
+$ico-list: '\e904';
+$ico-group-user: '\e905';
+$ico-laptop: '\e906';
+$ico-shield: '\e907';
+$ico-certificate: '\e908';
+$ico-lock: '\e909';
+$ico-paypal: '\e90a';
+$ico-trophy: '\e90b';
+$ico-check-square: '\e90c';
+$ico-search: '\e90d';
+$ico-phone: '\e90e';
+$ico-envelop: '\e90f';
+$ico-circle: '\ea57';
+$ico-close: '\e910';
+$ico-x: '\e911';
+$ico-google: '\e912';
+$ico-fb: '\ea90';
+$ico-edit: '\e913';
+$ico-check: '\e915';
+$ico-question-circle: '\e914';
+
+$ico-welcome: '\e908';
+
+$ico-logout: '\e91b';
+$ico-logout-2: '\e91a';
+$ico-pages: '\e925';
+$ico-product: '\e91c';
+$ico-theme: '\e918';
+$ico-settings: '\e919';
+
+$ico-create: '\e916';
+$ico-delete: '\e9ac';
+$ico-questionnaire: '\e91f';
+$ico-empty-folder: '\e91e';
+
+$ico-arrowdown: '\e917';
+$ico-save: '\e920';
+
+
+.ico-lock {
+	&:before {
+		content: $ico-lock;
+	}
+}
+
+.ico-user {
+	&:before {
+		content: $ico-user-o;
+	}
+}
+
+.ico-search {
+	&:before {
+		content: $ico-search;
+	}
+}
+
+.ico-close {
+	&:before {
+		content: $ico-close;
+	}
+}
+
+.ico-check {
+	&:before {
+		content: $ico-check;
+	}
+}
+.ico-edit {
+	&:before {
+		content: $ico-edit;
+	}
+}
+
+.ico-logout {
+	&:before {
+		content: $ico-logout;
+	}
+}
+
+.ico-pages {
+  position: relative;
+	&:before {
+		content: $ico-pages;
+	}
+}
+
+.ico-theme {
+	&:before {
+		content: $ico-theme;
+	}
+}
+
+.ico-settings {
+	&:before {
+		content: $ico-settings;
+	}
+}
+.ico-product {
+	&:before {
+		content: $ico-product;
+	}
+}
+
+.ico-create {
+	&:before {
+		content: $ico-create;
+	}
+}
+
+.ico-questionnaire {
+	&:before {
+		content: $ico-questionnaire;
+	}
+}
+
+.ico-welcome {
+	&:before {
+		content: $ico-welcome;
+	}
+}
+
+.ico-delete {
+	&:before {
+		content: $ico-delete;
+	}
+}
+
+.ico-empty-folder {
+	&:before {
+		content: $ico-empty-folder;
+	}
+}
+
+.ico-arrowdown {
+	&:before {
+		content: $ico-arrowdown;
+	}
+}
+
+
+.ico-update {
+	&:before {
+		content: $ico-save;
+	}
+}

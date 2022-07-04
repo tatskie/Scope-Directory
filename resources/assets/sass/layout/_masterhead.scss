@@ -1,0 +1,60 @@
+.header {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  height: 100%;
+  max-width: 1130px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  position: relative;
+  max-width: 209px;
+  height: 100%;
+
+  a {
+    display: block;
+    position: relative;
+  }
+
+  img {
+    width: 100%
+  }
+}
+
+
+.header-btn {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  height: 100%;
+
+  > div {
+    margin: 0 8px;
+    cursor: pointer;
+  }
+}
+
+.header-auth {
+  margin-left: 20px;
+  display: none;
+  height: 100%;
+
+  @include breakpoint($breakpoint-tablet) {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+  }
+}

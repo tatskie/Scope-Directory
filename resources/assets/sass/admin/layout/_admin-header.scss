@@ -1,0 +1,52 @@
+.header {
+  background: rgb(2,124,175);
+  background: linear-gradient(90deg, rgba(2,124,175,1) 0%, rgba(0,160,227,1) 64%, rgba(57,200,223,1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 55px;
+  /*width: 100%;*/
+  box-shadow: 2px 2px #ccc;
+}
+
+.header-dashboard {
+  background: $color-primary;
+  display: flex;
+  align-items: center;
+  height: 100%;;
+  min-width: 190px;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.header-dashboard-text {
+  display: block;
+  font-size: 18px;
+  color: $color-secondary;
+  text-decoration: none;
+}
+#profile-header-wrap {
+	padding:10px;
+	width: 100%;
+	}
+	
+.header-profile {
+  margin-left: 35px;
+  margin-right:25px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  color: $color-primary;
+}
+
+.profile-user {
+  margin-right: 5px;
+}
+
+.profile-user-link {
+  color: $color-primary;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: none;
+}

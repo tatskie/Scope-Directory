@@ -1,0 +1,62 @@
+.navigation {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+.navigation-dashboard {
+  display: block;
+  position: relative;
+  height: 55px;
+}
+
+.navigation-item {
+  display: block;
+  height: 50px;
+  position: relative;
+  width: 100%;
+
+  &.is-active {
+    background: #f1f6f8;
+
+    &:before {
+      background: $color-accent;
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      top: 0;
+      width: 5px;
+    }
+
+    a {
+      color: #39c8df;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.navigation-link {
+  color: $color-secondary;
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  padding: 0 20px;
+
+  &.router-link-exact-active {
+    background: #39c8df;
+  }
+
+  i {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+}

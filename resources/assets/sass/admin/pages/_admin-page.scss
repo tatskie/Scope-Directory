@@ -1,0 +1,14 @@
+.page--inner {
+  .btn-create {
+    margin-left: auto;
+  }
+  .table-td {
+    &.title {
+      width: 200px;
+    }
+    &.description {}
+    &.actions {
+      width: 100px;
+    }
+  }
+}

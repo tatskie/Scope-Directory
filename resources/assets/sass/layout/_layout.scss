@@ -1,0 +1,52 @@
+.l-wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 90px;
+}
+
+.l-header {
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #e6e6e6;
+  display: block;
+  height: 90px;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  @include breakpoint($breakpoint-mobile) {
+    padding: 0 40px;
+  }
+}
+
+.l-main {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.l-footer {
+  border-top: 1px solid #e6e6e6;
+	display: block;
+	padding: 40px 20px;
+	position: relative;
+	width: 100%;
+	background-color: #232323;
+}
+
+.l-section {
+  display: block;
+  padding: 80px 35px;
+  position: relative;
+  width: 100%;
+}
+
+.l-container {
+  display: block;
+  position: relative;
+  max-width: 1130px;
+  margin: 0 auto;
+  width: 100%;
+}

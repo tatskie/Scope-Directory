@@ -1,0 +1,14 @@
+$font-path: '../lib/fonts';
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('#{$font-path}/icomoon/icomoon.eot?ugcm40');
+  src:  url('#{$font-path}/icomoon/icomoon.eot?ugcm40#iefix') format('embedded-opentype'),
+    url('#{$font-path}/icomoon/icomoon.ttf?ugcm40') format('truetype'),
+    url('#{$font-path}/icomoon/icomoon.woff?ugcm40') format('woff'),
+    url('#{$font-path}/icomoon/icomoon.svg?ugcm40#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

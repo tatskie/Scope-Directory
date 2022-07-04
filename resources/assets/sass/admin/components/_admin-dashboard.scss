@@ -1,0 +1,125 @@
+.dashboard {
+  background: $color-primary;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+}
+
+.dashboard-title {
+  background: #f7f7f7;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  display: block;
+  font-size: 16px;
+  padding: 10px 25px;
+  width: 100%;
+}
+
+#data-left {
+	width: 400px;
+	float:left;
+	height:100px;
+	margin-right:30px;
+	}
+	
+#data-right {
+	width: 400px;
+	float:left;
+	height:100px;
+	margin-top:30px;
+	}
+
+.data-left {
+	width: 300px;
+	float:left;
+	height:100px;
+	margin-right:30px;
+	}
+	
+.data-right {
+	width: 400px;
+	float:left;
+	height:100px;
+	margin-right:30px;
+	}
+	
+#dashboard-body-content {
+	padding:30px;
+	width: 100%;
+    background: #fff;
+	min-height: 600px;
+	}
+	
+.dashboard-content {
+  padding: 20px;
+}
+
+.dashboard-card {
+  background: url(/assets/images/card/sample-id.png) no-repeat 12px 0 !important; 
+  display: block;
+  height:467px;
+  padding: 20px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.title {
+  color: #39c8df;
+}
+
+.tesol-one-logo {
+  margin-right: 240px;
+}
+
+#teacher-data {
+ 	text-align: left;
+    margin-top: -168px;
+    margin-left: 189px;
+	font-family: 'Oswald', sans-serif;
+	color: #232323;
+    font-size: 28px;
+	font-weight:400;
+}
+
+#main-photo {
+	text-align: left;
+    margin-left: 457px;
+    margin-top: 66px;
+	opacity: 80%;
+	}
+	
+.teacher-photo {
+  	margin-top: 74px;
+    margin-right: 49px;
+}
+
+#background-photo {
+ 	margin-top: 137px;
+    margin-left: 17px;
+  	opacity: 50%;
+}
+
+.valid-date {
+  margin-left: 65px;
+}
+
+.barcode {
+  margin-top: -49px;
+  margin-left: 25px;
+}
+
+.qr-code {
+  margin-top: -85px;
+  margin-left: 260px;
+}
+
+#data-left a:link,
+#data-left a:visited {
+	color:#39c8df !important;
+}
+
+#data-left a:hover {
+	color:#00a0e3 !important;
+}

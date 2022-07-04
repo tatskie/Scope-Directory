@@ -1,0 +1,277 @@
+.btn {
+	display: block;
+	position: relative;
+}
+
+.btn-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	position: relative;
+	width: 100%
+}
+
+.btn-default {
+	background-color: $color-primary;
+	border-radius: 3px;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+
+	.btn-link {
+		color: $color-white;
+		font-size: 16px;
+		line-height: 1;
+		text-transform: capitalize;
+		padding: 14px 18px;
+	}
+}
+
+.btn-gradient-link {
+	border-radius: 5px;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+	.btn-link {
+		color: $color-white;
+		line-height: 1;
+		text-transform: capitalize;
+		background-color: #00a0e3;
+		background: linear-gradient(to right, #00a0e3 0%, #39c8df 50%,#00a0e3 100%);
+		background-size: 200% 100%;
+		transition: all .2s ease-in-out;
+
+		&:hover {
+			@include breakpoint($breakpoint-tablet) {
+				background-color: $color-primary;
+				background-position: 100% 0;
+			}
+		}
+	}
+}
+
+.btn-gradient {
+	border-radius: 5px;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	color: $color-white;
+	line-height: 1;
+	text-transform: capitalize;
+	background-color: #00a0e3;
+	background: linear-gradient(to right, #00a0e3 0%, #39c8df 50%,#00a0e3 100%);
+	background-size: 200% 100%;
+	transition: all .2s ease-in-out;
+
+	&:hover {
+		@include breakpoint($breakpoint-tablet) {
+			background-color: $color-primary;
+			background-position: 100% 0;
+		}
+	}
+}
+
+
+.btn-auth {
+  display: block;
+  position: relative;
+	margin-bottom: 10px;
+  cursor: pointer;
+
+	@include breakpoint($breakpoint-tablet) {
+		margin-bottom: 0;
+	}
+
+  span {
+  	pointer-events: none;
+  }
+
+
+  .btn-link {
+		border: 2px solid $color-primary;
+	  color: $color-primary;
+		padding: 6px 25px;
+		border-radius: 4px;
+		transition: all .2s ease-in-out;
+		align-items: center;
+
+		&:hover {
+			@include breakpoint($breakpoint-tablet) {
+				border: 2px solid $color-secondary;
+			  color: $color-secondary;
+			}
+		}
+	}
+
+  &:not(:last-child) {
+		@include breakpoint($breakpoint-tablet) {
+			margin-right: 12px;
+		}
+	}
+}
+
+
+.btn-benefits {
+	border-radius: 50px;
+  border: 2px solid #f7f7f7;
+  color: #f7f7f7;
+  display: block;
+  height: 58px;
+  position: relative;
+	max-width: 373px;
+	margin: 0 auto;
+
+  .btn-link {
+		color: #f7f7f7;
+		padding: 0 25px;
+		text-align: center;
+		font-size: 18px;
+	}
+
+  &:not(:last-child) { margin-right: 20px; }
+}
+
+
+.btn-mv {
+	max-width: 268px;
+	height: 55px;
+
+	.btn-link {
+		font-size: 16px;
+		line-height: 1;
+		text-transform: capitalize;
+		padding: 14px 18px;
+	}
+}
+
+.btn-profile, .btn-search {
+  display: block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+
+  i {
+		transition: color .2s ease-in-out;
+		color: $color-secondary;
+	}
+
+	&:hover {
+		@include breakpoint($breakpoint-tablet) {
+			i { color: $color-primary; }
+		}
+	}
+}
+
+.btn-profile {
+	cursor: pointer;
+	i { pointer-events: none; }
+}
+
+.btn-logout {
+	display: block;
+  position: relative;
+	i {
+		color: #e23f3f;
+		font-size: 25px;
+		pointer-events: none;
+		transition: color .2s ease-in-out;
+	}
+
+	&:hover {
+		@include breakpoint($breakpoint-tablet) {
+			i { color: #bf0606; }
+		}
+	}
+}
+
+
+.btn-cart {
+	display: block;
+	position: relative;
+	text-align: center;
+	font-size: 13px;
+	height: 19px;
+	width: 30px;
+
+	i {
+		bottom: 0;
+		left: 0;
+	}
+}
+
+
+.btn-register {
+	cursor: pointer;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
+  font-style: normal;
+	padding: 10px 14px;
+	width: auto;
+}
+
+.btn-login {
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: 500;
+  font-style: normal;
+  height: 45px;
+	padding: 10px 14px;
+	margin-bottom: 10px;
+
+	i {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+}
+
+.btn-login-fb {
+	background: #3a559f;
+
+	.btn-link {
+		color: $color-white;
+	}
+	i { font-size: 18px; }
+}
+
+.btn-login-linkedin {
+	background: #0073b1;
+
+	.btn-link {
+		color: $color-white;
+	}
+
+	i { font-size: 23px; }
+}
+
+.btn-login-google {
+	background: #d94738;
+
+	.btn-link {
+		color: $color-white;
+	}
+
+	i { font-size: 23px; }
+}
+
+.btn-close {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 30px;
+
+	i { pointer-events: none; }
+}

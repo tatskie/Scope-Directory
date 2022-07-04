@@ -1,0 +1,100 @@
+.mv {
+  display: block;
+  height: 587px;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.82) 41%,rgba(54,149,156,0.47) 67%,rgba(0,220,255,0.36) 75%,rgba(195,195,195,0.6) 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.mv-animate {
+  background-image: url(https://aardvark.ghostpool.com/original/wp-content/uploads/sites/6/2017/11/header-bg.jpg?id=219) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: 25s animate_scroll infinite linear;
+  transition: opacity .5s ease;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.mv-inner {
+  display: block;
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+
+  @include breakpoint($breakpoint-mobile) {
+    background-image: url('../../../assets/images/membership-circles.png');
+    background-repeat: no-repeat;
+    background-size: 59%;
+    background-position: right bottom;
+  }
+}
+
+.mv-title {
+  display: block;
+  position: relative;
+  font-size: 40px;
+  color: $color-white;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 40px;
+  margin-bottom: 30px;
+
+  span {
+    color: $color-primary;
+    display: block;
+    font-weight: 300;
+    letter-spacing: -3px;
+    line-height: 50px;
+    font-size: 50px;
+    padding-left: 20px;
+  }
+}
+
+.mv-list  {
+  display: block;
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 42px;
+  width: 100%;
+}
+
+.mv-item {
+  display: block;
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 12px;
+
+  p {
+    color: $color-white;
+    display: block;
+    font-size: 20px;
+  }
+
+  i {
+    color: $color-primary;
+    font-size: 18px;
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 0;
+  }
+}

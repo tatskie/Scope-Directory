@@ -1,0 +1,31 @@
+//antialiased,subpixel-antialiased,none
+$font-smoothing: antialiased;
+
+//auto,optimizeSpeed,optimizeLegibility,geometricPrecision
+$text-rendering: auto;
+
+//$base-font-family: 'Roboto', Arial, Helvetica, sans-serif;
+$base-font-family: 'Roboto', sans-serif;
+
+$base-font-size: 14px;
+$base-font-color: #333;
+$base-background-color: #fffß;
+
+$color-primary: #39c8df;
+$color-secondary: #232323;
+
+$color-white: #fff;
+$color-light-grey: #999;
+$color-mecury: #e6e6e6;
+$color-sub-text: #333;
+$color-cerulean: #00a0e3;
+
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-cubic: cubic-bezier(.3,.7,.48,.96);
+$cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+$site-size: 1200px;
+
+$breakpoint-tablet: 1025px;
+$breakpoint-mobile: 768px;
+$breakpoint-sitesize: 1366px;

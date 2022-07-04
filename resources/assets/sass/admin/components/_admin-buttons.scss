@@ -1,0 +1,153 @@
+[class^="btn-"] {
+  @extend %btn;
+
+  &:disabled {
+    cursor: not-allowed !important;
+  }
+  a:hover {
+  	color:#232323 !important;
+	} 	
+}
+
+%btn {
+  transition: all .3s ease-out;
+  border-radius: 0px;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 20px;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: 0;
+
+  @include breakpoint(768px) {
+    font-size: 14px;
+    height: 30px;
+  }
+
+  &.-withlabel {
+    display: flex;
+
+    i { margin-left: 5px; font-size: 16px; }
+  }
+  
+  &.-icon {
+    padding: 0;
+
+    i { margin-left: 5px; }
+  }
+
+  span {
+    font-weight: normal;
+  }
+  
+  span:visited {
+  	color:#fff;
+  }  
+  
+  span:hover {
+  	color:#232323 !important;
+  }  
+
+
+  i {
+    margin-right: 5px;
+    font-size: 18px;
+  }
+  a:visited {
+  	color:#fff;
+	}
+  a:hover {
+  	color:#232323 !important;
+	} 	
+}
+
+%btn a:hover {
+  color:#232323;
+  }
+
+.btn-default {
+  background: #00a0e3; /*#556669*/
+  color: $color-primary;
+  border-radius: 3px;
+  margin-right: 20px;
+}
+
+.btn-logout {
+  i {
+    color: $color-primary;
+    font-size: 25px;
+  }
+
+  @include breakpoint(hoverable) {
+    i { color: #f54848; }
+  }
+}
+
+.btn-logout:hover {
+	i {color:#232323; }
+	}
+
+.btn-delete {
+
+  i { color: #d63e3e; }
+
+  &.-withlabel {
+    background: #f16e6e;
+    color: $color-primary;
+    border-radius: 3px;
+	margin-right:10px;
+	padding-right: 10px;
+
+    i { color: $color-primary; }
+  }
+  
+  &.-withlabel:hover {
+  	color:#232323 !important;
+	
+	i { color:#232323 !important; }
+	}
+}
+
+.btn-delete.-withlabel a:hover{
+    color:#232323 !important;
+	}
+
+
+.btn-create {
+	i { color: #d63e3e; }
+
+  &.-withlabel {
+    background: #00a0e3;
+    color: $color-primary;
+    border-radius: 3px;
+	margin-right:10px;
+	padding-right: 10px;
+
+    i { color: $color-primary; }
+  }
+  
+  &.-withlabel:hover {
+  	color:#232323 !important;
+	
+	i { color:#232323 !important; }
+	}
+}
+
+.btn-update:hover {
+	color:#232323 !important;
+	
+	i { color:#232323 !important; }
+}
+
+.btn-update {
+  background: #00a0e3; /*#21b73c*/
+  color: $color-primary;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.btn-popup-close {
+  color: $color-primary;
+}

@@ -1,0 +1,50 @@
+%bf { overflow: hidden; position: relative; }
+
+%word-break { @include word-break; }
+
+%word-wrap { @include word-wrap; }
+
+%ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%noflicker {
+  transform-style: preserve-3d;
+}
+
+%cover {
+  @include absolute(0,0,0,0);
+  @include wh(100%, 100%);
+  z-index: 1
+}
+
+%vertical-middle { @include vm(inline-block); }
+
+%ripple {
+  transition: background-color 0.3s linear, border 0.3s linear;
+  overflow: hidden;
+  position: relative;
+
+  &:after {
+    @include absolute(0, null, null, 0);
+    @include wh(100%, 100%);
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(10);
+    transition: transform .5s, opacity 1s;
+  }
+
+  &:active:after {
+    opacity: 0.2;
+    transform: scale(0);
+    transition: 0s;
+  }
+}

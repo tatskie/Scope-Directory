@@ -1,0 +1,34 @@
+.academia-box {
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+
+  strong { font-weight: 500; }
+}
+
+.academia-list {
+  display: block;
+  list-style-type: none;
+  width: 100%;
+
+  > li {
+    color: $color-sub-text;
+    display: block;
+    line-height: 2;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+}
+
+.academia-sub-list {
+  display: block;
+  position: relative;
+  margin: 4px 0 7px 35px;
+
+  li {
+    display: block;
+    position: relative;
+    line-height: 2;
+  }
+}

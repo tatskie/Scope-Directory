@@ -1,0 +1,167 @@
+.navigation-wrap,
+ .navigation {
+	display: block;
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+.navigation-wrap {
+	@include breakpoint($breakpoint-tablet) {
+		flex: 1 1 auto;
+	}
+
+	@include breakpoint($breakpoint-tablet - 1, max-width) {
+		background: rgba(0,0,0,0.4);
+		position: fixed;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .1s ease-in-out;
+	}
+
+  &.is-open {
+    @include breakpoint($breakpoint-tablet - 1, max-width) {
+      opacity: 1;
+    }
+  }
+}
+
+.navigation {
+	@include breakpoint($breakpoint-tablet - 1, max-width) {
+		background: $color-white;
+		max-width: 300px;
+		height: 100%;
+		width: 100%;
+		transform: translateX(-300px);
+		transition: transform 0.2s;
+    // transform: translateX(-300px);
+	}
+
+  .is-open & {
+    @include breakpoint($breakpoint-tablet - 1, max-width) {
+  		transform: translateX(0);
+      // transform: translateX(-300px);
+  	}
+  }
+}
+
+.navigation-inner {
+	display: block;
+	margin-bottom: 0;
+
+	@include breakpoint($breakpoint-tablet) {
+    height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
+
+
+.navigation-link, .navigation-sub-link {
+	color: $color-secondary;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	text-transform: capitalize;
+	line-height: 1;
+	letter-spacing: 0px;
+	font-weight: 500;
+	font-size: 14px;
+	transition: color .2s ease-in-out;
+
+
+}
+
+.navigation-item {
+	display: block;
+	padding: 0 12px;
+	position: relative;
+	height: 40px;
+
+  @include breakpoint($breakpoint-tablet) {
+    height: 100%;
+  }
+
+	&:hover {
+
+		@include breakpoint($breakpoint-tablet) {
+			.navigation-link {
+				color: $color-primary;
+			}
+
+			.navigation-sub-item  {
+				opacity: 1;
+				margin-top: 0;
+			}
+
+		}
+	}
+
+	&.is-active {
+		.navigation-link {
+			font-weight: bold;
+			color: $color-primary;
+		}
+	}
+}
+
+
+.navigation-sub {
+	background: $color-white;
+
+	display: block;
+	position: absolute;
+	top: 89px;
+	left: 0;
+	min-width: 200px;
+	overflow: hidden;
+	width: 100%;
+	z-index: 2;
+
+}
+
+.navigation-sub-item {
+	border-left: 1px solid #e6e6e6;
+	border-right: 1px solid #e6e6e6;
+	border-top: 1px solid #e6e6e6;
+	display: block;
+	position: relative;
+
+	width: 100%;
+	margin-top: -36px;
+	opacity: 0;
+	transition: opacity .5s ease-in-out, margin .4s ease-in-out;
+
+	.navigation-sub-link {
+		padding: 0 20px;
+		height: 34px;
+	}
+
+	&:last-child {
+		border-bottom: 1px solid #e6e6e6;
+	}
+}
+
+.navigation-auth {
+  display: block;
+  position: relative;
+  padding: 0 10px;
+  margin-top: 20px;
+  width: 100%;
+
+  @include breakpoint($breakpoint-tablet) {
+    display: none;
+  }
+
+   > div {
+     display: block;
+     margin-right: 0;
+     margin-bottom: 10px;
+   }
+}

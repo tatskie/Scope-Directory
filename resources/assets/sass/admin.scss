@@ -1,0 +1,21 @@
+// Admin Bootstrap
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'admin-settings';
+
+
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import 'base/@base';
+@import 'lib/@lib';
+
+@import 'admin/components/@admin-components';
+@import 'admin/layout/@admin-layout';
+@import 'admin/pages/@admin-pages';
+
+//Font Awesome
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');

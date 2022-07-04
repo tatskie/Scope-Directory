@@ -1,0 +1,32 @@
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-right: 1px solid $color-mecury;
+  border-top: 1px solid $color-mecury;
+}
+.table-thead {
+  display: table-header-group;
+}
+
+.table-body {
+  display: table-row-group;
+}
+
+.table-tr { display: table-row; }
+
+.table-td {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 8px;
+  border-bottom: 1px solid $color-mecury;
+  border-left: 1px solid $color-mecury;
+
+  color:#232323;
+
+  span {}
+
+  &.description { width: 65%; font-weight: 500; }
+}

@@ -1,0 +1,467 @@
+@mixin autofillfix($name) {
+  &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:hover {
+    animation-name: $name;
+    animation-fill-mode: both;
+  }
+
+  @at-root {
+    @keyframes #{$name} {
+      to {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin autofill($bgcolor, $txcolor, $extra: false) {
+  transition: background-color 5000s ease-in-out 0s;
+
+  @if $extra == false {
+    box-shadow: 0 0 0 100px $bgcolor inset;
+    -webkit-text-fill-color: $txcolor;
+  }
+
+  @else if $extra == 'important' {
+    box-shadow: 0 0 0 100px $bgcolor inset !important;
+    -webkit-text-fill-color: $txcolor !important;
+  }
+}
+
+@mixin rbg($img, $w, $h) {
+  background-size: $w;
+  background-image: url($img);
+  background-repeat: no-repeat;
+  height: 0;
+  padding-bottom: $h;
+}
+
+@mixin border($loc, $val...) {
+  @if $loc == all {
+    border: $val;
+  }
+
+  @if $loc == t { border-top: $val; }
+  @if $loc == r { border-right: $val; }
+  @if $loc == b { border-bottom: $val; }
+  @if $loc == l { border-left: $val; }
+
+  @if $loc == tr or $loc == rt {
+    border-top: $val;
+    border-right: $val;
+  }
+  @if $loc == tb or $loc == bt {
+    border-top: $val;
+    border-bottom: $val;
+  }
+  @if $loc == tl or $loc == lt {
+    border-top: $val;
+    border-left: $val;
+  }
+  @if $loc == rb or $loc == br {
+    border-bottom: $val;
+    border-right: $val;
+  }
+  @if $loc == rl or $loc == lr {
+    border-right: $val;
+    border-left: $val;
+  }
+  @if $loc == lb or $loc == bl {
+    border-left: $val;
+    border-bottom: $val;
+  }
+  @if $loc == tb or $loc == bt {
+    border-top: $val;
+    border-bottom: $val;
+  }
+
+  @if $loc == trl or $loc == tlr or $loc == rtl or $loc == rlt or $loc == lrt or $loc == ltr {
+    border-top: $val;
+    border-right: $val;
+    border-left: $val;
+  }
+
+  @if $loc == trb or $loc == tbr or $loc == rtb or $loc == rbt or $loc == brt or $loc == btr {
+    border-top: $val;
+    border-right: $val;
+    border-bottom: $val;
+  }
+
+  @if $loc == rbl or $loc == rlb or $loc == brl or $loc == blr or $loc == lrb or $loc == lbr {
+    border-right: $val;
+    border-bottom: $val;
+    border-left: $val;
+  }
+
+  @if $loc == btl or $loc == blt or $loc == lbt or $loc == ltb or $loc == tbl or $loc == tlb {
+    border-top: $val;
+    border-bottom: $val;
+    border-left: $val;
+  }
+} // border
+
+
+@mixin bradius($loc, $num...){
+  @if $loc == all {
+    border-radius: $num;
+  }
+
+  @if $loc == l {
+    border-top-left-radius: $num;
+    border-bottom-left-radius: $num;
+  }
+
+  @if $loc == lr or $loc == rl {
+    border-top-left-radius: $num;
+    border-bottom-left-radius: $num;
+    border-top-right-radius: $num;
+    border-bottom-right-radius: $num;
+  }
+
+  @if $loc == r {
+    border-top-right-radius: $num;
+    border-bottom-right-radius: $num;
+  }
+
+  @if $loc == b {
+    border-bottom-right-radius: $num;
+    border-bottom-left-radius: $num;
+  }
+
+  @if $loc == t {
+    border-top-right-radius: $num;
+    border-top-left-radius: $num;
+  }
+
+  @if $loc == tl or $loc == lt {
+    border-top-left-radius: $num;
+  }
+
+  @if $loc == tr or $loc == rt {
+    border-top-right-radius: $num;
+  }
+
+  @if $loc == bl or $loc == lb {
+    border-bottom-left-radius: $num;
+  }
+
+  @if $loc == br or $loc == rb {
+    border-bottom-right-radius: $num;
+  }
+} // border-radius
+
+@mixin border-gradient($type, $size, $gradient) {
+  @if $type == tb or $type == bt {
+    background: {
+      position: 0 0, 100% 0;
+      repeat: no-repeat;
+      size: $size 100%;
+      image: linear-gradient($gradient);
+    }
+    border: {
+      bottom-style: solid;
+      bottom-width: 1px;
+      top-style: solid;
+      top-width: 1px;
+    }
+    @content;
+  }
+}
+
+@mixin ellip($line-num: 2){
+  overflow: hidden;
+  display: block;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line-num;
+}
+
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+  $extmods: (
+  eot: "?",
+  svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+  otf: "opentype",
+  ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+} // font face
+
+@mixin objf($img, $h) {
+  @include wh(100%, $h);
+  display: block;
+  object-fit: $img;
+  object-position: top center;
+  overflow: hidden;
+}
+
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null){
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+  @include position(absolute, $top, $right, $bottom, $left);
+}
+
+@mixin relative($top: null, $right: null, $bottom: null, $left: null) {
+  @include position(relative, $top, $right, $bottom, $left);
+}
+
+@mixin fixed($top: null, $right: null, $bottom: null, $left: null) {
+  @include position(fixed, $top, $right, $bottom, $left);
+}
+
+@mixin retina($img) {
+  $image: ($img);
+  $h: (image-height($image)/2);
+  $w: (image-width($image)/2);
+
+  @include wh($w, $h);
+  background-size: $w $h;
+  background-image: url($image);
+  background-repeat: no-repeat;
+}
+
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+
+  @supports((text-stroke: #{$stroke}px #{$color}) or (-webkit-text-stroke: #{$stroke}px #{$color})) {
+    color: transparent;
+    -webkit-text-stroke: #{$stroke}px $color;
+    text-stroke: #{$stroke}px $color;
+    text-shadow: none;
+  }
+}
+
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+    @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+
+@mixin triangle ($dir, $width, $color) {
+  @if $dir == tl or $dir == lt {
+    @include wh(0, 0);
+    border-style: solid;
+    border-width: $width $width 0 0;
+    border-color: $color transparent transparent transparent;
+    line-height: 0px;
+    _border-color: $color #000 #000 #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir == tr or $dir == rt {
+    @include wh(0, 0);
+    border-style: solid;
+    border-width: $width 0 0 $width;
+    border-color: $color transparent transparent transparent;
+    line-height: 0px;
+    _border-color: $color #000 #000 #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir == bl or $dir == lb {
+    @include wh(0, 0);
+    display: inline-block;
+    border-style: solid;
+    border-width: $width 0 0 $width;
+    border-color: transparent transparent transparent $color;
+    line-height: 0px;
+    _border-color: #000 #000 #000  $color;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir == br or $dir == rb {
+    @include wh(0, 0);
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 0 $width $width;
+    border-color: transparent transparent $color transparent;
+    line-height: 0px;
+    _border-color: #000 #000 $color #000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000');
+  }
+
+  @if $dir == t {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    _border-color: #000000 #000000 $color #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  }
+
+  @else if $dir == b {
+    @include wh(0, 0);
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-top: $width solid $color;
+    _border-color: $color #000000 #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  }
+
+  @else if $dir == r {
+    @include wh(0, 0);
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+    border-top: $width solid transparent;
+    _border-color: #000000 $color #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  }
+
+  @else if $dir == l {
+    @include wh(0, 0);
+    border-bottom: $width solid transparent;
+    border-right: $width solid $color;
+    border-top: $width solid transparent;
+    _border-color: #000000 #000000 #000000  $color;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+  }
+
+  @if $dir == ri {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-left: $width solid transparent;
+    border-top: $width solid $color;
+  }
+
+  @if $dir == li {
+    @include wh(0, 0);
+    border-bottom: $width solid $color;
+    border-right: $width solid transparent;
+    border-top: $width solid $color;
+  }
+}
+
+@mixin wh($width: null, $height: null) {
+  width: $width;
+  height: $height;
+}
+
+@mixin min-max-width($width: null) {
+  min-width: $width;
+  max-width: $width;
+  width: $width;
+}
+
+@mixin min-max-height($height: null) {
+  min-height: $height;
+  max-height: $height;
+  height: $height;
+}
+
+@mixin wp($width: null, $padding: null) {
+  width: $width;
+  padding-bottom: $padding;
+}
+
+@mixin vm($style: null, $top: null, $left: null) {
+  @if $style == null {
+    @include position(absolute, 50%, null, null, 50%);
+    transform: translate(-50%, -50%);
+  }
+
+  @if $style == absolute {
+    @if $top == null {
+      @include absolute($top, null, null, $left);
+      transform: translate(-50%, 0);
+    }
+    @else if $left == null {
+      @include absolute($top, null, null, $left);
+      transform: translate(0, -50%);
+    }
+    @else {
+      @include absolute($top, null, null, $left);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @if $style == relative {
+    @if $top == null {
+      @include position(relative, $top, null, null, $left);
+      transform: translate(-50%, 0);
+    }
+    @else if $left == null {
+      @include relative($top, null, null, $left);
+      transform: translate(0, -50%);
+    }
+    @else {
+      @include relative($top, null, null, $left);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @if $style == flex {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @if $style == ghost {
+    @if $top == null {
+      text-align: center;
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        margin-right: -4px;
+        vertical-align: middle;
+      }
+    }
+
+    @else {
+      text-align: center;
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  @if $style == inline-block {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin word-break { word-break: break-all; }
+@mixin word-wrap {
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+@mixin multiple-column($col_count, $col_gap) {
+  -moz-column-count: $col_count;
+  -moz-column-gap: $col_gap;
+  -webkit-column-count: $col_count;
+  -webkit-column-gap: $col_gap;
+  column-count: $col_count;
+  column-gap: $col_gap;
+}

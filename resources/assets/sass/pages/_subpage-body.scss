@@ -1,0 +1,63 @@
+.subpage-body {
+
+	h1, h2, h3, h4, h5 {
+		display: block;
+		position: relative;
+	}
+
+
+
+	h2 {
+		color: #232323;
+	  display: block;
+	  text-transform: none;
+	  line-height: 32px;
+	  letter-spacing: -1px;
+	  font-weight: 400;
+	  font-style: normal;
+	  font-size: 24px;
+	  margin-bottom: 10px;
+	  position: relative;
+
+	  strong { font-weight: 500; }
+
+	  .-number {
+	    display: inline-block;
+	    margin-right: 25px;
+	  }
+	}
+
+	p {
+		color: #232332;
+  display: block;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  letter-spacing: 0.002em;
+	}
+
+	a {
+		color: $color-primary;
+	  transition: all .2s ease-in-out;
+
+	  &:hover {
+			@include breakpoint($breakpoint-tablet) {
+			  color: $color-cerulean;
+			}
+		}
+	}
+
+	ol {
+		color: $color-sub-text;
+	  display: block;
+	  position: relative;
+	  list-style-type: decimal;
+	  width: 100%;
+	  list-style-position: inside;
+	  padding-left: 10px;
+	  margin-bottom: 12px;
+
+	  li {
+	    line-height: 2;
+	  }
+	}
+}
