@@ -4,7 +4,7 @@
     @foreach($pages as $page)
         @if(count($page->Subpages) >= 1)
             <li class="navigation-item">
-                <a class="navigation-link" href="{{ route('register') }}">
+                <a class="navigation-link" href="https://scope.directory/#getstarted">
                   <span>{{ $page->title }}</span>
                 </a>
 
@@ -116,7 +116,7 @@
                   <input class="form-check" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label for="remember">{{ __('Remember Me') }}</label>
                 </div>
-                <a class="form-extra-link form-extra-link-register" href="{{ route('register') }}">
+                <a class="form-extra-link form-extra-link-register" href="https://scope.directory/#getstarted">
                   <i class="ico-edit"></i>
                   <span>{{ __('Register?') }}</span>
                 </a>

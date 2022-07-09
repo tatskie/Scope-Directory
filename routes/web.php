@@ -15,6 +15,23 @@
 Auth::routes();
 Auth::routes(['verify' => true]);
 
+// register
+Route::get('/academic/register', function(){
+    return view('auth.academic');
+});
+
+Route::get('/teacher/register', function(){
+    return view('auth.teacher');
+});
+
+Route::get('/corporate/register', function(){
+    return view('auth.corporate');
+});
+
+Route::get('/undergrad/register', function(){
+    return view('auth.undergrad');
+});
+
 Route::get('/users/verify/{token}', 'VerifyEmailController@verifyUser');
 Route::get('/reset/password/{token}', 'VerifyEmailController@reset')->name('reset');
 Route::post('/reset/password/{token}', 'VerifyEmailController@resetPassword')->name('update.password');

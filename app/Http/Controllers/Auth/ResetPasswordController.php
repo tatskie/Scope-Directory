@@ -29,6 +29,11 @@ class ResetPasswordController extends Controller
         if (\Session::has('userRequest')) {
             return route('request');
         }
+
+        if (auth()->user()->hasRole('academia')) {
+            return '/academia/dashboard';
+        }
+
         if (auth()->user()->hasRole('teacher')) {
             return '/teacher/dashboard';
         }

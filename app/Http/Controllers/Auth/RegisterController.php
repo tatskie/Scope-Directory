@@ -43,6 +43,10 @@ class RegisterController extends Controller
             return '/academia/dashboard';
         }
 
+        if (auth()->user()->hasRole('teacher')) {
+            return '/teacher/dashboard';
+        }
+        
         if (auth()->user()->hasRole('admin')) {
            return '/admin/dashboard';
         }
@@ -71,6 +75,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'role' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^\S*$/u'],
@@ -87,7 +92,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $role = Role::where('name', 'academia')->first();
+        $role = Role::where('name', $data['role'])->first();
 
         $user = User::create([
             'name' => $data['name'],

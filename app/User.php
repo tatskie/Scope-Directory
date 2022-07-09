@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Laravel\Cashier\Billable;
+use Laravel\Paddle\Billable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;

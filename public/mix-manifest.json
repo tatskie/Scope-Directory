@@ -5,6 +5,7 @@
     "/assets/js/academia.js": "/assets/js/academia.js",
     "/assets/js/submit.js": "/assets/js/submit.js",
     "/assets/js/hamburger.js": "/assets/js/hamburger.js",
+    "/js/popper.js": "/js/popper.js",
     "/assets/css/admin.css": "/assets/css/admin.css",
     "/assets/css/submit.css": "/assets/css/submit.css",
     "/assets/css/app.css": "/assets/css/app.css",
@@ -40,6 +41,8 @@
     "/assets/images/user/1604578956.jpg": "/assets/images/user/1604578956.jpg",
     "/assets/images/user/1604746426.jpg": "/assets/images/user/1604746426.jpg",
     "/assets/images/user/1605411784.jpg": "/assets/images/user/1605411784.jpg",
+    "/assets/images/user/1657014150.jpeg": "/assets/images/user/1657014150.jpeg",
+    "/assets/images/user/1657014186.png": "/assets/images/user/1657014186.png",
     "/assets/images/user/default.jpg": "/assets/images/user/default.jpg",
     "/assets/images/vendor/tinymce/skins/lightgray/loader.gif": "/assets/images/vendor/tinymce/skins/lightgray/loader.gif",
     "/assets/images/world-bg.png": "/assets/images/world-bg.png"

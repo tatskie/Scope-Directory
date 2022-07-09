@@ -40,6 +40,10 @@ class LoginController extends Controller
             return '/academia/dashboard';
         }
 
+        if (auth()->user()->hasRole('teacher')) {
+            return '/teacher/dashboard';
+        }
+
         if (auth()->user()->hasRole('admin')) {
            return '/admin/dashboard';
         }
@@ -130,8 +134,8 @@ class LoginController extends Controller
     {
         $request->validate([
             $this->username() => 'required|string',
-            'g-recaptcha-response' => 'required|captcha',
             'password' => 'required|string',
+            // 'g-recaptcha-response' => 'required|captcha',
         ]);
     }
     
