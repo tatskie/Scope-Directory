@@ -22,7 +22,7 @@
       <div class="form-wrap">
         <form class="form-prevent-multiple-submits" method="POST" action="{{ route('register') }}">
           @csrf
-          <input id="role" type="hidden" name="role" value="academic">
+          <input id="role" type="hidden" name="role" value="academia">
           <div class="form-inner">
             <div class="form-con">
               <h2 class="form-title">Account Details</h2>

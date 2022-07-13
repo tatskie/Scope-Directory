@@ -12,7 +12,7 @@
           <span>TIF Questions</span>
         </router-link>
       </div>
-      <!-- <div class="form-item">
+      <div class="form-item">
         <div class="form-input -select">
           <select class="parent-id" name="roles" @change="filterQuestion($event)">
             <option value="all">All</option>
@@ -21,7 +21,7 @@
             <option value="undergrad">Undergrad</option>
           </select>
         </div>
-      </div>   -->
+      </div>  
     </div>
 
     <div class="contents-body" v-if="loading">
@@ -203,17 +203,17 @@ export default {
           this.form.reset();
     });
 
-    // Fire.$on('loadTeacherQuestions',() =>{
-    //       this.loadTeacherQuestions();
-    // });
+    Fire.$on('loadTeacherQuestions',() =>{
+          this.loadTeacherQuestions();
+    });
 
-    // Fire.$on('loadAcademiaQuestions',() =>{
-    //       this.loadAcademiaQuestions();
-    // });
+    Fire.$on('loadAcademiaQuestions',() =>{
+          this.loadAcademiaQuestions();
+    });
 
-    // Fire.$on('loadUndergradQuestions',() =>{
-    //       this.loadUndergradQuestions();
-    // });
+    Fire.$on('loadUndergradQuestions',() =>{
+          this.loadUndergradQuestions();
+    });
   },
 
   methods: {
@@ -236,29 +236,30 @@ export default {
         ));
     },
 
-    // loadTeacherQuestions() {
-    //     this.loading = true
-    //     axios.get('/api/admin/questions-teacher').then(({data}) => (
-    //       this.questions = data.data,
-    //       this.loading = false
-    //     ));
-    // },
+    loadTeacherQuestions() {
+        this.loading = true
+        axios.get('/api/admin/questions-teacher').then(({data}) => (
+          this.questions = data.data,
+          this.loading = false
+        ));
+    },
 
-    // loadAcademiaQuestions() {
-    //     this.loading = true
-    //     axios.get('/api/admin/questions-academia').then(({data}) => (
-    //       this.questions = data.data,
-    //       this.loading = false
-    //     ));
-    // },
+    loadAcademiaQuestions() {
+        this.loading = true
+        axios.get('/api/admin/questions-academia').then(({data}) => (
+          this.questions = data.data,
+          this.loading = false
+        ));
+    },
 
-    // loadUndergradQuestions() {
-    //     this.loading = true
-    //     axios.get('/api/admin/questions-undergrad').then(({data}) => (
-    //       this.questions = data.data,
-    //       this.loading = false
-    //     ));
-    // },
+    loadUndergradQuestions() {
+        this.loading = true
+        axios.get('/api/admin/questions-undergrad').then(({data}) => (
+          this.questions = data.data,
+          this.loading = false
+        ));
+    },
+    
     deleteQuestion(id) {
         swal.fire({
           title: 'Are you sure?',

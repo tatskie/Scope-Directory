@@ -39,6 +39,7 @@ class RegisterController extends Controller
         if (\Session::has('userRequest')) {
             return route('request');
         }
+
         if (auth()->user()->hasRole('academia')) {
             return '/academia/dashboard';
         }
@@ -74,13 +75,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
         return Validator::make($data, [
             'role' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^\S*$/u'],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'],
-            'g-recaptcha-response' => ['required', 'captcha']
+            // 'g-recaptcha-response' => ['required', 'captcha']
         ]);
     }
 

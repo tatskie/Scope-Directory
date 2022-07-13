@@ -48,7 +48,7 @@ class QuestionController extends Controller
      */
     public function teacher()
     {
-        $role = 'academia';
+        $role = 'teacher';
         return Question::whereHas('filterQuestion', function (Builder $query) use($role) {
                     $query->where('roles', '=', $role);
                 })
