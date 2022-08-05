@@ -1,7 +1,7 @@
 <template>
 	<div class="col-md-12">
 		<div class="contents-head">
-	      <h2 style="margin-right:20px">My TESOL Profile</h2>
+	      <h2 style="margin-right:20px">My SCOPE Profile</h2>
 		  <order-licence></order-licence>
   		  <request-delete></request-delete>
 		</div>
@@ -192,7 +192,7 @@
             </tr>
           </table>
 				  	<br>
-				  	<h2><span style="font-size:16px; margin-bottom:10px"><strong>Your TESOL Licence Category: </strong></span></h2>
+				  	<h2><span style="font-size:16px; margin-bottom:10px"><strong>Your SCOPE Category: </strong></span></h2>
 				  	<p style="color: #00a0e3; margin-left:10px" v-if="category.number">L{{ category.number }} - {{ category.specialist_title }}</p>
               		<p style="color: #00a0e3; margin-left:10px" v-if="aif.title">TIF - {{ aif.title }}</p>
 					<br>
@@ -202,7 +202,7 @@
 			</div>	
 
 		  	<div id="data-right">
-				<img class="card-img-top" :src="'/assets/images/user/'+card.photo" alt="Card image cap" height="300px" width="300px">
+				<img class="card-img-top" :src="'/public/assets/images/user/'+card.photo" alt="Card image cap" height="300px" width="300px">
 				<br><br>
 	            <upload-photo></upload-photo>
 				<em style="font-size:11px">File format: JPG or PNG, not more than 2MB in file size</em>

@@ -35,7 +35,7 @@
 
       <!-- Footer -->
       <div class="footer-wrap">
-        @include('admin.includes.footer')
+      
       </div>
       <!-- END Footer -->
     </div>

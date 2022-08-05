@@ -72,27 +72,6 @@
 				<h3>Academics and Undergraduates</h3>
                 
                 <p style="color:#999">This site is only for teachers. Those working in Universities, colleges or other higher education including all levels of undergrads should visit the site <a href="https://www.academics.education" target="_blank">here</a> for further information.</p>
-
-<!--				<ul class="footer-nav">
-					<li class="footer-nav-item">
-						<a href="#" class="footer-nav-link">
-							<span>FAQ</span>
-						</a>
-					</li>
-
-					<li class="footer-nav-item">
-						<a href="#" class="footer-nav-link">
-							<span>Pre-requisites</span>
-						</a>
-					</li>
-
-					<li class="footer-nav-item">
-						<a href="#" class="footer-nav-link">
-							<span>Get Started</span>
-						</a>
-					</li>
-
-				</ul>-->
 			</div>
 		</div>
         <div class="copyright-container">

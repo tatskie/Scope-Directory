@@ -35,6 +35,10 @@ class VerificationController extends Controller
             return '/academia/dashboard';
         }
 
+        if (auth()->user()->hasRole('teacher')) {
+            return '/teacher/dashboard';
+        }
+
         if (auth()->user()->hasRole('admin')) {
            return '/admin/dashboard';
         }

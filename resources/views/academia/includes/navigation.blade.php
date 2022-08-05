@@ -18,7 +18,7 @@
     <div class="navigation-item">
       <router-link class="navigation-link" to="/academia/dashboard">
         <i class="ico-theme"></i>
-        <span><i style="font-size:95%">my</i><span style="margin-left:-8px">TESOL</span></span>
+        <span><i style="font-size:95%">my</i><span style="margin-left:-8px">SCOPE</span></span>
       </router-link>
     </div>
     <div class="navigation-item">

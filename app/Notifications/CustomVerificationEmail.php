@@ -48,18 +48,18 @@ class CustomVerificationEmail extends Notification
             $provider = $socialite->provider;
 
             return (new MailMessage)
-                    ->subject(Lang::getFromJson('Verify Email Address'))
+                    ->subject(Lang::get('Verify email Address'))
                     ->line('You registered/logged in through: '.ucfirst($provider))
-                    ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
-                    ->action(Lang::getFromJson('Verify Email Address'), $verificationUrl)
-                    ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));                  
+                    ->line(Lang::get('Please click the button below to verify your email address.'))
+                    ->action(Lang::get('Verify email Address'), $verificationUrl)
+                    ->line(Lang::get('If you did not create an account, no further action is required.'));                  
         } else {
             return (new MailMessage)
-                ->subject(Lang::getFromJson('Verify Email Address'))
-                ->line('Your TESOL Licence username is: '.$notifiable->username)
-                ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
-                ->action(Lang::getFromJson('Verify Email Address'), $verificationUrl)
-                ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
+                ->subject(Lang::get('Verify email Address'))
+                ->line('Your SCOPE username is: '.$notifiable->username)
+                ->line(Lang::get('Please click the button below to verify your email address.'))
+                ->action(Lang::get('Verify email Address'), $verificationUrl)
+                ->line(Lang::get('If you did not create an account, no further action is required.'));
         }
     }
 
@@ -74,7 +74,10 @@ class CustomVerificationEmail extends Notification
         return URL::temporarySignedRoute(
             'verification.verify',
             Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
-            ['id' => $notifiable->getKey()]
+            [
+                'id' => \Auth::user()->getKey(),
+                'hash' => sha1(\Auth::user()->getEmailForVerification()),
+            ]
         );
     }
 

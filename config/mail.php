@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@tesol-licence.education'),
-        'name' => env('MAIL_FROM_NAME', 'Tesol Licence'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@scope.directory'),
+        'name' => env('MAIL_FROM_NAME', 'SCOPE'),
     ],
 
     /*
