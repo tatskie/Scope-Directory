@@ -9,6 +9,7 @@ import Dashboard from './components/user/Dashboard';
 import Licence from './components/user/Licence';
 import CV from './components/user/CV';
 import Billing from './components/user/Billing';
+import Profile from './components/user/Profile';
 
 // Globat Pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
@@ -24,6 +25,7 @@ const routes = [
   { path: '/academia/licence', component: Licence },
   { path: '/academia/billing', component: Billing },
   { path: '/academia/cv', component: CV },
+  { path: '/academia/profile', component: Profile },
 ]
 
 import Table from './components/common/table/Table.vue'
