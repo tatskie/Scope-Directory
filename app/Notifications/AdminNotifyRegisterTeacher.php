@@ -41,7 +41,7 @@ class AdminNotifyRegisterTeacher extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New "Teacher" account has been created.');
+                    ->line('New "Academic" account has been created.');
                     // ->action('Notification Action', url('/'))
                     // ->line('Thank you for using our application!');
     }

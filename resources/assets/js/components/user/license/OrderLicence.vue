@@ -77,8 +77,8 @@
           isPaid: false,
           loading: true,
           credentials: {
-            sandbox: 'AbvJHoo6LtKlzly0BIITu52iNeR1Eh8MO3k-zhoTb05Y1NYFGqPmGCD0qonN_pJAbcACdDPy9D8KLKg2',
-            production: 'Ae3ms7uTgaBud3bC-e3fpnNlaj0RV7BbsbA_JSLppMxcKHOTPIMN2WVjhTC_sX7KlaedNgvk4bt74rxK'
+            sandbox: 'ASjHEAFSQdXc_nkAyJJy1Hrrpk6MrOUOqy769tQTZDyPgx5spG9_22V23bnzlOJ-4Y_AU8uC3SpDKxL4',
+            production: 'ARte-5uRbQE8EDdOJz_PDPoBvfx4LYAUnaCgycMUMIZVM9kXc_msIY4tSj9OCpIuQqYaAL1w2cSul997'
           },
           user : [],
           category: [],
@@ -143,7 +143,7 @@
 
         setLoaded: function() {
             paypal.Button.render({
-                env: 'sandbox',
+                env: 'production',
                 client: {
                     sandbox: this.credentials.sandbox,
                     production: this.credentials.production

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\AIF;
+use App\User;
 use App\Page;
 use App\Country;
 use App\Question;
 use App\LicenseCard;
 use App\QuestionAnswer;
+use App\AcademiaCategory;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -19,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        // $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -29,16 +32,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pages = Page::all(); // list of pages
-        $user = auth()->user(); // Logged in user
-        $card = $user->card;
+        $user = auth()->user();
 
-        if($user->questionAnswer->isEmpty())
-        {
-            return redirect()->to('/welcome');
+        $role = $user->roles->first()->name;
+        $aifs = AIF::all();
+        $categories = AcademiaCategory::all();
+
+        if ($user->answerScore->is_agree == true) {
+
+            $question = Question::whereHas('filterQuestion', function (Builder $query) use($role) {
+                            $query->where('roles', '=', $role);
+                        })
+                        ->where('impact_factor', false)
+                        ->orderBy('id', 'asc')
+                        ->first();
+
+            return redirect()->route('question.show', $question->url);
         }
+
+        $questions = Question::whereHas('filterQuestion', function (Builder $query) use($role) {
+                        $query->where('roles', '=', $role);
+                    })
+                    ->where('impact_factor', false)
+                    ->get();
+
+        $total = count($questions);
+        $pages = Page::all();
         
-        return view('home', compact(['pages', 'card'])); // return to home
+        return view('teacher.welcome-user', compact(['pages', 'total', 'aifs', 'categories']));
     }
 
     /**
@@ -99,5 +120,10 @@ class HomeController extends Controller
         $pages = Page::all();
 
         return view('license.index', compact(['pages', 'countries']));
+    }
+
+    public function scopeProfile(User $user) {
+        // dd($user);
+        return view('profile', compact(['user']));
     }
 }

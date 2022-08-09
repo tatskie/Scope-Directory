@@ -7,6 +7,7 @@ use App\Question;
 use App\AnswerScore;
 use App\QuestionAnswer;
 use Illuminate\Http\Request;
+use App\Services\WelcomeService;
 use App\Http\Controllers\Controller;
 use App\Notifications\TwoFactorCode;
 use Illuminate\Database\Eloquent\Builder;
@@ -41,7 +42,7 @@ class TwoFactorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, WelcomeService $service)
     {
         $request->validate([
             'two_factor_code' => 'integer|required',
@@ -55,9 +56,10 @@ class TwoFactorController extends Controller
         {
             $user->resetTwoFactorCode();
 
+            // $service->userAgreement($user->answerScore->is_agree, $role);
             if ($user->hasRole('academia')) {
                 if (!$user->answerScore->is_agree == true) {
-                    return redirect()->to('/academia-welcome');
+                    return redirect()->to('/academic/welcome');
                 }
                 else {
                     if (is_null($user->answerScore->score_id)) {

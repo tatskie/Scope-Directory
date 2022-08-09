@@ -32,9 +32,9 @@
 			
 	    <div class="dashboard-card">
 		<div>
-	      	<div id="main-photo"><img :src="'/assets/images/user/'+card.photo" height="187" width="154"></div>
+	      	<div id="main-photo"><img :src="'/public/assets/images/user/'+card.photo" height="187" width="154"></div>
 		  	<div id="teacher-data"><h2>{{ user.name }}</h2></div>
-			<div id="background-photo"><img :src="'/assets/images/user/'+card.photo" height="104" width="87"></div>
+			<div id="background-photo"><img :src="'/public/assets/images/user/'+card.photo" height="104" width="87"></div>
 	   </div>
 	   </div>
 	   <div style="width:140px"><order-licence></order-licence></div>

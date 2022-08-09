@@ -32,11 +32,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $role = 'academia';
-        return Question::whereHas('filterQuestion', function (Builder $query) use($role) {
-                    $query->where('roles', '=', $role);
-                })
-                ->where('impact_factor', false)->orderBy('id', 'asc')
+        return Question::where('impact_factor', false)->orderBy('id', 'asc')
                 ->with(['filterQuestion', 'followupQuestion'])
                 ->paginate(200);
     }

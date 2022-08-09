@@ -9,6 +9,7 @@ use App\FollowupQuestion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use App\Services\Academic\QuestionService;
 
 class QuestionController extends Controller
 {
@@ -28,7 +29,7 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(Question $question, QuestionService $service)
     {
         // $question = Question::findOrFail($url);
 
@@ -36,9 +37,10 @@ class QuestionController extends Controller
 
         $role = $user->roles->first()->name;
 
-        if (!$user->answerScore->is_agree == true) {
-            return redirect()->intended('/academia-welcome');
-        }
+        $service->userAgreement($user->answerScore->is_agree);
+        // if (!$user->answerScore->is_agree == true) {
+        //     return redirect()->intended('/academia-welcome');
+        // }
 
         $hasAnswer = QuestionAnswer::where(['user_id' => $user->id, 'question_id' => $question->id])->first(); // find the if user has answer
 

@@ -32,6 +32,12 @@ Route::get('/undergrad/register', function(){
     return view('auth.undergrad');
 });
 
+Route::get('/TLP-209315-{user}', 'HomeController@scopeProfile');
+
+// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice'); 
+// Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); 
+// Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+
 Route::get('/users/verify/{token}', 'VerifyEmailController@verifyUser');
 Route::get('/reset/password/{token}', 'VerifyEmailController@reset')->name('reset');
 Route::post('/reset/password/{token}', 'VerifyEmailController@resetPassword')->name('update.password');
@@ -76,7 +82,7 @@ Route::get('/journal-sample', function () {
 Route::group(['middleware' => ['auth', 'verified', 'twofactor']], function() {
 	// Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/academia-welcome', 'Teacher\PageController@welcomeUser');  
+    Route::get('/academic/welcome', 'HomeController@index')->name('welcome.user');  
     Route::put('/update-score', 'Teacher\PageController@updateScore')->name('update.score');  
 
 

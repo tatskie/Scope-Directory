@@ -27,11 +27,21 @@ mix.js('resources/assets/js/app.js', 'public/assets/js').vue()
 	.js('resources/assets/js/submit.js', 'public/assets/js').vue()
 	.js('resources/assets/js/hamburger.js', 'public/assets/js').vue()
   .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
-    .sass('resources/assets/sass/app.scss', 'public/assets/css')
+    .sass('resources/assets/sass/app.scss', 'public/assets/css').options({
+         processCssUrls: false,
+     })
     .sass('resources/assets/sass/admin.scss', 'public/assets/css')
+    .options({
+         processCssUrls: false,
+     })
     .sass('resources/assets/sass/submit.scss', 'public/assets/css')
+    .options({
+         processCssUrls: false,
+     })
 	.copy('resources/assets/images', 'public/assets/images');
     // .copyDirectory('node_modules/tinymce/skins', 'public/assets/skins');
+
+
 
 if (mix.inProduction()) {
   mix
