@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
 
             if (Auth::user()->hasRole('academia')) {
                 if (!Auth::user()->answerScore->is_agree == true) {
-                    return redirect()->to('/academia-welcome');
+                    return redirect()->to('/academia/welcome');
                 }
                 else {
                     if (is_null(Auth::user()->answerScore->score_id)) {

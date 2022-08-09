@@ -71,7 +71,7 @@ class AccountType extends Controller
        if (auth()->user()->hasRole('teacher')) {
 
             if (!$user->answerScore->is_agree == true) {
-                return redirect()->intended('/teacher-welcome');
+                return redirect()->to('/academia/welcome');
             }
             else {
                 if (is_null($user->answerScore->score_id)) {
