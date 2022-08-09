@@ -114,6 +114,8 @@ class RegisterController extends Controller
         foreach ($users as $admin) {
             $admin->notify(new AdminNotifyRegisterTeacher());
         }
+
+        auth()->login($user);
         
         return $user;
     }

@@ -18,11 +18,11 @@ class QuestionService
      */
     public function __construct()
     {
-        $this->redirectTo = '/academia-welcome';
+        $this->redirectTo = '/academia/welcome';
     }
 
 	public function userAgreement($bool) {
-		return !$bool ? redirect()->intended('/academia-welcome');
+		return !$bool ? redirect()->intended('/academia/welcome');
 	}
 	
 }

@@ -12,7 +12,7 @@
 */
 // \URL::forceScheme('https');
 
-Auth::routes();
+// Auth::routes();
 Auth::routes(['verify' => true]);
 
 // register
@@ -34,9 +34,9 @@ Route::get('/undergrad/register', function(){
 
 Route::get('/TLP-209315-{user}', 'HomeController@scopeProfile');
 
-// Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice'); 
-// Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); 
-// Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice'); 
+Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); 
+Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 
 Route::get('/users/verify/{token}', 'VerifyEmailController@verifyUser');
 Route::get('/reset/password/{token}', 'VerifyEmailController@reset')->name('reset');
