@@ -123,7 +123,8 @@ class HomeController extends Controller
     }
 
     public function scopeProfile(User $user) {
-        // dd($user);
-        return view('profile', compact(['user']));
+        $tif = $user->questionAnswer->where('is_tif', 1)->where('followup_id', null);
+        // dd($tif);
+        return view('profile', compact(['user', 'tif']));
     }
 }

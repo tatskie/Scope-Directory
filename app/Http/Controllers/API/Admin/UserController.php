@@ -35,6 +35,54 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function academia()
+    {
+        return User::whereHas('roles', function ($query) {
+            return $query->where('name', 'academia');
+        })->latest()->with(['card.licenseCategory', 'card.tif', 'answerScore', 'roles'])->paginate(50);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function teacher()
+    {
+        return User::whereHas('roles', function ($query) {
+            return $query->where('name', 'teacher');
+        })->latest()->with(['card.licenseCategory', 'card.tif', 'answerScore', 'roles'])->paginate(50);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function undergrad()
+    {
+        return User::whereHas('roles', function ($query) {
+            return $query->where('name', 'undergrad');
+        })->latest()->with(['card.licenseCategory', 'card.tif', 'answerScore', 'roles'])->paginate(50);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin()
+    {
+        return User::whereHas('roles', function ($query) {
+            return $query->where('name', 'admin');
+        })->latest()->with(['card.licenseCategory', 'card.tif', 'answerScore', 'roles'])->paginate(50);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -2,7 +2,7 @@
   <div class="header" id="header">
     <div class="logo">
       <a href="{{ url('https://www.tesol-licence.education') }}">
-        <img src="../assets/images/common/tle-logo2.png" alt="">
+        <img src="../assets/images/common/scope-logo-color.png" alt="">
       </a>
     </div>
 

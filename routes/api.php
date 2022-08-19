@@ -37,6 +37,12 @@ Route::prefix('admin')->group(function () {
 	Route::get('questions-academia', 'API\Admin\QuestionController@academia');
 	Route::get('questions-undergrad', 'API\Admin\QuestionController@undergrad');
 
+	// Filter User
+	Route::get('academia-user', 'API\Admin\UserController@academia');
+	Route::get('teacher-user', 'API\Admin\UserController@teacher');
+	Route::get('undergrad-user', 'API\Admin\UserController@undergrad');
+	Route::get('admin-user', 'API\Admin\UserController@admin');
+
 	// question relationships
 	Route::get('roles', 'API\Admin\QuestionController@roles');
 	Route::get('choices', 'API\Admin\QuestionController@choices');
