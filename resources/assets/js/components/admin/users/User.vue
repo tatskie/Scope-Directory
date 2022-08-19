@@ -7,6 +7,17 @@
         <i class="ico-create"></i>
         <span>Create Corporate User</span>
       </div>
+      <div class="form-item">
+        <div class="form-input -select">
+          <select class="parent-id" name="roles" @change="filterUser($event)">
+            <option value="all">All</option>
+            <option value="teacher">Teacher</option>
+            <option value="academia">Academia</option>
+            <option value="undergrad">Undergrad</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <div class="contents-body">
@@ -251,8 +262,24 @@ export default {
   created () {
     this.loadUsers(); // Load the data in product
 
-    Fire.$on('loadUser',() =>{
+    Fire.$on('loadUsers',() =>{
       this.loadUsers();
+    });
+
+    Fire.$on('loadAcademia',() =>{
+      this.loadAcademia();
+    });
+
+    Fire.$on('loadTeacher',() =>{
+      this.loadTeacher();
+    });
+
+    Fire.$on('loadUndergrad',() =>{
+      this.loadUndergrad();
+    });
+
+    Fire.$on('loadAdmin',() =>{
+      this.loadAdmin();
     });
 
     Fire.$on('editUser',(user) =>{
@@ -291,6 +318,60 @@ export default {
       axios.get('/api/admin/users').then(({data}) => (this.users = data));
     },
 
+    loadAcademia() {
+        this.loading = true
+        axios.get('/api/admin/academia-user').then(({data}) => (
+          this.users = data,
+          this.loading = false
+        ));
+    },
+
+    loadTeacher() {
+        this.loading = true
+        axios.get('/api/admin/teacher-user').then(({data}) => (
+          this.users = data,
+          this.loading = false
+        ));
+    },
+
+    loadUndergrad() {
+        this.loading = true
+        axios.get('/api/admin/undergrad-user').then(({data}) => (
+          this.users = data,
+          this.loading = false
+        ));
+    },
+
+    loadAdmin() {
+        this.loading = true
+        axios.get('/api/admin/admin-user').then(({data}) => (
+          this.users = data,
+          this.loading = false
+        ));
+    },
+
+    filterUser(event) {
+      if(event.target.value == 'all') {
+        Fire.$emit('loadUsers');
+      }
+
+      if(event.target.value == 'teacher') {
+        Fire.$emit('loadTeacher');
+      }
+
+      if(event.target.value == 'academia') {
+        Fire.$emit('loadAcademia');
+      }
+
+      if(event.target.value == 'undergrad') {
+        Fire.$emit('loadUndergrad');
+      }
+
+      if(event.target.value == 'admin') {
+        Fire.$emit('loadAdmin');
+      }
+    },
+
     deleteUser(id) {
       swal.fire({
         title: 'Are you sure?',
@@ -325,7 +406,7 @@ export default {
 
       this.form.post('/api/admin/users')
       .then(() => {
-        Fire.$emit('loadUser');
+        Fire.$emit('loadUsers');
         this.showModal = false;
 
         Toast.fire({

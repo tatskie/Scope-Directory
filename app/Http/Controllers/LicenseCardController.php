@@ -35,7 +35,7 @@ class LicenseCardController extends Controller
 
         if($user->questionAnswer->isEmpty())
         {
-            return redirect()->to('/academia-welcome');
+            return redirect()->to('/academia/welcome');
         }
         
         if ($answerScore->is_done_question == true) {

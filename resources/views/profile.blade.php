@@ -36,6 +36,9 @@
               <br>
               <p><a href="{{ url('edit-profile') }}">Verified</a> | <a href="{{ url('user/pdfexport')}}">USER</a></p> 
               <br>
+              @foreach($tif as $factor)
+                <p>* {{ $factor->question->question }}</p> 
+              @endforeach
             </div>
           </div>
         </div>
