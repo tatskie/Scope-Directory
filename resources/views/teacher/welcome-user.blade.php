@@ -1,29 +1,4 @@
 @extends('layouts.app')
-@section('pages')
-    @foreach($pages as $page)
-         @if(count($page->Subpages) >= 1)
-            <li class="navigation-item">
-                <a class="navigation-link" href="{{ route('register') }}">
-                  <span>{{ $page->title }}</span>
-                </a>
-
-                <ul class="navigation-sub">
-                    @foreach($page->Subpages as $subPage)
-                      <li class="navigation-sub-item">
-                        <a href="{{ url('/pages/'.$page->slug .'/subpages/'. $subPage->slug) }}" class="navigation-sub-link">
-                          <span>{{ $subPage->title }}</span>
-                        </a>
-                      </li>
-                    @endforeach
-                </ul>
-            </li>
-        @else
-        <li class="navigation-item">
-            <a class="navigation-link" href="{{ url('/pages/'. $page->slug) }}">{{ $page->title }}</a>
-        </li>
-        @endif
-    @endforeach
-@endsection
 
 @section('content')
 <div class="subpage">
@@ -65,53 +40,43 @@
             <p>{{ $aif->number }}. {{ $aif->title }}</p>
           @endforeach
       <br>
-      There are {{ $total }} questions relating to your Designation and 6 questions relating to PIF status. They have
-      been assembled by industry experts with over a century of combined experience in the profession.
-      Please answer all of the questions in order to calculate your Professional Academic Registered Standing
-      level. You cannot proceed from one question to the next if you do not answer. Once you complete the
-      application you can see your level.
+      There are {{ $total }} questions. They have been assembled by educators and experts with over a century of combined experience in the profession. 
+      <br>
+      <br>
+      Please answer all of the questions in order to calculate your Professional Designation level. You cannot proceed from one question to the next if you do not answer. Once you complete the application you can see your career professional level. 
       <br>
       <br>
       <h5>There are two sets of questions.</h5>
       <br>
-      The first set relates to your qualifications, experience and & publishing record. The second set relates to
-      any volunteer/community work you have done.
+      The first set relates to your experience and qualifications. The second set relates to volunteer work you have done. 
       <br>
       <br>
-      <h5>After competing all questions, you will see your two scores:-</h5>
+      <h5>After completing all questions, you will see your two scores:</h5>
       <br>
       <br>
-      1.) Professional Academic Level
+      1.) Professional level – ranging from 1 -10 and  your Volunteer service level based on 
       <br>
-      2.) Your (Professional Impact Factor – PIF) for Volunteer / community services
-      <br>
-      <br>
-      Note:-. Data security is of primary importance. Whilst we have taken all steps to protect your data on
-      our Servers, we ask that you do not provide any information that is not already on the internet. Thus
-      some questions below are optional - (such as country of citizenship)
+      2.) Bronze-Silver-Gold-Platinum (Teacher Impact factor – TIF) 
       <br>
       <br>
-      The questions lead to two options:-
+      Nb. Data security is of primary importance. Whilst we have taken all steps to protect your data on our Servers, we ask that you do not provide any information that is not already on the internet. Thus, some questions below are optional - (such as country of citizenship, date of birth.) 
       <br>
       <br>
-      <strong>Free option :-</strong> Your Academic Professional Summary online (secured) with print out of your input.
-      <br>
-      <strong>Paid option :-</strong>  beautiful wallet size hard copy card (see samples) that will be produced and delivered to
-      you. The QR card on your card reverts to your Academic Professional Summary.
+      There are two items where  the questions lead to two options:
       <br>
       <br>
-      a) Your hard copy card will contain your name, your photo, and your TESOL Professional Standing.
+      <strong>Free option:</strong> CV online (secured) with a printout of your ID card
+      <br>
+      <strong>Paid option:</strong> A beautiful wallet-size hard copy ID (see samples) that will be produced and delivered to you. The QR card on your ID  reverts to your CV. 
       <br>
       <br>
-      i) See sample licences. <a href="#">click here</a>
+      a) Your hard copy ID will contain your name, your photo, and your Professional designation.
       <br>
       <br>
-      ii) The system will produce a (resumé) page based on your data input which can be accessed by only you
-      either by scanning the QR code on your Card or by signing in. This information can be updated as you
-      upgrade your information.
+      1) See sample ID.  <!-- <a href="#">click here</a> -->
       <br>
       <br>
-      iii) NB. Before you answer the questions: -
+      2) The system will produce a CV (Resume) page based on your data input which can be accessed by only you either by scanning the QR code on your ID or by entering your unique code you will receive. This information can be updated as you upgrade your skills.
       <br>
       <br>
         <p>&nbsp;&nbsp;&nbsp;1. This may take up to 30 - 45 minutes to complete.</p>

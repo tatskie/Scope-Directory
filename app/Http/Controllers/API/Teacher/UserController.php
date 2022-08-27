@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers\API\Teacher;
 
+use Carbon\Carbon;
 use PDF;
 use App\Country;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api', 'role:academia', 'verified', 'twofactor']);
+        // $this->middleware(['auth:api', 'role:academia', 'verified', 'twofactor']);
     }
 
     /**
@@ -82,6 +83,20 @@ class UserController extends Controller
     public function profile()
     {
         return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts']);
+    }
+
+    /**
+     * Display the specified created_at.
+     *
+     */
+    public function yearAndMonth()
+    {   
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('Y');
+        $month = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('m');
+
+        $collection = collect(['year' => $year,'month' => $month]);
+        return $collection;
+        // return ->load(['card.aif', 'card.academiaCategory', 'receipts']);
     }
 
     /**

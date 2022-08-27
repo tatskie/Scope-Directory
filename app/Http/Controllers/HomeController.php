@@ -122,9 +122,17 @@ class HomeController extends Controller
         return view('license.index', compact(['pages', 'countries']));
     }
 
-    public function scopeProfile(User $user) {
+    public function scopeProfile($id, $year, $month) {
+        $user = User::where('id', $id)->whereYear('created_at', '=', $year)
+              ->whereMonth('created_at', '=', $month)
+              ->first();
+
+        if (!$user or !$user->card->academiaCategory) {
+            abort(404);
+        }
+
         $tif = $user->questionAnswer->where('is_tif', 1)->where('followup_id', null);
-        // dd($tif);
+        
         return view('profile', compact(['user', 'tif']));
     }
 }

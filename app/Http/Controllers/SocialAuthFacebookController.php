@@ -39,7 +39,7 @@ class SocialAuthFacebookController extends Controller
         if (auth()->user()->hasRole('academia')) {
 
             if (!$user->answerScore->is_agree == true) {
-                return redirect()->intended('/academia-welcome');
+                return redirect()->intended('/academia/welcome');
             }
             else {
                 if (is_null($user->answerScore->score_id)) {

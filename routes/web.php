@@ -15,6 +15,7 @@
 // Auth::routes();
 Auth::routes(['verify' => true]);
 
+
 // register
 Route::get('/academic/register', function(){
     return view('auth.academic');
@@ -32,7 +33,9 @@ Route::get('/undergrad/register', function(){
     return view('auth.undergrad');
 });
 
-Route::get('/TLP-209315-{user}', 'HomeController@scopeProfile');
+Route::get('/{user}-{year}-{month}-0001', 'HomeController@scopeProfile');
+
+// Route::get('/TLP-209315-{user}', 'HomeController@scopeProfile');
 
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice'); 
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); 

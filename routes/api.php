@@ -63,6 +63,8 @@ Route::prefix('academia')->group(function () {
 	    'questions' => 'API\Teacher\QuestionController',
 	]);
 
+	Route::get('year-and-month', 'API\Teacher\UserController@yearAndMonth');
+
 	Route::get('countries', 'API\Teacher\UserController@country');
 	Route::get('profile', 'API\Teacher\UserController@profile');
 	Route::get('license-category', 'API\Teacher\UserController@licenseCategory');

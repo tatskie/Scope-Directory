@@ -43,7 +43,7 @@ class LicenseCategoryController extends Controller
             'class'=>'required|string|unique:academia_categories',
             'points_minimum'=>'required|integer',
             'points_maximum'=>'required|integer',
-            'fee'=>'required|integer'
+            'fee'=>'required|between:0.01,99.99'
         ]);
 
         $category = new AcademiaCategory([
@@ -84,6 +84,7 @@ class LicenseCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->get('fee'));
         $category = AcademiaCategory::findOrFail($id);
 
         $request->validate([
@@ -92,7 +93,7 @@ class LicenseCategoryController extends Controller
             'class'=>'required|string|unique:academia_categories,class,'.$category->id,
             'points_minimum'=>'required|integer',
             'points_maximum'=>'required|integer',
-            'fee'=>'required|integer'
+            'fee'=>'required|between:0.01,99.99'
         ]);
 
         $category->number = $request->get('number');
