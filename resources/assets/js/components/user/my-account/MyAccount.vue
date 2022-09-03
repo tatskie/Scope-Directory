@@ -202,7 +202,7 @@
 			</div>	
 
 		  	<div id="data-right">
-				<img class="card-img-top" :src="'/public/assets/images/user/'+card.photo" alt="Card image cap" height="300px" width="300px">
+				<img class="card-img-top" :src="'/public/assets/images/user/'+card.photo" alt="Card image cap" height="250px" width="200px">
 				<br><br>
 	            <upload-photo></upload-photo>
 				<em style="font-size:11px">File format: JPG or PNG, not more than 2MB in file size</em>
