@@ -61,6 +61,11 @@
   padding: 20px;
 }
 
+#scope-number {
+    margin-left: 133px;
+    margin-top: 32px;
+}
+
 .card-title {
   text-align: center;
 }
@@ -73,20 +78,20 @@
   margin-right: 240px;
 }
 
-#teacher-data {
+#academic-name {
  	text-align: left;
-    margin-top: -168px;
-    margin-left: 189px;
-	font-family: 'Oswald', sans-serif;
+    margin-left: 147px;
+    margin-top: -136px;
+	font-family: 'montserrat', sans-serif;
 	color: #232323;
     font-size: 28px;
 	font-weight:400;
 }
 
 #main-photo {
-	text-align: left;
-    margin-left: 457px;
-    margin-top: 66px;
+	/*text-align: left;*/
+    margin-left: 4px;
+    margin-top: 11px;
 	opacity: 80%;
 	}
 	
@@ -95,10 +100,43 @@
     margin-right: 49px;
 }
 
-#background-photo {
- 	margin-top: 137px;
-    margin-left: 17px;
-  	opacity: 50%;
+#academic-categories {
+	text-align: left;
+    margin-left: 147px;
+    margin-top: 22px;
+  	font-family: 'montserrat', sans-serif;
+	color: #232323;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#academic-pif {
+	text-align: left;
+ 	margin-left: 147px;
+    margin-top: 13px;
+  	font-family: 'montserrat', sans-serif;
+	color: #232323;
+    font-size: 28px;
+	font-weight:400;
+}
+
+#valid-until {
+	text-align: left;
+ 	margin-left: 82px;
+    margin-top: 16px;
+  	font-family: 'montserrat', sans-serif;
+	color: #232323;
+    font-size: 28px;
+	font-weight:400;
+}
+
+.dashboard-back-card {
+  background: url(/assets/images/card/back-ID-bg.png) no-repeat 12px 0 !important; 
+  display: block;
+  height: 467px;
+  margin-top: -468px;
+  margin-left: 517px;
+  padding: 20px;
 }
 
 .valid-date {
@@ -123,3 +161,4 @@
 #data-left a:hover {
 	color:#00a0e3 !important;
 }
+

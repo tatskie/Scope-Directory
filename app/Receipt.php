@@ -10,6 +10,12 @@ class Receipt extends Model
     use SoftDeletes;
 
     /**
+     *
+     * @var 
+     */
+    protected $table = 'scope_receipts';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

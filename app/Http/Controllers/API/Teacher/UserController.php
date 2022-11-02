@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts']);
+        return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts', 'scope']);
     }
 
     /**
@@ -91,12 +91,12 @@ class UserController extends Controller
      */
     public function yearAndMonth()
     {   
-        $year = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('Y');
-        $month = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('m');
+        // $year = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('Y');
+        // $month = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('m');
+        $id = auth('api')->user()->id;
 
-        $collection = collect(['year' => $year,'month' => $month]);
+        $collection = collect(['id' => encrypt($id)]);
         return $collection;
-        // return ->load(['card.aif', 'card.academiaCategory', 'receipts']);
     }
 
     /**

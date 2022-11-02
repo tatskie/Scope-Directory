@@ -1,7 +1,7 @@
 @extends('academia.layouts.app')
 
 @section('title')
-    myTESOL
+    mySCOPE
 @endsection
 
 @section('content')

@@ -11,12 +11,16 @@
 |
 */
 // \URL::forceScheme('https');
+use App\Notifications\ScopePublicProfile;
 
 // Auth::routes();
 Auth::routes(['verify' => true]);
 
+Route::get('/notification', function(){
+    auth()->user()->notify(new ScopePublicProfile(auth()->user(), auth()->user()->scope));
+});
 
-// register
+// register with set of roles
 Route::get('/academic/register', function(){
     return view('auth.academic');
 });
@@ -33,17 +37,13 @@ Route::get('/undergrad/register', function(){
     return view('auth.undergrad');
 });
 
-Route::get('/{user}-{year}-{month}-0001', 'HomeController@scopeProfile');
-
-// Route::get('/TLP-209315-{user}', 'HomeController@scopeProfile');
-
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice'); 
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); 
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 
-Route::get('/users/verify/{token}', 'VerifyEmailController@verifyUser');
-Route::get('/reset/password/{token}', 'VerifyEmailController@reset')->name('reset');
-Route::post('/reset/password/{token}', 'VerifyEmailController@resetPassword')->name('update.password');
+// Route::get('/users/verify/{token}', 'VerifyEmailController@verifyUser');
+// Route::get('/reset/password/{token}', 'VerifyEmailController@reset')->name('reset');
+// Route::post('/reset/password/{token}', 'VerifyEmailController@resetPassword')->name('update.password');
 
 Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
 Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
@@ -238,3 +238,5 @@ Route::get('/optimize-clear', function() {
     $exitCode = Artisan::call('optimize:clear');
     return '<h1>Reoptimized class loader</h1>';
 });
+
+Route::get('/{scope}', 'HomeController@scopeProfile');

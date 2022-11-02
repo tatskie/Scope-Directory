@@ -214,7 +214,7 @@ button.btn.btn-primary.btn-sm.button-prevent-multiple-submits {
       <div class="subpage-inner">
         <div class="subpage-content">
               <div class="subpage-content subpage-body">
-      <h2>Answer the following TIF questions.</h2>
+      <h2>Answer the following PIF questions.</h2>
       </div>
 
           @if (session('status'))

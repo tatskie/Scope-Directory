@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceiptsTable extends Migration
+class CreateScopeReceiptsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateReceiptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('receipts', function (Blueprint $table) {
+        Schema::create('scope_receipts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('number', 255)->unique();
             $table->boolean('is_expire')->default('0');
@@ -37,6 +37,6 @@ class CreateReceiptsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('scope_receipts');
     }
 }

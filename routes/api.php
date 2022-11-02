@@ -61,6 +61,9 @@ Route::prefix('academia')->group(function () {
 
 	Route::apiResources([
 	    'questions' => 'API\Teacher\QuestionController',
+	    'informations' => 'API\Teacher\AcademicInformationController',
+	    'publications' => 'API\Teacher\AcademicPublicationController',
+	    'conferences' => 'API\Teacher\ConferenceController',
 	]);
 
 	Route::get('year-and-month', 'API\Teacher\UserController@yearAndMonth');

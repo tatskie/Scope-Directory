@@ -4,7 +4,7 @@
       Order ID card
     </div>
     <modal
-      :title="'Payment Method'"
+      :title="'Order ID card'"
       class=" modal-questionaire"
       v-if="showModal"
       :activate="showModal"
@@ -13,8 +13,8 @@
       <template slot="body">
         <div class="form">
             <div class="form-item" style="text-align: center;">
-              <h1>L{{ category.class }} - {{ category.specialist_title }}</h1>
-              <h1>{{ aif.title }}</h1>
+              <h1>Title: {{ category.specialist_title }} {{ user.name }}</h1>
+              <h1>PIF: {{ aif.title }}</h1>
               <h1>Total Payment: {{ this.category.fee }}</h1>
               <br>
               <div id="paypal-button-container"></div>
@@ -127,8 +127,16 @@
                 },
 
                 onAuthorize: async (data, actions) => {
+                    this.loading = true;
                     this.paymentReceipt();
-                    const order = await actions.order.capture();
+                    actions.order.capture();
+                    this.loading = false;
+                    this.isPaid = true;
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Paid successfully',
+                      duration : 10000
+                    });
                 },
                 onError: err => {
                   console.log(err);
@@ -141,12 +149,6 @@
         paymentReceipt() {
           this.form.post('/api/academia/receipt')
             .then(() => {
-              this.showModal = false;
-
-              Toast.fire({
-                type: 'success',
-                title: 'Paid successfully'
-              });
             })
             .catch(() => {
               this.$Progress.fail();

@@ -28,63 +28,53 @@
           @foreach($categories as $category)
             <h5>Level {{ $category->number }}</h5>
             <h5>{{ $category->specialist_title }}</h5>
-            <p>{{ $category->class }}</p>
             <p>{{ $category->criteria_notes }}</p>
             <br>
           @endforeach
-      <br>
-      <br>
       <h3>PIF Professional Impact Status</h3> 
+      <p>PIF reflects the volunteer and community work you have undertaken.</p>
       <br>
           @foreach($aifs as $aif)
             <p>{{ $aif->number }}. {{ $aif->title }}</p>
           @endforeach
       <br>
-      There are {{ $total }} questions. They have been assembled by educators and experts with over a century of combined experience in the profession. 
+      <br>
+      Please answer all of the questions in order to calculate your Professional level. You cannot proceed from one question to the next if you do not answer. Once you complete the application you can see your career professional level. 
       <br>
       <br>
-      Please answer all of the questions in order to calculate your Professional Designation level. You cannot proceed from one question to the next if you do not answer. Once you complete the application you can see your career professional level. 
+      <h5>There are two sets of questions. Set one has {{ $total }} questions set two has {{ $totalPif }} questions.</h5>
       <br>
-      <br>
-      <h5>There are two sets of questions.</h5>
-      <br>
-      The first set relates to your experience and qualifications. The second set relates to volunteer work you have done. 
+      The first set relates to your experience and qualifications. The second set relates to volunteer work you have done.
       <br>
       <br>
       <h5>After completing all questions, you will see your two scores:</h5>
       <br>
-      <br>
       1.) Professional level – ranging from 1 -10 and  your Volunteer service level based on 
       <br>
-      2.) Bronze-Silver-Gold-Platinum (Teacher Impact factor – TIF) 
+      2.) Bronze-Silver-Gold-Platinum (Professional Impact Factor – PIF) 
       <br>
       <br>
-      Nb. Data security is of primary importance. Whilst we have taken all steps to protect your data on our Servers, we ask that you do not provide any information that is not already on the internet. Thus, some questions below are optional - (such as country of citizenship, date of birth.) 
+      Nb. Data security is of primary importance. Whilst we have taken all steps to protect your data on our Servers, we ask that you do not provide any information that is not already on the internet. Thus, some questions below are optional - (such as country of citizenship) 
       <br>
       <br>
-      There are two items where  the questions lead to two options:
+      Your answers will lead to two options, namely.
       <br>
       <br>
-      <strong>Free option:</strong> CV online (secured) with a printout of your ID card
+      <p><strong>Free option:</strong> Print out your ID card or</p>
+      <p><strong>Paid option:</strong> A beautiful wallet-size hard copy ID that will be produced and delivered to you. The QR card on your ID reverts to your Online CV.</p>
       <br>
-      <strong>Paid option:</strong> A beautiful wallet-size hard copy ID (see samples) that will be produced and delivered to you. The QR card on your ID  reverts to your CV. 
-      <br>
-      <br>
-      a) Your hard copy ID will contain your name, your photo, and your Professional designation.
+      1) See sample ID.  <a href="https://www.scope.directory/" target="_blank">click here</a>
       <br>
       <br>
-      1) See sample ID.  <!-- <a href="#">click here</a> -->
+      2) The system will produce a Profile Page page based on your data input which can be accessed by only you either by scanning the QR code on your ID or by entering your unique code you will receive. This information can be updated as you upgrade your skills.
       <br>
       <br>
-      2) The system will produce a CV (Resume) page based on your data input which can be accessed by only you either by scanning the QR code on your ID or by entering your unique code you will receive. This information can be updated as you upgrade your skills.
-      <br>
-      <br>
-        <p>&nbsp;&nbsp;&nbsp;1. This may take up to 30 - 45 minutes to complete.</p>
+        <p>&nbsp;&nbsp;&nbsp;1. This may take up to 15 minutes to complete.</p>
         <p>&nbsp;&nbsp;&nbsp;2. If you cannot complete the questions you will have to re-login another time.</p>
         <p>&nbsp;&nbsp;&nbsp;3. You do not need to provide documentary evidence unless subsequently (email request) required to confirm an answer.</p>
         <p>&nbsp;&nbsp;&nbsp;4. Some questions will ask you about your Conference attendance history and publication history, so it is a good idea to have your records 
         &nbsp;&nbsp;&nbsp;on hand prior to starting the questions.</p>
-        <p>&nbsp;&nbsp;&nbsp;5. You should also have access to your photo in your computer which will be uploaded.</p>
+        <p>&nbsp;&nbsp;&nbsp;5. You should also have access to your photo in your computer which will be uploaded. A passport size photo is best</p>
       <br>
       <br>
       <div class="btn btn-gradient-link btn-mv" style="height: 50%;">

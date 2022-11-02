@@ -15,7 +15,7 @@ class LicenseCard extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'gender', 'photo', 'title', 'citizenship', 'category_id', 'tif_id', 'aif_id', 'academia_id'
+        'user_id', 'gender', 'photo', 'title', 'citizenship', 'category_id', 'tif_id', 'aif_id', 'academia_id', 'academic_title'
     ];
 
     /**

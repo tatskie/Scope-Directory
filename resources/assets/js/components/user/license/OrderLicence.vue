@@ -4,7 +4,7 @@
       Order ID Card
     </div>
     <modal
-      :title="isPaid ? 'Paid successfully' :'Payment Method'"
+      :title="isPaid ? 'Paid successfully' :'Order ID Card'"
       class="modal-questionaire"
       v-if="showModal"
       :activate="showModal"
@@ -18,8 +18,8 @@
         </div>
         <div class="form" v-else>
             <div class="form-item" style="text-align: center;" v-show="!isPaid">
-              <h1>L{{ category.class }} - {{ category.specialist_title }}</h1>
-              <h1>{{ aif.title }}</h1><br>
+              <h1>Title: {{ category.specialist_title }} {{ user.name }}</h1>
+              <h1>PIF: {{ aif.title }}</h1><br>
               <h1>Total Amount: ${{ this.category.fee }}</h1>
               <br>
               <div id="paypal-button-container"></div>
@@ -27,8 +27,8 @@
             <div style="text-align: center;" v-show="!isPaid">
               <p style="color: #232323;font-style: italic;font-size:14px">
                 Upon clicking the checkout button you will be redirected to PayPal for payment finalization.
-                <br>You will then be returned to tesol-licence.education where you may view transaction receipt.<br>
-                If you experience any problems please email <span style="color: #00a0e3;">support@tesol-licence.education.</span>
+                <br>You will then be returned to the main page where you may view transaction receipt.<br>
+                If you experience any problems please email <span style="color: #00a0e3;">support@scope.directory</span>
               </p>
             </div>
             <div v-show="isPaid">
@@ -173,7 +173,21 @@
                 onAuthorize: async (data, actions) => {
                     this.loading = true;
                     this.paymentReceipt();
-                    const order = await actions.order.capture();
+                    actions.order.capture();
+                    this.loading = false;
+                    this.isPaid = true;
+                    Toast.fire({
+                      type: 'success',
+                      title: 'Paid successfully',
+                      duration : 10000
+                    });
+                  // return actions.payment.execute().then(function() {
+                  //   this.loading = true;
+                  //   this.paymentReceipt();
+                  // });
+                    // this.loading = true;
+                    // this.paymentReceipt();
+                    // const order = await actions.order.capture();
                 },
                 onError: err => {
                   console.log(err);
@@ -186,14 +200,7 @@
         paymentReceipt() {
           this.form.post('/api/academia/receipt')
             .then(() => {
-              this.loading = false;
-              // this.showModal = false;
-              this.isPaid = true;
-              Toast.fire({
-                type: 'success',
-                title: 'Paid successfully',
-                duration : 10000
-              });
+            
             })
             .catch(() => {
               this.$Progress.fail();

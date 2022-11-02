@@ -30,7 +30,7 @@
 <div class="subpage">
   <div class="subpage-title">
     <div class="subpage-title-inner">
-      <h1>Tesol License Card Form</h1>
+      <h1>Professional Academic Standing Form</h1>
     </div>
   </div>
 
@@ -73,14 +73,56 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="title">
-                  <span>{{ __('Title') }}</span>
+                  <span>{{ __('Title') }} ({{ ucwords($data->specialist_title) }})</span>
+                  @if($data->id == 4)
+                    Please Click the Box
+                  @endif
                 </label>
 
                 <div class="form-input-box">
-                  <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="Mr. Mrs. Ms. Dr. Prof. Blank">
+                  @if($data->id == 4)
+                    <select name="title">
+                      <option value="The Respected Professor {{ ucwords(auth()->user()->name) }}">The Respected Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}">The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Dr. {{ ucwords(auth()->user()->name) }}">The Respected Dr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Mr. {{ ucwords(auth()->user()->name) }}">The Respected Mr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Ms. {{ ucwords(auth()->user()->name) }}">The Respected Ms. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Miss {{ ucwords(auth()->user()->name) }}">The Respected Miss {{ ucwords(auth()->user()->name) }}</option>
+                    </select>
+                  @else
+                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" value="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" readonly>
+                  @endif
                 </div>
 
                 @error('title')
+                <span class="form-error">
+                  {{ $message }}
+                </span>
+                @enderror
+              </div>
+
+              <div class="form-input">
+                <label class="form-lbl" for="academic_title">
+                  <span>{{ __('Acedemic Title') }}</span>
+                </label>
+
+                <div class="form-input-box">
+                    <select name="academic_title">
+                      <option value="Professor">Professor</option>
+                      <option value="Professor Emeritus">Professor Emeritus</option>
+                      <option value="Associate Professor">Associate Professor</option>
+                      <option value="Assistant Professor">Assistant Professor</option>
+                      <option value="Teaching Fellow">Teaching Fellow</option>
+                      <option value="Senior Lecturer">Senior Lecturer</option>
+                      <option value="Lecturer">Lecturer</option>
+                      <option value="Reader">Reader</option>
+                      <option value="Assistant Lecturer">Assistant Lecturer</option>
+                      <option value="Full Instructor">Full Instructor</option>
+                      <option value="Assistant Instructor">Assistant Instructor</option>
+                    </select>
+                </div>
+
+                @error('academic_title')
                 <span class="form-error">
                   {{ $message }}
                 </span>
@@ -114,7 +156,7 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="name">
-                  <span>{{ __('Name') }}</span><span class="form-required"> (required)</span>
+                  <span>{{ __('Name Only') }}</span><span class="form-required"> (required)</span>
                 </label>
 
                 <div class="form-input-box">
@@ -137,7 +179,7 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="photo">
-                  <span>{{ __('License Card Photo') }}</span><span class="form-required"> (required)</span>
+                  <span>{{ __('ID Card Photo') }}</span><span class="form-required"> (required)</span>
                 </label>
 
                 <div class="form-input-box">

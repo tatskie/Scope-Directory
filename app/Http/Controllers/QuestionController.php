@@ -36,7 +36,7 @@ class QuestionController extends Controller
         $role = $user->roles->first()->name;
 
         if (!$user->answerScore->is_agree == true) {
-            return redirect()->intended('/academia-welcome');
+            return redirect()->intended('/academic/welcome');
         }
 
         $hasAnswer = QuestionAnswer::where(['user_id' => $user->id, 'question_id' => $question->id])->first(); // find the if user has answer
@@ -120,7 +120,7 @@ class QuestionController extends Controller
                   ->count() + 1;
 
         if (!$user->answerScore->is_agree == true) {
-            return redirect()->intended('/academia-welcome');
+            return redirect()->intended('/academic/welcome');
         }
 
         $hasAnswer = QuestionAnswer::where(['user_id' => $user->id, 'question_id' => $followupQuestion->question_id, 'followup_id' => $followupQuestion->id])->first(); // find the if user has answer
