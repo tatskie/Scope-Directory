@@ -54,21 +54,15 @@
             </tr>
             <tr>
               <td width="72">#</td>
-              <td width="313">TESOL Teacher/Staff&nbsp; Specialist Title</td>
-              <td width="96"></td>
-              <td width="136"></td>
-            </tr>
-            <tr>
-              <td width="72"></td>
-              <td width="313"></td>
-              <td width="96"></td>
+              <td width="313">Title</td>
+             <!--  <td width="96"></td> -->
               <td width="136"></td>
             </tr>
             @foreach($categories as $category)
               <tr>
                 <td width="72">{{ $category->number }}.</td>
                 <td width="313">{{ ucwords($category->specialist_title) }}</td>
-                <td width="96" style="color: blue;">{{ $category->class }}</td>
+               <!--  <td width="96" style="color: blue;">{{ $category->class }}</td> -->
                 <td width="136"></td>
               </tr>
             @endforeach   
@@ -79,7 +73,13 @@
       <div class="form-wrap">
           <div class="form-inner">
             <div class="form-con">
-              <h1>You are assessed at Category, <strong style="color: red;">L{{ $data->number }} {{ ucwords($data->specialist_title) }}</strong></h1>
+              <h1>You are assessed at Category, <strong style="color: green;">L{{ $data->number }} 
+                @if($data->number == 4)
+                  The Respected 
+                @else
+                  {{ ucwords($data->specialist_title) }} 
+                @endif
+              {{ ucwords(auth()->user()->name) }}</strong></h1>
             </div>
           </div>
           <br>
@@ -87,7 +87,33 @@
           @if(auth()->user()->answerScore->is_done_tif == true)
             <div class="form-inner">
               <div class="form-con">
-                <h1>You are assessed at Teacher Impact Factor, <strong style="color: red;">{{ ucwords($dataPif->title) }}</strong></h1>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td colspan="3" width="545"></td>
+                    </tr>
+                    <tr>
+                      <td width="72">#</td>
+                      <td width="313">PIF</td>
+                      <td width="96"></td>
+                      <td width="136"></td>
+                    </tr>
+                    @foreach($tifs as $tif)
+                      <tr>
+                        <td width="72">{{ $tif->number }}.</td>
+                        <td width="313">{{ ucwords($tif->title) }}</td>
+                        <td width="136"></td>
+                      </tr>
+                    @endforeach   
+                  </tbody>
+                </table>  
+              </div>
+            </div>
+            <br>
+            <div class="form-inner">
+              <div class="form-con">
+                <h1>You are assessed at Professional Impact Factor, <strong style="color: green;">{{ ucwords($dataPif->title) }}</strong></h1>
               </div>
             </div>
             <br>
@@ -111,12 +137,12 @@
           <form class="pif-form-prevent-multiple-submits" method="POST" action="{{ route('pif.question')}}" enctype="multipart/form-data">
           @csrf
             <input type="hidden" name="proceed_pif" value="1">
-            <p>The next set of questions relate to any  volunteer / community work you have undertaken" - Teacher Impact Factor Questions</p>
+            <p>The next set of questions relate to any  volunteer / community work you have undertaken" - Professional Impact Factor Questions</p>
             <br>
             <button type="submit" class="btn btn-gradient btn-register button-prevent-multiple-submits">
               <span class="btn-text">
                 <i class="pif-spinner fa fa-spinner fa-spin" style="display: none;"></i>
-                {{ __('Take TIF Questions') }}
+                {{ __('Take PIF Questions') }}
               </span>
             </button>
           </form>

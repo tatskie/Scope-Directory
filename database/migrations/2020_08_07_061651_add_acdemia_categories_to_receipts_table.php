@@ -13,7 +13,7 @@ class AddAcdemiaCategoriesToReceiptsTable extends Migration
      */
     public function up()
     {
-        Schema::table('receipts', function (Blueprint $table) {
+        Schema::table('scope_receipts', function (Blueprint $table) {
             $table->unsignedBigInteger('aif_id')->nullable();
             $table->unsignedBigInteger('academia_id')->nullable();
             
@@ -29,7 +29,7 @@ class AddAcdemiaCategoriesToReceiptsTable extends Migration
      */
     public function down()
     {
-        Schema::table('receipts', function (Blueprint $table) {
+        Schema::table('scope_receipts', function (Blueprint $table) {
             $table->unsignedBigInteger('aif_id')->nullable();
             $table->unsignedBigInteger('academia_id')->nullable();
             

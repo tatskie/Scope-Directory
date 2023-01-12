@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AIF;
 use App\User;
 use App\Page;
+use App\ScopeID;
 use App\Country;
 use App\Question;
 use App\LicenseCard;
@@ -35,7 +36,7 @@ class HomeController extends Controller
         $user = auth()->user();
 
         $role = $user->roles->first()->name;
-        $aifs = AIF::all();
+        $aifs = AIF::orderBy('id', 'desc')->get();
         $categories = AcademiaCategory::all();
 
         if ($user->answerScore->is_agree == true) {
@@ -56,10 +57,17 @@ class HomeController extends Controller
                     ->where('impact_factor', false)
                     ->get();
 
+        $pif = Question::whereHas('filterQuestion', function (Builder $query) use($role) {
+                        $query->where('roles', '=', $role);
+                    })
+                    ->where('impact_factor', true)
+                    ->get();
+
         $total = count($questions);
+        $totalPif = count($pif);
         $pages = Page::all();
         
-        return view('teacher.welcome-user', compact(['pages', 'total', 'aifs', 'categories']));
+        return view('teacher.welcome-user', compact(['pages', 'total', 'aifs', 'categories', 'totalPif']));
     }
 
     /**
@@ -117,14 +125,43 @@ class HomeController extends Controller
             return redirect()->route('question.show', $nextQuestion->url); // redirect to next question
         }
 
+        $answers = QuestionAnswer::where('is_tif', false)->where('user_id', auth()->user()->id)->get(); // get all the answer
+
+        $points = 0; // set the points to 0
+
+        foreach ($answers as $answer) {
+            $points = $answer->points + $points; // set the total points
+        }
+        
+        $categories = AcademiaCategory::all(); // get all the license categories
+
+        foreach ($categories as $category) {
+            if ($points >= $category->points_minimum && $points <= $category->points_maximum) {
+                if ($category->id == 10) {
+                    $data = AcademiaCategory::findOrFail(4); // set the data
+                } else {
+                    $data = $category;
+                }
+                
+            } // find the category by points.
+        }
+
         $pages = Page::all();
 
-        return view('license.index', compact(['pages', 'countries']));
+        return view('license.index', compact(['pages', 'countries', 'data']));
     }
 
-    public function scopeProfile(User $user) {
-        $tif = $user->questionAnswer->where('is_tif', 1)->where('followup_id', null);
-        // dd($tif);
-        return view('profile', compact(['user', 'tif']));
+    public function scopeProfile($scope) {
+
+        $scopeProfile = ScopeID::where('scope', $scope)->first();
+
+        $user = User::findOrFail($scopeProfile->user_id);
+
+        if (!$user or !$user->card->academiaCategory) {
+            abort(404);
+        }
+
+        
+        return view('profile', compact(['user', 'scopeProfile']));
     }
 }

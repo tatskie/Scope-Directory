@@ -30,7 +30,7 @@
 <div class="subpage">
   <div class="subpage-title">
     <div class="subpage-title-inner">
-      <h1>Tesol License Card Form</h1>
+      <h1>Professional Academic Standing Form</h1>
     </div>
   </div>
 
@@ -73,14 +73,56 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="title">
-                  <span>{{ __('Title') }}</span>
+                  <span>{{ __('Your SCOPE Title.') }} This will appear on your licence card.</span>
                 </label>
 
                 <div class="form-input-box">
-                  <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="Mr. Mrs. Ms. Dr. Prof. Blank">
+                  @if($data->id == 4)
+                    <select name="title">
+                      <option value="The Respected Professor">-- Please choose appropriate title. --</option>
+                      <option value="The Respected Professor">The Respected Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Assistant Professor">The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Dr.">The Respected Dr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Mr.">The Respected Mr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Ms.">The Respected Ms. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Miss">The Respected Miss {{ ucwords(auth()->user()->name) }}</option>
+                    </select>
+                  @else
+                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" value="{{ ucwords($data->specialist_title) }}" readonly>
+                  @endif
                 </div>
 
                 @error('title')
+                <span class="form-error">
+                  {{ $message }}
+                </span>
+                @enderror
+              </div>
+
+              <div class="form-input">
+                <label class="form-lbl" for="academic_title">
+                  <span>{{ __('Your Current Academic Title') }}</span>
+                </label>
+
+                <div class="form-input-box">
+                    <select name="academic_title">
+                      <option value="">Select Title</option>
+                      <option value="Professor">Professor</option>
+                      <option value="Professor Emeritus">Professor Emeritus</option>
+                      <option value="Associate Professor">Associate Professor</option>
+                      <option value="Assistant Professor">Assistant Professor</option>
+                      <option value="Teaching Fellow">Teaching Fellow</option>
+                      <option value="Senior Lecturer">Senior Lecturer</option>
+                      <option value="Lecturer">Lecturer</option>
+                      <option value="Reader">Reader</option>
+                      <option value="Assistant Lecturer">Assistant Lecturer</option>
+                      <option value="Full Instructor">Full Instructor</option>
+                      <option value="Assistant Instructor">Assistant Instructor</option>
+                      <option value="Instructor">Instructor</option>
+                    </select>
+                </div>
+
+                @error('academic_title')
                 <span class="form-error">
                   {{ $message }}
                 </span>
@@ -96,7 +138,7 @@
                   <select name="citizenship">
                     <option value="">-- select one --</option>
                     @foreach($countries as $country)
-                      <option value="{{ $country->nationality }}">{{ $country->nationality }}</option>
+                      <option value="{{ $country->en_short_name }}">{{ $country->en_short_name }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -114,7 +156,7 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="name">
-                  <span>{{ __('Name') }}</span><span class="form-required"> (required)</span>
+                  <span>{{ __('Name Only') }}</span><span class="form-required"> (required)</span>
                 </label>
 
                 <div class="form-input-box">
@@ -137,7 +179,7 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="photo">
-                  <span>{{ __('License Card Photo') }}</span><span class="form-required"> (required)</span>
+                  <span>{{ __('ID Card Photo') }}</span><span class="form-required"> (required)</span>
                 </label>
 
                 <div class="form-input-box">

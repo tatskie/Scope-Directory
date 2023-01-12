@@ -61,7 +61,14 @@ Route::prefix('academia')->group(function () {
 
 	Route::apiResources([
 	    'questions' => 'API\Teacher\QuestionController',
+	    'informations' => 'API\Teacher\AcademicInformationController',
+	    'publications' => 'API\Teacher\AcademicPublicationController',
+	    'conferences' => 'API\Teacher\ConferenceController',
+	    'awards' => 'API\Teacher\AwardController',
+	    'videos' => 'API\Teacher\VideoController',
 	]);
+
+	Route::get('year-and-month', 'API\Teacher\UserController@yearAndMonth');
 
 	Route::get('countries', 'API\Teacher\UserController@country');
 	Route::get('profile', 'API\Teacher\UserController@profile');

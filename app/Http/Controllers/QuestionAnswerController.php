@@ -209,7 +209,7 @@ class QuestionAnswerController extends Controller
                     'followup_id' => $followup->id
                 ])->first(); // find the if user has followup answer
 
-                if (!$proceedToNextFollowQuestion->isEmpty()) {
+                if (!$proceedToNextFollowQuestion) {
                     return redirect()->route('followup.question', $followup->url);
                 }
             }
@@ -268,7 +268,7 @@ class QuestionAnswerController extends Controller
                     $points = $choice->points;
                     $value = true;
                 } else {
-                    $choice = $question->questionChoices->where('label', 'Proceed')->first();
+                    $choice = $question->questionChoices->where('label', 'Doctorate')->first();
                     $points = $choice->points;
                     $value = true;
                 }
@@ -282,7 +282,7 @@ class QuestionAnswerController extends Controller
             $value = true;
             $validation = 'required|string';
             $choice = $question->questionChoices->first();
-            $points = $choice->points;
+            $points = $request->get('answer');
 
         } elseif ($question->code_id == '3'){
             $value = true;
@@ -367,7 +367,7 @@ class QuestionAnswerController extends Controller
         $followupQuestion = $answer->question->followupQuestion;
 
         if ($answer->is_yes == 1) {
-            if ($followupQuestion) {
+            if ($followupQuestion->isNotEmpty()) {
                  foreach ($followupQuestion as $followup) {
                     $hasFollowupAnswer = QuestionAnswer::where([
                         'user_id' => $user->id,
@@ -375,14 +375,14 @@ class QuestionAnswerController extends Controller
                         'followup_id' => $followup->id
                     ])->first(); // find the if user has followup answer
 
-                    if (!empty($hasFollowupAnswer)) {
+                    if (!$hasFollowupAnswer) {
                         return redirect()->route('followup.question', $followup->url);
                     }
                 }
             }
         }
         
-
+        
         $lastQuestion = Question::whereHas('filterQuestion', function (Builder $query) use($role) {
                             $query->where('roles', '=', $role);
                         })

@@ -57,6 +57,30 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Relationship Has one to Academic Information
+     */
+    public function academicInformation()
+    {
+      return $this->hasOne(AcademicInformation::class);
+    }
+
+    /**
+     * Relationship Has one to Academic Publication
+     */
+    public function academicPublications()
+    {
+      return $this->hasMany(AcademicPublication::class);
+    }
+
+    /**
+     * Relationship Has one to Conference
+     */
+    public function conferences()
+    {
+      return $this->hasMany(Conference::class);
+    }
+
+    /**
      * Relationship Has Many socialite account
      */
     public function socialites()
@@ -102,6 +126,30 @@ class User extends Authenticatable implements MustVerifyEmail
     public function receipts()
     {
       return $this->hasMany(Receipt::class);
+    }
+
+    /**
+     * Relationship Has one to scope id
+     */
+    public function scope()
+    {
+      return $this->hasOne(ScopeID::class);
+    }
+
+    /**
+     * Relationship Has many to videos
+     */
+    public function videos()
+    {
+      return $this->hasMany(Video::class);
+    }
+
+    /**
+     * Relationship Has many to awards
+     */
+    public function awards()
+    {
+      return $this->hasMany(Award::class);
     }
 
     /**

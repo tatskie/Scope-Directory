@@ -118,7 +118,7 @@
                 </label>
 
                 <div class="form-input-box">
-                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name Only" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 </div>
 
                 @if ($errors->has('name'))
@@ -127,7 +127,7 @@
                     </span>
                 @endif
 
-                <span class="form-note" style="color: #39c8df;">This name will appear on your license card.</span>
+                <span class="form-note" style="color: #39c8df;">This name will appear on your SCOPE card.</span>
               </div>
 
               <!-- <div class="form-input">

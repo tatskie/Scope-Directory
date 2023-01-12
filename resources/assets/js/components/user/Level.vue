@@ -8,7 +8,7 @@
 		    </div>
 		<div id="dashboard-body-content">
 		    <div class="contents-body">
-		      	<p>Your licence has a validity of 2 (two) years, however if you undertake higher studies, join a TESOL organization,<br> publish teaching materials, (or any other significant fact in TESOL occurs) you may <a href="https://www.tesol-licence.education/contact-us/" target="https://scope.directory/contact-us">contact us</a> to assess if your licence can be upgraded. </p><br>
+		      	<p>Your I.D has a validity of 2 (two) years, however if you undertake higher studies, join an organization,<br> publish teaching materials, (or any other significant fact occurs) you may <a href="https://scope.directory/contact/" target="https://scope.directory/contact/">contact us</a> to assess if your licence can be upgraded. </p><br>
 				<p>You may make a new application any time.</p><br>
 				<!--<div class="form-btn">
 				<button class="btn-create -withlabel"><a href="https://my.tesol-licence.education/register" target="_blank">MAKE A NEW APPLICATION</a></button></div>-->

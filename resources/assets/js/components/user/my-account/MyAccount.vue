@@ -2,10 +2,18 @@
 	<div class="col-md-12">
 		<div class="contents-head">
 	      <h2 style="margin-right:20px">My SCOPE Profile</h2>
-		  <order-licence></order-licence>
+		    <order-licence></order-licence>
   		  <request-delete></request-delete>
 		</div>
 		<div id="dashboard-body-content">
+
+      <div class="alert alert-danger" role="alert" v-if="!information || information.length">
+            Next - Setup Your Public Profile
+            <a href="#" class="float-right mark-as-read" @click="setupPublicProfile()">
+                Click Here!
+            </a>
+      </div>
+
 			<div id="data-left">
 				<h2><span style="font-size:20px; margin-bottom:20px"><strong>Profile Details</strong></span></h2>
           <table cellspacing="0" cellpadding="0">
@@ -15,7 +23,7 @@
             <tr>
               <td width="189">Title </td>
               <td width="16">:</td>
-              <td width="203">{{ card.title }}</td>
+              <td width="203">{{ card.academic_title }}</td>
             </tr>
             <tr>
               <td>Name </td>
@@ -192,9 +200,10 @@
             </tr>
           </table>
 				  	<br>
-				  	<h2><span style="font-size:16px; margin-bottom:10px"><strong>Your SCOPE Category: </strong></span></h2>
-				  	<p style="color: #00a0e3; margin-left:10px" v-if="category.number">L{{ category.number }} - {{ category.specialist_title }}</p>
-              		<p style="color: #00a0e3; margin-left:10px" v-if="aif.title">TIF - {{ aif.title }}</p>
+				  	<h2><span style="font-size:16px; margin-bottom:10px"><strong>Your SCOPE: </strong></span></h2>
+            <p style="color: #00a0e3; margin-left:10px">SCOPE Number: {{scope.scope}}</p>
+				  	<p style="color: #00a0e3; margin-left:10px" v-if="category.number">Level/Title: L-{{category.number}} {{ card.title }}</p>
+            <p style="color: #00a0e3; margin-left:10px" v-if="aif.title">PIF: {{ aif.title }}</p>
 					<br>
 					<div class="card-body" style="margin-bottom: 10px;">
               		<update-profile></update-profile>
@@ -202,7 +211,7 @@
 			</div>	
 
 		  	<div id="data-right">
-				<img class="card-img-top" :src="'/public/assets/images/user/'+card.photo" alt="Card image cap" height="300px" width="300px">
+				<img :src="'/public/assets/images/user/'+card.photo" alt="Card image cap" height="300" width="240">
 				<br><br>
 	            <upload-photo></upload-photo>
 				<em style="font-size:11px">File format: JPG or PNG, not more than 2MB in file size</em>
@@ -223,6 +232,7 @@
   import Payment from './Payment/PaymentForm'
   import RequestDelete from '../license/RequestDelete'
   import OrderLicence from '../license/OrderLicence'
+  import PublishPublicProfile from '../notification/PublishPublicProfile'
   
 
     export default {
@@ -234,7 +244,8 @@
         "payment-form": Payment,
         "change-password": ChangePassword,
         "request-delete": RequestDelete,
-        "order-licence": OrderLicence
+        "order-licence": OrderLicence,
+        "publish-public-profile": PublishPublicProfile
 
       },
       
@@ -243,11 +254,13 @@
           user : [],
           card: [],
           aif: [],
+          scope: [],
           questions: [],
           category: {
             specialist_title: '',
             class: ''
-          }
+          },
+          information: []
         }
       },
 
@@ -260,6 +273,8 @@
 
         this.loadQuestions(); //load questions details
 
+        this.loadInformation(); // Load information
+
         Fire.$on('loadProfile',() =>{
           this.loadProfile();
         });
@@ -267,7 +282,7 @@
 
       methods: {
         loadProfile() {
-            axios.get('/api/academia/profile').then(({data}) => (this.user = data, this.card = data.card));
+            axios.get('/api/academia/profile').then(({data}) => (this.user = data, this.card = data.card, this.scope = data.scope));
         },
 
         loadQuestions() {
@@ -280,6 +295,14 @@
 
         loadTIFLevel() {
             axios.get('/api/academia/tif-level').then(({data}) => (this.aif = data));
+        },
+
+        setupPublicProfile() {
+          this.$router.push('/academia/profile/').catch(err => {});
+        },
+
+        loadInformation() {
+            axios.get('/api/academia/informations').then(({data}) => (this.information = data));
         }
       }
     }

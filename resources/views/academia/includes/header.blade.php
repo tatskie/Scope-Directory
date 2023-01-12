@@ -16,6 +16,8 @@
       </div>
     </div>  
 
+   
+
       <!-- <a class="btn-logout icon" href="{{ route('logout') }}"
          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="ico-logout"></i>
@@ -24,5 +26,13 @@
           @csrf
       </form> -->
     </div>
+     <div class="header-profile">
+      <div class="profile-user">
+        <a class="profile-user-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+             <span class="fa fa-light fa-bell"></span>
+             <!-- <em style="color: red;">1</em> -->
+        </a>
+      </div>
+    </div>  
   </div>
 </header>

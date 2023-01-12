@@ -64,7 +64,7 @@ class PIFController extends Controller
         $role = $user->roles->first()->name;
 
         if (!$user->answerScore->is_agree == true) {
-            return redirect()->intended('/academia-welcome');
+            return redirect()->intended('/academic/welcome');
         }
 
         if ($user->answerScore->is_done_tif == true) {
@@ -156,7 +156,7 @@ class PIFController extends Controller
                   ->count() + 1;
 
         if (!$user->answerScore->is_agree == true) {
-            return redirect()->intended('/academia-welcome');
+            return redirect()->intended('/academic/welcome');
         }
 
         if ($user->answerScore->is_done_tif == true) {

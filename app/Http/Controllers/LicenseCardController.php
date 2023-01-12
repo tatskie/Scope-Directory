@@ -8,6 +8,7 @@ use App\LicenseCard;
 use App\QuestionAnswer;
 use App\AcademiaCategory;
 use Illuminate\Http\Request;
+use App\Notifications\ScopePublicProfile;
 
 class LicenseCardController extends Controller
 {
@@ -35,7 +36,7 @@ class LicenseCardController extends Controller
 
         if($user->questionAnswer->isEmpty())
         {
-            return redirect()->to('/academia/welcome');
+            return redirect()->to('/academic/welcome');
         }
         
         if ($answerScore->is_done_question == true) {
@@ -67,12 +68,13 @@ class LicenseCardController extends Controller
 
         $pifPoints = 0; // set the points to 0
         $dataPif = '';
+
+        $tifs = AIF::all();
+
         if ($pifAnswers) {
             foreach ($pifAnswers as $pifAnswer) {
                 $pifPoints = $pifAnswer->points + $pifPoints; // set the total points
             }
-
-            $tifs = AIF::all();
 
             foreach ($tifs as $tif) {
                 if ($pifPoints >= $tif->points_minimum && $pifPoints <= $tif->points_maximum) {
@@ -82,7 +84,7 @@ class LicenseCardController extends Controller
         }
         
 
-        return view('license.congratulations', compact(['pages', 'data', 'categories', 'dataPif'])); // return to home
+        return view('license.congratulations', compact(['pages', 'data', 'categories', 'dataPif', 'tifs'])); // return to home
     }
     
     /**
@@ -96,6 +98,8 @@ class LicenseCardController extends Controller
         $request->validate([
             'photo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name'=>'required|string|max:255',
+            'academic_title'=>'required',
+            'title'=>'required',
         ]); // validation
 
         $photoName = 'default.jpg';
@@ -142,9 +146,9 @@ class LicenseCardController extends Controller
             } // find the category by points.
         }
 
-        if($request->get('name')) { // if user change his/her name
-            $user = auth()->user();
+        $user = auth()->user();
 
+        if($request->get('name')) { // if user change his/her name
             $user->name = $request->get('name');
             $user->save(); // logged in user change name saved.
         }
@@ -162,13 +166,15 @@ class LicenseCardController extends Controller
             'gender' => $request->get('gender'),
             'photo' =>  $photoName,
             'title' => $request->get('title'),
-            // 'date_of_birth' => $request->get('date_of_birth'),
+            'academic_title' => $request->get('academic_title'),
             'citizenship' => $request->get('citizenship'),
             'academia_id' => $data->id,
             'aif_id' => $dataTif->id,
         ]); // set the data in license card
 
         $card->save(); // save card
+
+        auth()->user()->notify(new ScopePublicProfile($user, $user->scope));
 
         return redirect()->to('/academia/dashboard'); // return to dashboard
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Page;
 use App\User;
+use App\ScopeID;
 use App\AnswerScore;
 use App\LicenseCard;
 use Spatie\Permission\Models\Role;
@@ -107,6 +108,13 @@ class RegisterController extends Controller
             'user_id' => $user->id
         ]);
 
+        $scope = $this->generateScopeID();
+
+        ScopeID::create([
+            'scope' => $scope,
+            'user_id' => $user->id,
+        ]);
+
         $user->assignRole($role);
 
         $users = User::role('admin')->get();
@@ -118,6 +126,33 @@ class RegisterController extends Controller
         auth()->login($user);
         
         return $user;
+    }
+
+    /**
+     * Generate scope ID
+     *
+     */
+    public function generateScopeID() {
+        $scope = mt_rand(10000000, 99999999). '-' .mt_rand(1000, 9999). '-' .mt_rand(1000, 9999); // better than rand()
+
+        // call the same function if the barcode exists already
+        if ($this->scopeIDExist($scope)) {
+            return $this->generateScopeID();
+        }
+
+        // otherwise, it's valid and can be used
+        return $scope;
+    }
+
+    /**
+     * Check if Scope ID is exists
+     * @param $scope id
+     */
+
+    public function scopeIDExist($scope) {
+        // query the database and return a boolean
+        // for instance, it might look like this in Laravel
+        return ScopeID::where('scope', $scope)->exists();
     }
 
     /**

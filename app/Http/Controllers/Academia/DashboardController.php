@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $user = auth()->user();
         
         if (!$user->answerScore->is_agree == true) {
-            return redirect()->to('/academia-welcome');
+            return redirect()->to('/academic/welcome');
         }
         else {
             if (is_null($user->answerScore->score_id)) {

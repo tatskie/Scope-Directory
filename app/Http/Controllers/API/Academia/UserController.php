@@ -81,7 +81,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts']);
+        return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts', 'scope']);
     }
 
     /**
