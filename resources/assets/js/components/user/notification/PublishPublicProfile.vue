@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="btn-warning -withlabel" @click="modalTrigger()">
-      Setup your Public Profile&nbsp;<i class="fa fa-user-circle" style="font-size:16px;color:#fff"></i>
+      Next - Setup your Public Profile&nbsp;<i class="fa fa-user-circle" style="font-size:16px;color:#fff"></i>
     </div>
     <modal
       :title="'Setup your Public Profile'"

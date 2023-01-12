@@ -4,7 +4,7 @@
     <div class="form-btn" @click="modalTrigger()">
       <button class="btn-update -withlabel">
         <i class="ico-update"></i>
-        <span>Update Profile</span>
+        <span>Update Info</span>
       </button>
     </div>
     <modal

@@ -129,11 +129,27 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Relationship Has many to receipt
+     * Relationship Has one to scope id
      */
     public function scope()
     {
       return $this->hasOne(ScopeID::class);
+    }
+
+    /**
+     * Relationship Has many to videos
+     */
+    public function videos()
+    {
+      return $this->hasMany(Video::class);
+    }
+
+    /**
+     * Relationship Has many to awards
+     */
+    public function awards()
+    {
+      return $this->hasMany(Award::class);
     }
 
     /**

@@ -268,7 +268,7 @@ class QuestionAnswerController extends Controller
                     $points = $choice->points;
                     $value = true;
                 } else {
-                    $choice = $question->questionChoices->where('label', 'Proceed')->first();
+                    $choice = $question->questionChoices->where('label', 'Doctorate')->first();
                     $points = $choice->points;
                     $value = true;
                 }
@@ -282,7 +282,7 @@ class QuestionAnswerController extends Controller
             $value = true;
             $validation = 'required|string';
             $choice = $question->questionChoices->first();
-            $points = $choice->points;
+            $points = $request->get('answer');
 
         } elseif ($question->code_id == '3'){
             $value = true;

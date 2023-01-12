@@ -49,27 +49,28 @@
       <br>
       <h5>After completing all questions, you will see your two scores:</h5>
       <br>
-      1.) Professional level – ranging from 1 -10 and  your Volunteer service level based on 
+      1.) Professional level 
       <br>
-      2.) Bronze-Silver-Gold-Platinum (Professional Impact Factor – PIF) 
+      2.) Professional Impact Factor – PIF
       <br>
       <br>
       Nb. Data security is of primary importance. Whilst we have taken all steps to protect your data on our Servers, we ask that you do not provide any information that is not already on the internet. Thus, some questions below are optional - (such as country of citizenship) 
       <br>
       <br>
-      Your answers will lead to two options, namely.
+      Your answers will lead to three options, namely.
       <br>
       <br>
       <p><strong>Free option:</strong> Print out your ID card or</p>
+      <p><strong>Free option:</strong> Your personal online Profile - public or private as you chose</p>
       <p><strong>Paid option:</strong> A beautiful wallet-size hard copy ID that will be produced and delivered to you. The QR card on your ID reverts to your Online CV.</p>
       <br>
       1) See sample ID.  <a href="https://www.scope.directory/" target="_blank">click here</a>
       <br>
       <br>
-      2) The system will produce a Profile Page page based on your data input which can be accessed by only you either by scanning the QR code on your ID or by entering your unique code you will receive. This information can be updated as you upgrade your skills.
+      2) The system will produce a Profile Page based on your data input which can be accessed by only you either by scanning the QR code on your ID or by entering your unique code you will receive. This information can be updated as you upgrade your skills.
       <br>
       <br>
-        <p>&nbsp;&nbsp;&nbsp;1. This may take up to 15 minutes to complete.</p>
+        <p>&nbsp;&nbsp;&nbsp;1. This may take up to 15 - 20 minutes to complete.</p>
         <p>&nbsp;&nbsp;&nbsp;2. If you cannot complete the questions you will have to re-login another time.</p>
         <p>&nbsp;&nbsp;&nbsp;3. You do not need to provide documentary evidence unless subsequently (email request) required to confirm an answer.</p>
         <p>&nbsp;&nbsp;&nbsp;4. Some questions will ask you about your Conference attendance history and publication history, so it is a good idea to have your records 

@@ -8,7 +8,7 @@
 		<div id="dashboard-body-content">
 
       <div class="alert alert-danger" role="alert" v-if="!information || information.length">
-            Setup Your Public Profile
+            Next - Setup Your Public Profile
             <a href="#" class="float-right mark-as-read" @click="setupPublicProfile()">
                 Click Here!
             </a>
@@ -23,7 +23,7 @@
             <tr>
               <td width="189">Title </td>
               <td width="16">:</td>
-              <td width="203">{{ card.title }}</td>
+              <td width="203">{{ card.academic_title }}</td>
             </tr>
             <tr>
               <td>Name </td>

@@ -73,24 +73,22 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="title">
-                  <span>{{ __('Title') }} ({{ ucwords($data->specialist_title) }})</span>
-                  @if($data->id == 4)
-                    Please Click the Box
-                  @endif
+                  <span>{{ __('Your SCOPE Title.') }} This will appear on your licence card.</span>
                 </label>
 
                 <div class="form-input-box">
                   @if($data->id == 4)
                     <select name="title">
-                      <option value="The Respected Professor {{ ucwords(auth()->user()->name) }}">The Respected Professor {{ ucwords(auth()->user()->name) }}</option>
-                      <option value="The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}">The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}</option>
-                      <option value="The Respected Dr. {{ ucwords(auth()->user()->name) }}">The Respected Dr. {{ ucwords(auth()->user()->name) }}</option>
-                      <option value="The Respected Mr. {{ ucwords(auth()->user()->name) }}">The Respected Mr. {{ ucwords(auth()->user()->name) }}</option>
-                      <option value="The Respected Ms. {{ ucwords(auth()->user()->name) }}">The Respected Ms. {{ ucwords(auth()->user()->name) }}</option>
-                      <option value="The Respected Miss {{ ucwords(auth()->user()->name) }}">The Respected Miss {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Professor">-- Please choose appropriate title. --</option>
+                      <option value="The Respected Professor">The Respected Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Assistant Professor">The Respected Assistant Professor {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Dr.">The Respected Dr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Mr.">The Respected Mr. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Ms.">The Respected Ms. {{ ucwords(auth()->user()->name) }}</option>
+                      <option value="The Respected Miss">The Respected Miss {{ ucwords(auth()->user()->name) }}</option>
                     </select>
                   @else
-                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" value="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" readonly>
+                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" placeholder="{{ ucwords($data->specialist_title) }} {{ ucwords(auth()->user()->name) }}" value="{{ ucwords($data->specialist_title) }}" readonly>
                   @endif
                 </div>
 
@@ -103,11 +101,12 @@
 
               <div class="form-input">
                 <label class="form-lbl" for="academic_title">
-                  <span>{{ __('Acedemic Title') }}</span>
+                  <span>{{ __('Your Current Academic Title') }}</span>
                 </label>
 
                 <div class="form-input-box">
                     <select name="academic_title">
+                      <option value="">Select Title</option>
                       <option value="Professor">Professor</option>
                       <option value="Professor Emeritus">Professor Emeritus</option>
                       <option value="Associate Professor">Associate Professor</option>
@@ -119,6 +118,7 @@
                       <option value="Assistant Lecturer">Assistant Lecturer</option>
                       <option value="Full Instructor">Full Instructor</option>
                       <option value="Assistant Instructor">Assistant Instructor</option>
+                      <option value="Instructor">Instructor</option>
                     </select>
                 </div>
 
@@ -138,7 +138,7 @@
                   <select name="citizenship">
                     <option value="">-- select one --</option>
                     @foreach($countries as $country)
-                      <option value="{{ $country->nationality }}">{{ $country->nationality }}</option>
+                      <option value="{{ $country->en_short_name }}">{{ $country->en_short_name }}</option>
                     @endforeach
                   </select>
                 </div>

@@ -4,7 +4,7 @@
         <h2 style="margin-right:20px">My Public Profile</h2>
         <publish-public-profile v-if="!information || information.length"></publish-public-profile>
         <update-public-profile v-else></update-public-profile>
-        <div class="btn-create -withlabel" @click="publicProfile()">
+        <div class="btn-create -withlabel" @click="publicProfile()" v-if="information">
           <span>View Public Profile</span>
         </div>
         <!-- <a :href="'/'+scope.scope">click here...</a> -->
@@ -17,26 +17,55 @@
     </div>
 
       <div id="dashboard-body-content" v-else>
-      <div class="dashboard-card">
-        <div>
-          <div id="scope-number"><h3 style="color: red;">{{ scope.scope }}</h3></div>
-          <div id="main-photo"><img :src="'/public/assets/images/user/'+card.photo" height="165" width="134"></div>
-          <div id="academic-name"><h5>{{ user.name | upText }}</h5></div>
-          <div id="academic-categories">
-            <h5>Level {{ category.number }}</h5>
-            <h5>{{ category.specialist_title }}</h5>
+        <div class="dashboard-card-id">
+          <div class="dashboard-card-id-front">
+            <img height="318" src="/assets/images/card/sample-id.png">
+            <div class="elementor-id-data elementor-id-data-front">
+              <picture class="elementor-id-data-id-img">
+                <img :src="'/public/assets/images/user/'+card.photo" alt="">
+              </picture>
+              <span class="elementor-id-data-id">
+                {{ scope.scope }}
+              </span> 
+              <span class="elementor-id-data-name">
+                {{ user.name }}
+              </span>
+              <span class="elementor-id-data-title">
+                {{ card.title }}
+              </span> 
+              <span class="elementor-id-data-imapct-factor">
+                {{ tif.title }}
+              </span> 
+              <span class="elementor-id-data-country">
+                {{ card.citizenship }}
+              </span> 
+              <span class="elementor-id-data-validity"> 03/01/2023</span>
+            </div> 
           </div>
-          <div id="academic-pif"><h5>{{ tif.title }}</h5></div>
-          <div id="valid-until"><h5>03/02/2023</h5></div>
+          <div class="dashboard-card-id-back">
+            <img height="318" src="/assets/images/card/back-ID-bg.png">
+          </div>
         </div>
+
+        <br>
+        <br>
+        <br>
+
+      <div class="alert alert-info" role="alert" v-if="information.length == 0">
+        Please setup your public profile.
       </div>
 
-      <div class="dashboard-back-card">
-        <div>
-        </div>
+      <div class="alert alert-info" role="alert" v-if="publications.length == 0 || conferences.length == 0 || information.length == 0">
+        Next! Please complete information below.
       </div>
 
-      <br>
+      <div class="alert alert-info" role="alert" v-else>
+        View your public profile.
+        <a href="#" class="float-right mark-as-read" @click="publicProfile()">
+          Click Here!
+        </a>
+      </div>
+
       <div v-if="information.length !== 0">
         <div v-if="information.is_present == 1">
           <h5><strong>Employment: </strong>{{ information.from | formatDate }} to Present | {{ information.employer }}</h5>
@@ -122,6 +151,66 @@
           </table>
         </div>
 
+        <div class="contents-head">
+          <h2><span style="font-size:20px; margin-bottom:20px; margin-left:-20px"><strong>Special Awards</strong></span></h2>
+          <create-special-award></create-special-award>
+        </div>
+        <div v-if="awards.length">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th width="300">Name</th>
+                <th width="300">Location</th>
+                <th width="189">Link</th>
+              </tr>
+            </thead>
+            <br>
+            <tbody>
+              <tr v-for="award in awards">
+                <th>
+                  {{ award.name }}
+                </th>
+                <th>{{ award.location }}</th>
+                <th>{{ award.link }}</th>
+                <th>
+                  <edit-special-award :award="award"></edit-special-award>
+                  <delete-special-award :award="award"></delete-special-award>
+                </th>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contents-head">
+          <h2><span style="font-size:20px; margin-bottom:20px; margin-left:-20px"><strong>Videos</strong></span></h2>
+          <create-video></create-video>
+        </div>
+        <div v-if="videos.length">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th width="400">Title</th>
+                <th width="400">Link</th>
+              </tr>
+            </thead>
+            <br>
+            <tbody>
+              <tr v-for="video in videos">
+                <th>
+                  {{ video.title }}
+                </th>
+                <th>{{ video.link }}</th>
+                <th>
+                  <edit-video :video="video"></edit-video>
+                  <delete-video :video="video"></delete-video>
+                </th>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+
         </div>
       </div>
     </div><!--END dashboard-body-content-->
@@ -139,6 +228,12 @@
   import CreateConference from '../conferences/Create'
   import DeleteConference from '../conferences/Delete'
   import EditConference from '../conferences/Edit'
+  import CreateSpecialAward from '../special-awards/Create'
+  import DeleteSpecialAward from '../special-awards/Delete'
+  import EditSpecialAward from '../special-awards/Edit'
+  import CreateVideo from '../videos/Create'
+  import DeleteVideo from '../videos/Delete'
+  import EditVideo from '../videos/Edit'
 
     export default {
       components: {
@@ -150,7 +245,13 @@
         "edit-publication": EditPublication,
         "create-conference": CreateConference,
         "delete-conference": DeleteConference,
-        "edit-conference": EditConference
+        "edit-conference": EditConference,
+        "create-special-award": CreateSpecialAward,
+        "delete-special-award": DeleteSpecialAward,
+        "edit-special-award": EditSpecialAward,
+        "create-video": CreateVideo,
+        "delete-video": DeleteVideo,
+        "edit-video": EditVideo
       },
 
       data () {
@@ -166,7 +267,9 @@
           },
           information: [],
           publications: [],
-          conferences: []
+          conferences: [],
+          awards: [],
+          videos: []
         }
       },
 
@@ -182,6 +285,10 @@
         this.loadPublication(); // Load Publication
 
         this.loadConference(); // Load Conference
+
+        this.loadSpecialAward(); // Load Special Award
+
+        this.loadVideos(); // Load Videos
 
         Fire.$on('loadProfile',() =>{
               this.loadProfile();
@@ -205,6 +312,14 @@
 
         Fire.$on('loadConference',() =>{
               this.loadConference();
+        });
+
+        Fire.$on('loadSpecialAward',() =>{
+              this.loadSpecialAward();
+        });
+
+        Fire.$on('loadVideos',() =>{
+              this.loadVideos();
         });
       },
 
@@ -236,6 +351,14 @@
             axios.get('/api/academia/conferences').then(({data}) => (this.conferences = data));
         },
 
+        loadSpecialAward() {
+            axios.get('/api/academia/awards').then(({data}) => (this.awards = data));
+        },
+
+        loadVideos() {
+            axios.get('/api/academia/videos').then(({data}) => (this.videos = data));
+        },
+
         publicProfile() {
             window.open("/"+ this.scope.scope);
         }
@@ -244,29 +367,172 @@
 </script>
 
 <style>
-        #div1{
-            height:300px;
-            width:300px;
-            margin:0;
-            }
-        #div2{
-            height:300px;
-            width:300px;
-            position:relative;
-            left:675px;
-            bottom:290px;
-            }
-         #div3{
-            height:300px;
-            width:300px;
-            position:relative;
-            bottom:130px;
-            }
-        #div4{
-            height:300px;
-            width:300px;
-            position:relative;
-            left:675px;
-            bottom:430px;
-            }
-    </style>
+.dashboard-card-id {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: flex-start;
+}
+
+.dashboard-card-id-front,
+.dashboard-card-id-back {
+  position: relative;
+  width: 50%;
+}
+
+.dashboard-card-id-front img,
+.dashboard-card-id-back img {
+  width: 100%;
+  height: auto;
+}
+
+.dashboard-card-id-front .elementor-id-data-front,
+.dashboard-card-id-front .elementor-id-data-back {
+  width: 100%;
+  height: 100%;
+  padding-left: 0;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-id-img {
+  left: 4.8%;
+  padding-top: 51.5%;
+  top: 31%;
+  width: 25.3%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-id {
+  left: 33%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-name {
+  left: 32.8%;
+  top: 37%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-title {
+  left: 32.8%;
+  top: 51%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-imapct-factor {
+  left: 32.8%;
+  top: 69%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-validity {
+  left: 19.5%;
+  top: 91.37%;
+}
+
+.dashboard-card-id-front .elementor-id-data-front .elementor-id-data-country {
+  left: 32.8%;
+  top: 81.6%;
+}
+
+  @media screen and (min-width: 1024px) {
+    .dashboard-id {
+      flex-direction: column;
+    }
+  }
+
+  .elementor-id-data {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  .elementor-id-data svg {
+    width: 100%;
+  }
+
+  .elementor-id-data-front {
+    padding-top: 12%;
+    padding-left: 22%;
+  }
+  .elementor-id-data-front span {
+    display: block;
+    position: absolute;
+    left: 17.9%;
+    font-weight: 700;
+    font-size: 2.7vw;
+    line-height: 110%;
+  }
+  @media screen and (min-width: 768px) {
+    .elementor-id-data-front span {
+      font-size: 1vw;
+    }
+  }
+  @media screen and (min-width: 1330px) {
+    .elementor-id-data-front span {
+      font-size: 15px;
+    }
+  }
+  .elementor-id-data-front .elementor-id-data-id-img {
+    position: absolute;
+    left: 4.8%;
+    top: 114%;
+    width: 38.3%;
+    padding-top: 77.5%;
+  }
+  .elementor-id-data-front .elementor-id-data-id-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 66%;
+    object-fit: cover;
+    object-position: center;
+
+  }
+  .elementor-id-data-front .elementor-id-data-id {
+    position: relative;
+    color: #FF0000;
+    font-size: 4.1vw;
+    left: 42%;
+  }
+  @media screen and (min-width: 768px) {
+    .elementor-id-data-front .elementor-id-data-id {
+      font-size: 1.34vw;
+    }
+  }
+  @media screen and (min-width: 1330px) {
+    .elementor-id-data-front .elementor-id-data-id {
+      font-size: 24px;
+    }
+  }
+  .elementor-id-data-front .elementor-id-data-name {
+    top: 130.8%;
+    left: 48.8%;
+  }
+  .elementor-id-data-front .elementor-id-data-title {
+    padding-right: 0%;
+    top: 179.3%;
+    left: 48.8%;
+  }
+  .elementor-id-data-front .elementor-id-data-imapct-factor {
+    top: 248.4%;
+    left: 48.8%;
+  }
+  .elementor-id-data-front .elementor-id-data-country {
+    top: 296.6%;
+    left: 48.8%;
+  }
+  .elementor-id-data-front .elementor-id-data-validity {
+    left: 29.5%;
+    top: 90.5%;
+    font-size: 2.5vw;
+  }
+  @media screen and (min-width: 768px) {
+    .elementor-id-data-front .elementor-id-data-validity {
+      top: 333.37%;
+      font-size: 0.84vw;
+    }
+  }
+  @media screen and (min-width: 1330px) {
+    .elementor-id-data-front .elementor-id-data-validity {
+      font-size: 15px;
+    }
+  }
+</style>

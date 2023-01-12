@@ -98,6 +98,8 @@ class LicenseCardController extends Controller
         $request->validate([
             'photo'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name'=>'required|string|max:255',
+            'academic_title'=>'required',
+            'title'=>'required',
         ]); // validation
 
         $photoName = 'default.jpg';
