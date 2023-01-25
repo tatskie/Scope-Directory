@@ -157,10 +157,17 @@ class HomeController extends Controller
 
         $user = User::findOrFail($scopeProfile->user_id);
 
-        if (!$user or !$user->card->academiaCategory) {
-            abort(404);
+        if ($user->hasRole('academia')) {
+            if (!$user or !$user->card->academiaCategory) {
+                abort(404);
+            }
         }
 
+        if ($user->hasRole('teacher')) {
+            if (!$user or !$user->card->licenseCategory) {
+                abort(404);
+            }
+        }
         
         return view('profile', compact(['user', 'scopeProfile']));
     }

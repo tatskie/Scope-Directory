@@ -15,7 +15,7 @@ class AcademicPublicationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api', 'role:academia', 'verified', 'twofactor']);
+        $this->middleware(['auth:api', 'role:teacher', 'verified', 'twofactor']);
     }
 
     /**

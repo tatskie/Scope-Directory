@@ -52,7 +52,6 @@ class LoginController extends Controller
            return '/corporate/dashboard';
         }
     }
-    // protected $redirectTo = '/teacher/dashboard';
 
     /**
      * Login username to be used by the controller.

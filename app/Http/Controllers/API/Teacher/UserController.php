@@ -2,9 +2,9 @@
 
 namespace app\Http\Controllers\API\Teacher;
 
-use Carbon\Carbon;
 use PDF;
 use App\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth:api', 'role:academia', 'verified', 'twofactor']);
+        $this->middleware(['auth:api', 'role:teacher', 'verified', 'twofactor']);
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts', 'scope']);
+        return auth('api')->user()->load(['card.tif', 'card.licenseCategory', 'receipts', 'scope']);
     }
 
     /**
@@ -120,7 +120,7 @@ class UserController extends Controller
      */
     public function licenseCategory()
     {
-        return auth('api')->user()->card->academiaCategory;
+        return auth('api')->user()->card->licenseCategory;
     }
 
     /**
@@ -129,7 +129,7 @@ class UserController extends Controller
      */
     public function tifLevel()
     {
-        return auth('api')->user()->card->aif;
+        return auth('api')->user()->card->tif;
     }
 
     /**

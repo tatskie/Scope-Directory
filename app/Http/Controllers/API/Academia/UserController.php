@@ -1,9 +1,10 @@
 <?php
 
-namespace app\Http\Controllers\API\Teacher;
+namespace app\Http\Controllers\API\Academia;
 
 use PDF;
 use App\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -82,6 +83,20 @@ class UserController extends Controller
     public function profile()
     {
         return auth('api')->user()->load(['card.aif', 'card.academiaCategory', 'receipts', 'scope']);
+    }
+
+    /**
+     * Display the specified created_at.
+     *
+     */
+    public function yearAndMonth()
+    {   
+        // $year = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('Y');
+        // $month = Carbon::createFromFormat('Y-m-d H:i:s', auth('api')->user()->created_at)->format('m');
+        $id = auth('api')->user()->id;
+
+        $collection = collect(['id' => encrypt($id)]);
+        return $collection;
     }
 
     /**
