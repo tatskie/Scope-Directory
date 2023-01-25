@@ -3,12 +3,13 @@ require('./bootstrap');
 import VueRouter from 'vue-router'
 import LoadScript from 'vue-plugin-load-script';
 
-// Admin
-import Level from './components/user/Level';
-import Dashboard from './components/user/Dashboard';
+// Teacher
+import Level from './components/user/teacher/Level';
+import Dashboard from './components/user/teacher/Dashboard';
 import Licence from './components/user/Licence';
 import CV from './components/user/CV';
-import Billing from './components/user/Billing';
+import Billing from './components/user/teacher/Billing';
+import Profile from './components/user/teacher/Profile';
 
 // Globat Pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
@@ -25,6 +26,7 @@ const routes = [
   { path: '/teacher/licence', component: Licence },
   { path: '/teacher/billing', component: Billing },
   { path: '/teacher/cv', component: CV },
+  { path: '/teacher/profile', component: Profile },
 ]
 
 import Table from './components/common/table/Table.vue'

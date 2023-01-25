@@ -20,7 +20,7 @@ class ReceiptController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api', 'role:academia', 'verified', 'twofactor']);
+        $this->middleware(['auth:api', 'role:teacher', 'verified', 'twofactor']);
     }
 
     /**
@@ -32,7 +32,7 @@ class ReceiptController extends Controller
     {
         $user = auth()->user(); // User who loggedin
 
-        return Receipt::where('user_id', $user->id)->with('aif', 'academiaCategory')->get();
+        return Receipt::where('user_id', $user->id)->with('tif', 'licenseCategory')->get();
     }
 
     /**
@@ -46,7 +46,7 @@ class ReceiptController extends Controller
         $request->validate([
             'user_id'=>'required|integer',
             'aif_id'=>'required|required',
-            'academia_id'=>'required|integer',
+            'category_id'=>'required|integer',
         ]);
 
         $number = $request->get('user_id'). '-' .time();
@@ -55,8 +55,8 @@ class ReceiptController extends Controller
             'number' => $number,
             'expire_at' => Carbon::now()->addYears(2),
             'user_id' => $request->get('user_id'),
-            'aif_id' => $request->get('aif_id'),
-            'academia_id' => $request->get('academia_id')
+            'tif_id' => $request->get('tif_id'),
+            'category_id' => $request->get('category_id')
         ]);
 
         $receipt->save();

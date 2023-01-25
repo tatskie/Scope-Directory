@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Notifications\AdminNotifyRegisterAcademic;
 use App\Notifications\AdminNotifyRegisterTeacher;
 
 class RegisterController extends Controller
@@ -119,9 +120,17 @@ class RegisterController extends Controller
 
         $users = User::role('admin')->get();
 
+        
         foreach ($users as $admin) {
-            $admin->notify(new AdminNotifyRegisterTeacher());
+            if ($role == 'academia') {
+                $admin->notify(new AdminNotifyRegisterTeacher());
+            }
+
+            if ($role == 'teacher') {
+                $admin->notify(new AdminNotifyRegisterAcademic());
+            }
         }
+        
 
         auth()->login($user);
         

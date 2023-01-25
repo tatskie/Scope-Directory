@@ -21,12 +21,12 @@
         <span><i style="font-size:95%">my</i><span style="margin-left:-8px">TESOL</span></span>
       </router-link>
     </div>
-    <div class="navigation-item">
+    <!-- <div class="navigation-item">
       <router-link class="navigation-link" to="/academia/licence">
         <i class="fa fa-id-card-o" style="font-size:18px;color:#4b596a"></i>
         <span>ID Card</span>
       </router-link>
-    </div>
+    </div> -->
     <div class="navigation-item">
       <router-link class="navigation-link" to="/academia/level">
         <i class="fa fa-user-plus" style="font-size:18px;color:#4b596a"></i>

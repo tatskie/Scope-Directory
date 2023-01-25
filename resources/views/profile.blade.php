@@ -548,26 +548,17 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                         {{ $user->card->title }}
                       </span>
                       <span class="elementor-id-data-imapct-factor">
-                        {{ $user->card->aif->title }}
+                        @if($user->hasRole('academia'))
+                          {{ $user->card->aif->title }}
+                        @else
+                          {{ $user->card->tif->title }}
+                        @endif
                       </span>
                       <span class="elementor-id-data-country">
                         {{ $user->card->citizenship }}
                       </span>
                       <span class="elementor-id-data-validity"> 03/01/2023</span>
                     </div>
-                <!-- <div class="dashboard-card">
-                  <div>
-                    <div id="scope-number"><h3 style="color: red;">{{ $user->scope->scope }}</h3></div>
-                    <div id="main-photo"><img src="{{ url('/public/assets/images/user/'.$user->card->photo) }}" height="165" width="99"></div>
-                    <div id="academic-name"><h5>{{ ucwords($user->name) }}</h5></div>
-                    <div id="academic-categories"><h5>{{ $user->card->academiaCategory->specialist_title }}</h5></div>
-                    <div id="academic-pif"><h5>{{ $user->card->academiaCategory->title }}</h5></div>
-                    <div id="valid-until"><h5>03/02/2023</h5></div>
-                  </div>
-                </div> -->
-                <!-- <strong style="color: red;">{{ $user->scope->scope }}</strong> -->
-                
-
               </div>
             </div>
           <div class="elementor-element elementor-element-dabf056 elementor-widget elementor-widget-text-editor" data-id="dabf056" data-element_type="widget" data-widget_type="text-editor.default">
