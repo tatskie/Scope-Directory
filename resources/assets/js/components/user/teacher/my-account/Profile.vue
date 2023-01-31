@@ -44,6 +44,24 @@
           </div>
           <div class="dashboard-card-id-back">
             <img height="318" src="/assets/images/card/back-ID-bg.png">
+            <div class="elementor-id-data elementor-id-data-back">
+              <span class="elementor-id-data-board">
+                Board Licensed:
+                <small>{{ back.board }}</small> 
+              </span> 
+              <span class="elementor-id-data-tesol">
+                TESOL Certified: 
+                <small>{{ back.tesol }}</small> 
+              </span>
+              <span class="elementor-id-data-category">
+                Teacher Category: 
+                <small>{{ card.academic_title }}</small>
+              </span> 
+              <span class="elementor-id-data-imapct-affiliation">
+                Affiliation: 
+                <small>{{ back.affiliation }}</small>
+              </span> 
+            </div> 
           </div>
         </div>
 
@@ -261,6 +279,7 @@
           card: [],
           tif: [],
           loading: true,
+          back: [],
           category: {
             specialist_title: '',
             class: ''
@@ -289,6 +308,8 @@
         this.loadSpecialAward(); // Load Special Award
 
         this.loadVideos(); // Load Videos
+
+        this.loadBackData(); //load questions details
 
         Fire.$on('loadProfile',() =>{
               this.loadProfile();
@@ -361,6 +382,10 @@
 
         publicProfile() {
             window.open("/"+ this.scope.scope);
+        },
+
+        loadBackData() {
+            axios.get('/api/teacher/back-card-data').then(({data}) => (this.back = data));
         }
       }
     }
@@ -387,7 +412,7 @@
 }
 
 .dashboard-card-id-front .elementor-id-data-front,
-.dashboard-card-id-front .elementor-id-data-back {
+.dashboard-card-id-back .elementor-id-data-back {
   width: 100%;
   height: 100%;
   padding-left: 0;
@@ -429,6 +454,27 @@
   top: 81.6%;
 }
 
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-board {
+    top: 39%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-tesol {
+    top: 43%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-category {
+    top: 47%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-imapct-affiliation {
+    top: 51%;
+    left: 9%;
+  }
+
+
   @media screen and (min-width: 1024px) {
     .dashboard-id {
       flex-direction: column;
@@ -451,6 +497,7 @@
     padding-top: 12%;
     padding-left: 22%;
   }
+
   .elementor-id-data-front span {
     display: block;
     position: absolute;
@@ -534,5 +581,50 @@
     .elementor-id-data-front .elementor-id-data-validity {
       font-size: 15px;
     }
+  }
+
+  .elementor-id-data-back {
+    padding-top: 89%;
+    padding-left: 72%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .elementor-id-data-back span {
+      font-size: 1vw;
+    }
+  }
+  @media screen and (min-width: 1330px) {
+    .elementor-id-data-back span {
+      font-size: 15px;
+    }
+  }
+
+  .elementor-id-data-back span {
+    display: block;
+    position: absolute;
+    left: 36.9%;
+    font-weight: 700;
+    font-size: 0.8vw;
+    line-height: 110%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-board {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-tesol {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-category {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-affiliation {
+    top: 248.4%;
+    left: 48.8%;
   }
 </style>

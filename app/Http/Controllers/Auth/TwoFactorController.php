@@ -176,6 +176,10 @@ class TwoFactorController extends Controller
                 return redirect()->to('teacher/dashboard');
             } // user role teacher
 
+            if ($user->hasRole('journal')) {
+                return redirect()->to('journal/dashboard');
+            }
+        
             if ($user->hasRole('admin')) {
                 return redirect()->to('admin/dashboard');
             }

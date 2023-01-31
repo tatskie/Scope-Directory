@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Laravel\Paddle\Billable;
+// use Laravel\Paddle\Billable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable, HasRoles, Billable, SoftDeletes;
+    use HasApiTokens, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -150,6 +150,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function awards()
     {
       return $this->hasMany(Award::class);
+    }
+
+    /**
+     * Relationship Has many to shipping
+     */
+    public function shippingAddress()
+    {
+      return $this->hasMany(Shipping::class);
     }
 
     /**

@@ -42,7 +42,7 @@ class OrderLicenceTeacherNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Thank you for your order!')
-                    ->line('You have purchased a TESOL Licence')
+                    ->line('You have purchased a SCOPE Licence')
                     // ->action('View receipt', url('/teacher/dashboard'))
                     ->line('Thank you for using our application!');
     }

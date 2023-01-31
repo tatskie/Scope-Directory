@@ -116,27 +116,33 @@ class QuestionController extends Controller
                 $points = $choice ? $choice->points : 0;
                 $value = false;
             }
+            $answer = null;
         } elseif ($question->code_id == '2'){
 
             $value = true;
             $validation = 'required|string';
             $choice = $question->questionChoices->first();
             $points = $request->get('answer');
+            $answer = null;
 
         } elseif ($question->code_id == '3'){
             $value = true;
             $validation = 'required|string';
             $choice = $question->questionChoices->first();
             $points = $choice->points;
+            $answer = $request->get('answer');
 
         } elseif ($question->code_id == '4'){
             $value = true;
-            $validation = 'required|integer';
-            $points = $request->get('answer');
+            $validation = 'required|string';
+            $choice = $question->questionChoices->where('label', $request->get('answer'))->first();
+            $points = $choice->points;
+            $answer = $request->get('answer');
             
         } elseif ($question->code_id == '5'){
             $points = 0;
             $value = true;
+            $answer = null;
             if ($request->get('answer')) {
                 foreach ($request->get('answer') as $answer) {
                     $points = $points + $answer;
@@ -145,6 +151,7 @@ class QuestionController extends Controller
         } elseif ($question->code_id == '6'){
             $points = 0;
             $value = true;
+            $answer = 0;
             if ($request->get('answer')) {
                 foreach ($request->get('answer') as $answer) {
                     $points = $points + $answer;
@@ -195,6 +202,7 @@ class QuestionController extends Controller
             'question_id' => $question->id,
             'is_yes' => $value,
             'points' => $points,
+            'answer' => $answer,
         ]);
 
         $answer->save(); // Answer Saved

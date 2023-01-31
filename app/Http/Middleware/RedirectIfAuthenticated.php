@@ -144,6 +144,10 @@ class RedirectIfAuthenticated
                 return redirect()->to('teacher/dashboard');
             } // user role teacher
 
+            if (Auth::user()->hasRole('journal')) {
+                return redirect()->to('journal/dashboard');
+            }
+
             if (Auth::user()->hasRole('admin')) {
                 return redirect()->to('admin/dashboard');
             }
