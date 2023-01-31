@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ScopeID extends Model
+class Shipping extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class ScopeID extends Model
      *
      * @var 
      */
-    protected $table = 'scope_id';
+    protected $table = 'shipping';
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +21,7 @@ class ScopeID extends Model
      * @var array
      */
     protected $fillable = [
-        'scope', 'user_id', 'is_published'
+        'first_name', 'last_name', 'street_address', 'building', 'city', 'country', 'zip_code', 'phone_number', 'status', 'user_id', 'receipt_id'
     ];
 
     /**
@@ -30,5 +30,13 @@ class ScopeID extends Model
     public function user()
     {
       return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relationship belongs To Receipt
+     */
+    public function receipt()
+    {
+      return $this->belongsTo(Receipt::class);
     }
 }

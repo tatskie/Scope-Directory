@@ -77,12 +77,14 @@ Route::prefix('academia')->group(function () {
 	Route::put('photo', 'API\Academia\UserController@updatePhoto');
 	Route::put('profile', 'API\Academia\UserController@updateProfile');
 	Route::get('pdf', 'API\Academia\UserController@pdfExport');
-	// Route::post('/teacher/paypal/purchase/complete', 'API\Teacher\UserController@paymentComlete');
 
 	Route::post('receipt', 'API\Academia\ReceiptController@store');
 	Route::get('receipts', 'API\Academia\ReceiptController@index');
 	Route::get('download-receipt/{id}', 'API\Academia\ReceiptController@downloadReceipt');
 	Route::put('change-password', 'API\Academia\UserController@changePassword');
+
+	Route::get('shipping-address', 'API\Academia\ShippingController@index');
+	Route::post('shipping-address', 'API\Academia\ShippingController@store');
 });
 
 // Teacher API
@@ -112,5 +114,10 @@ Route::prefix('teacher')->group(function () {
 	Route::get('receipts', 'API\Teacher\ReceiptController@index');
 	Route::get('download-receipt/{id}', 'API\Teacher\ReceiptController@downloadReceipt');
 	Route::put('change-password', 'API\Teacher\UserController@changePassword');
+
+	Route::get('back-card-data', 'API\Teacher\QuestionController@backCardData');
+
+	Route::get('shipping-address', 'API\Teacher\ShippingController@index');
+	Route::post('shipping-address', 'API\Teacher\ShippingController@store');
 });
 

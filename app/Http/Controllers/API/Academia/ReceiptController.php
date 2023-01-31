@@ -5,6 +5,7 @@ namespace app\Http\Controllers\API\Academia;
 use PDF;
 use App\User;
 use App\Receipt;
+use App\Shipping;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -61,6 +62,14 @@ class ReceiptController extends Controller
 
         $receipt->save();
 
+        $shipping = Shipping::where('user_id', $request->get('user_id'))->orderBy('id','desc')->first();
+
+        $ship = Shipping::findOrFail($shipping->id);
+
+        $ship->receipt_id = $receipt->id;
+
+        $ship->save();
+        
         $user = User::findOrFail($request->get('user_id'));
 
         $user->notify(new OrderLicenceTeacherNotification());

@@ -69,4 +69,12 @@ class Receipt extends Model
     {
       return $this->belongsTo(AcademiaCategory::class, 'academia_id');
     }
+
+    /**
+     * Relationship Has many to shipping
+     */
+    public function shippingAddress()
+    {
+      return $this->hasMany(Shipping::class);
+    }
 }

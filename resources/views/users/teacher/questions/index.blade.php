@@ -258,7 +258,7 @@ button.btn.btn-primary.btn-sm.button-prevent-multiple-submits {
               <div class="form-input-box">
                 <select id="answer" name="answer">
                   @foreach ($question->questionChoices as $choice)
-                    <option value="{{ $choice->points }}">{{ $choice->label }}</option>
+                    <option value="{{ $choice->label }}">{{ $choice->label }}</option>
                   @endforeach
                 </select>
               </div>

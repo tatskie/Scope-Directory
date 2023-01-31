@@ -41,7 +41,7 @@ class OrderLicenceAdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Someone purchased a TESOL Licence!');
+                    ->line('Someone purchased a SCOPE Licence!');
                     // ->action('Notification Action', url('/'))
                     // ->line('Thank you for using our application!');
     }

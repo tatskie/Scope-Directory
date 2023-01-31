@@ -151,9 +151,10 @@ class FollowUpQuestionController extends Controller
             $answer = $request->get('answer');
 
         } elseif ($followupQuestion->code_id == '4'){
-            $validation = 'required|integer';
-            $points = $request->get('answer');
-            $answer = null;
+            $validation = 'required|string';
+            $choice = $followupQuestion->questionChoices->where('label', $request->get('answer'))->first();
+            $points = $choice->points;
+            $answer = $request->get('answer');
 
         } elseif ($question->code_id == '5'){
             $points = 0;

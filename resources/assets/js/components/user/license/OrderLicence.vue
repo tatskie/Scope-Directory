@@ -1,5 +1,5 @@
 <template>
-	<div class="product">
+  <div class="product">
     <div class="btn-update -withlabel" @click="modalTrigger()">
       Order ID Card
     </div>
@@ -22,7 +22,223 @@
               <h1>PIF: {{ aif.title }}</h1><br>
               <h1>Total Amount: ${{ this.category.fee }}</h1>
               <br>
-              <div id="paypal-button-container"></div>
+
+
+              <div v-show="confirmShipping">
+                <h4 style="text-align: center;">
+                  Shipping Details:
+                </h4>
+                <h4 style="text-align: center;">
+                  {{ shipping.last_name }}, {{ shipping.first_name }}
+                </h4>
+                <h4 style="text-align: center;">
+                  {{ shipping.phone_number }}
+                </h4>
+                <h4 style="text-align: center;">
+                  {{ shipping.building }}, {{ shipping.street_address }}, {{ shipping.city }}, {{ shipping.country }}, {{ shipping.zip_code }}
+                </h4>
+              </div>
+              <br>
+              <div id="paypal-button-container" v-show="confirmShipping">
+                
+              </div>
+
+              <div class="form-btn" @click="modalTriggerShipping()" v-show="!confirmShipping">
+                <button class="btn-create -withlabel">
+                  <i class="ico-create"></i>
+                  <span>Shipping Address</span>
+                </button>
+              </div>
+
+              <modal
+                title="Shipping Address"
+                class="modal-questionaire"
+                v-if="showModalShipping"
+                :activate="showModalShipping"
+                @activate="showModalShipping = $event"
+              >
+                <template slot="body">
+                  <div class="contents-body" v-if="loading">
+                    <div class="emptylist">
+                      <img src="/assets/assets/images/loading/loading.gif">
+                    </div>
+                  </div>
+                  <div class="form" v-else>
+                      
+                      <form class="form-horizontal" @submit.prevent="createShippingAddress" @keydown="shippingForm.errors.clear($event.target.name)" enctype="multipart/form-data">
+
+                      <div class="form-item">
+                        <label for="first_name">First Name</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.first_name"
+                            type="text"
+                            name="first_name"
+                            value=""
+                            placeholder="First Name"
+                            id="first_name"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('first_name')">
+                              <strong v-text="shippingForm.errors.get('first_name')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Last Name</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.last_name"
+                            type="text"
+                            name="last_name"
+                            value=""
+                            placeholder="Enter Last Name"
+                            id="last_name"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('last_name')">
+                              <strong v-text="shippingForm.errors.get('last_name')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Street Address</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.street_address"
+                            type="text"
+                            name="street_address"
+                            value=""
+                            placeholder="Enter Street Address"
+                            id="street_address"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('street_address')">
+                              <strong v-text="shippingForm.errors.get('street_address')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Building (optional)</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.building"
+                            type="text"
+                            name="building"
+                            value=""
+                            placeholder="Enter Building (optional)"
+                            id="building"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('building')">
+                              <strong v-text="shippingForm.errors.get('building')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">City</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.city"
+                            type="text"
+                            name="city"
+                            value=""
+                            placeholder="Enter City"
+                            id="city"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('city')">
+                              <strong v-text="shippingForm.errors.get('city')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Country</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.country"
+                            type="text"
+                            name="country"
+                            value=""
+                            placeholder="Enter Country"
+                            id="country"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('country')">
+                              <strong v-text="shippingForm.errors.get('country')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Zip Code</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.zip_code"
+                            type="number"
+                            name="zip_code"
+                            value=""
+                            placeholder="Enter Zip Code"
+                            id="zip_code"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('zip_code')">
+                              <strong v-text="shippingForm.errors.get('zip_code')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-item">
+                        <label for="link">Phone Number</label>
+
+                        <div class="form-input">
+                          <input
+                            v-model="shippingForm.phone_number"
+                            type="text"
+                            name="phone_number"
+                            value=""
+                            placeholder="Enter Phone Number"
+                            id="phone_number"
+                          />
+                        </div>
+                        <div class="form-error">
+                          <span v-if="shippingForm.errors.has('phone_number')">
+                              <strong v-text="shippingForm.errors.get('phone_number')"></strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="form-btn">
+                        <button class="btn-update -withlabel">
+                          <i class="ico-update"></i>
+                          <span>Save</span>
+                        </button>
+                      </div>
+                    </form>
+
+                  </div>
+                </template>
+              </modal>
+
             </div>
             <div style="text-align: center;" v-show="!isPaid">
               <p style="color: #232323;font-style: italic;font-size:14px">
@@ -74,12 +290,15 @@
       data () {
         return {
           showModal: false,
+          showModalShipping: false,
           isPaid: false,
+          confirmShipping: false,
           loading: true,
           credentials: {
             sandbox: 'ASjHEAFSQdXc_nkAyJJy1Hrrpk6MrOUOqy769tQTZDyPgx5spG9_22V23bnzlOJ-4Y_AU8uC3SpDKxL4',
             production: 'ARte-5uRbQE8EDdOJz_PDPoBvfx4LYAUnaCgycMUMIZVM9kXc_msIY4tSj9OCpIuQqYaAL1w2cSul997'
           },
+          shipping: [],
           user : [],
           category: [],
           aif: [],
@@ -87,6 +306,16 @@
             user_id: '',
             aif_id: '',
             academia_id: ''
+          }),
+          shippingForm : new Form({
+            first_name: '',
+            last_name: '',
+            street_address: '',
+            building: '',
+            city: '',
+            country: '',
+            zip_code: '',
+            phone_number: ''
           })
         }
       },
@@ -103,6 +332,12 @@
               this.aif = data.card.aif,
               // console.log(data.receipts.length);
               this.isPaid = data.receipts.length == 0 ? false : true       
+              ));
+        },
+
+        loadShippingAddress() {
+            axios.get('/api/academia/shipping-address').then(({data}) => (
+              this.shipping = data
               ));
         },
 
@@ -139,6 +374,10 @@
               this.loading = false;
             }
           })
+        },
+
+        modalTriggerShipping() {
+          this.showModalShipping = true;
         },
 
         setLoaded: function() {
@@ -204,6 +443,27 @@
             })
             .catch(() => {
               this.$Progress.fail();
+            });
+        },
+
+        createShippingAddress() {
+          this.shippingForm.post('/api/academia/shipping-address')
+            .then(()=>{
+              Toast.fire({
+                  type: 'success',
+                  title: 'Shipping Address Added Successfully!'
+              });
+              
+              this.loadShippingAddress(); // Load the shipping address
+              this.confirmShipping = true;
+              this.showModalShipping = false;
+            })
+            .catch(()=>{
+              Toast.fire({
+                type: 'error',
+                title: 'Whoops!',
+                text: 'Something went wrong!'
+              });
             });
         }
       }

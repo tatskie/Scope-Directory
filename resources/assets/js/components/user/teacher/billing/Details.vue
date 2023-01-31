@@ -50,8 +50,8 @@
 		              {{ receipt.license_category.specialist_title }}
 		            </tbl-td>
 
-		            <tbl-td class="aif">
-		              {{ receipt.aif.title }}
+		            <tbl-td class="tif">
+		              {{ receipt.tif.title }}
 		            </tbl-td>
 
 		            <tbl-td class="payment-date">

@@ -20,6 +20,7 @@ class QuestionController extends Controller
     {
         $this->middleware(['auth:api', 'role:teacher', 'verified', 'twofactor']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -268,5 +269,34 @@ class QuestionController extends Controller
 
         return ['message' => 'Update Answer Successfully!'];
 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function backCardData()
+    {
+        $answers = QuestionAnswer::where('user_id', auth()->user()->id)->where('is_tif', false)->with(['question', 'followupQuestion'])->get();
+
+        $data = collect([]);
+
+        foreach ($answers as $key => $answer) {
+
+            if ($answer->question_id == 2) {
+                $data->put('affiliation', $answer->answer);
+            }
+
+            if ($answer->question_id == 5 && $answer->followup_id == 3) {
+                $data->put('board', $answer->answer);
+            }
+
+            if ($answer->question_id == 11 && $answer->followup_id == 4) {
+                $data->put('tesol', $answer->answer);
+            }
+        }
+
+        return $data;
     }
 }
