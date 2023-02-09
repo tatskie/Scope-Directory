@@ -12,6 +12,7 @@
 */
 // \URL::forceScheme('https');
 use App\Notifications\ScopePublicProfile;
+use Spatie\Permission\Models\Role;
 
 // Auth::routes();
 Auth::routes(['verify' => true]);
@@ -31,6 +32,14 @@ Route::get('/teacher/register', function(){
 
 Route::get('/corporate/register', function(){
     return view('auth.corporate');
+});
+
+Route::get('/editor/register', function(){
+
+    // corporate role
+    // Role::create(['name' => 'editor']);
+
+    return view('auth.editor');
 });
 
 Route::get('/undergrad/register', function(){
@@ -161,6 +170,22 @@ Route::name('teacher.')->prefix('teacher')->middleware(['auth', 'verified', 'two
 
     Route::get('/license-card', 'Users\Teacher\LicenseCardController@index')->name('card');
     Route::post('/license-card', 'Users\Teacher\LicenseCardController@store')->name('card');
+});
+
+/*
+|----------------------------------------------------------------------------
+| Editor Routes
+|----------------------------------------------------------------------------
+|
+| All routes for editor user
+|
+*/
+
+Route::name('editor.')->prefix('editor')->middleware(['auth', 'verified', 'twofactor', 'editor'])->group(function() {  
+
+    Route::get('/journal-form', 'Users\Editor\JournalController@index')->name('journal');
+    Route::post('/journal-form', 'Users\Editor\JournalController@store')->name('journal');
+
 });
 
 /*

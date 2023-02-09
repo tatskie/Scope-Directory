@@ -157,6 +157,8 @@ class HomeController extends Controller
 
         $user = User::findOrFail($scopeProfile->user_id);
 
+        $data = collect([]);
+
         if ($user->hasRole('academia')) {
             if (!$user or !$user->card->academiaCategory) {
                 abort(404);
@@ -167,8 +169,33 @@ class HomeController extends Controller
             if (!$user or !$user->card->licenseCategory) {
                 abort(404);
             }
+
+           $affiliation = QuestionAnswer::where('user_id', $user->id)->where('question_id', 2)->where('is_tif', false)->first();
+
+            if ($affiliation) {
+                $data->put('affiliation', $affiliation->answer);
+            } else {
+                $data->put('affiliation', 'N/A');
+            }
+
+            $board = QuestionAnswer::where('user_id', $user->id)->where('question_id', 5)->where('followup_id', 3)->where('is_tif', false)->first();
+
+            if ($board) {
+                $data->put('board', $board->answer);
+            } else {
+                $data->put('board', 'N/A');
+            }
+
+
+            $tesol = QuestionAnswer::where('user_id', $user->id)->where('question_id', 11)->where('followup_id', 4)->where('is_tif', false)->first();
+
+            if ($tesol) {
+                $data->put('tesol', $tesol->answer);
+            } else {
+                $data->put('tesol', 'N/A');
+            }
         }
-        
-        return view('profile', compact(['user', 'scopeProfile']));
+
+        return view('profile', compact(['user', 'scopeProfile', 'data']));
     }
 }

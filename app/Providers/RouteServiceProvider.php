@@ -48,6 +48,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAcademiaRoutes();
 
         $this->mapUndergradRoutes();
+
+        $this->mapEditorRoutes();
         //
     }
 
@@ -137,7 +139,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
      /**
-     * Define the "academia" routes for the application.
+     * Define the "undergrad" routes for the application.
      *
      * These routes are typically stateless.
      *
@@ -148,5 +150,19 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('undergrad')
              ->namespace($this->namespace)
              ->group(base_path('routes/undergrad.php'));
+    }
+
+    /**
+     * Define the "editor" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapEditorRoutes()
+    {
+        Route::middleware('editor')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/editor.php'));
     }
 }

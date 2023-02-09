@@ -68,6 +68,12 @@ class Kernel extends HttpKernel
             'auth',
             'role:undergrad'
         ],
+
+        'editor' => [
+            'web',
+            'auth',
+            'role:editor'
+        ],
         
         'api' => [
             // 'throttle:60,1',

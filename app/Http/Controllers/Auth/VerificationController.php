@@ -50,6 +50,10 @@ class VerificationController extends Controller
         if (auth()->user()->hasRole('journal')) {
            return '/journal/dashboard';
         }
+
+        if (auth()->user()->hasRole('editor')) {
+           return '/editor/dashboard';
+        }
     }
     /**
      * Create a new controller instance.

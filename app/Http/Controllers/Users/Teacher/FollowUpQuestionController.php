@@ -71,7 +71,7 @@ class FollowUpQuestionController extends Controller
             if ($nextQuestion) {
               return redirect()->route('teacher.question', $nextQuestion->url); // return if user has answer
             }
-            return redirect()->to('assessment');
+            return redirect()->to('/teacher/assessment');
         }
 
         return view('users.teacher.followup.index', compact(['followupQuestion', 'questions', 'lastQuestion', 'number', 'journals']));
@@ -234,7 +234,7 @@ class FollowUpQuestionController extends Controller
                 'total_points' => $points
             ]);
 
-            return redirect()->to('/assessment'); // If no more Questions Redirect to assessment page
+            return redirect()->to('/teacher/assessment'); // If no more Questions Redirect to assessment page
         }
         
         return redirect()->route('teacher.question', $lastQuestion->url)->with(['question']);

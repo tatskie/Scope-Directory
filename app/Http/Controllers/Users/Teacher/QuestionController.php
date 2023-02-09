@@ -64,7 +64,7 @@ class QuestionController extends Controller
             if ($nextQuestion) {
                 return redirect()->route('teacher.question', $nextQuestion->url); // return if user has answer
             }
-            return redirect()->to('assessment');
+            return redirect()->to('/teacher/assessment');
         }
 
         $questions = Question::whereHas('filterQuestion', function (Builder $query) use($role) {
@@ -190,7 +190,7 @@ class QuestionController extends Controller
                     'total_points' => $points
                 ]);
 
-                return redirect()->to('/assessment'); // If no more Questions Redirect to License Card
+                return redirect()->to('/teacher/assessment'); // If no more Questions Redirect to License Card
             }
 
             return redirect()->route('teacher.question', $nextQuestion->url); // return if user has answer

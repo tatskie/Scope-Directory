@@ -46,6 +46,10 @@ class ResetPasswordController extends Controller
            return '/corporate/dashboard';
         }
 
+        if (auth()->user()->hasRole('editor')) {
+           return '/editor/dashboard';
+        }
+
         if (auth()->user()->hasRole('journal')) {
            return '/journal/dashboard';
         }
