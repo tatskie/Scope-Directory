@@ -153,6 +153,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Relationship Has many to journals
+     */
+    public function journals()
+    {
+      return $this->hasMany(Journal::class);
+    }
+
+    /**
      * Relationship Has many to shipping
      */
     public function shippingAddress()

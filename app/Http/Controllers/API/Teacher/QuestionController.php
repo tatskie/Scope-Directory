@@ -286,14 +286,20 @@ class QuestionController extends Controller
 
             if ($answer->question_id == 2) {
                 $data->put('affiliation', $answer->answer);
+            } else {
+                $data->put('affiliation', 'N/A');
             }
 
             if ($answer->question_id == 5 && $answer->followup_id == 3) {
                 $data->put('board', $answer->answer);
+            } else {
+                $data->put('board', 'N/A');
             }
 
             if ($answer->question_id == 11 && $answer->followup_id == 4) {
                 $data->put('tesol', $answer->answer);
+            } else {
+                $data->put('tesol', 'N/A');
             }
         }
 

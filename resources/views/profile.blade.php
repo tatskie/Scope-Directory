@@ -150,21 +150,34 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
   }
 }
 
+ .elementor-id-data-board {
+    top: 54%;
+    left: 9%;
+  }
+
+ .elementor-id-data-tesol {
+    top: 60%;
+    left: 9%;
+  }
+
+ .elementor-id-data-category {
+    top: 66%;
+    left: 9%;
+  }
+
+ .elementor-id-data-imapct-affiliation {
+    top: 72%;
+    left: 9%;
+  }
+
 .elementor-id-data-back {
   padding-top: 33%;
   padding-left: 26%;
 }
-.elementor-id-data-back span {
-  display: block;
-  font-weight: 500;
-  font-size: 2.35vw;
-  line-height: 125%;
-  letter-spacing: -0.05em;
-  position: relative;
-}
-.elementor-id-data-back span:not(:last-child) {
+
+/*.elementor-id-data-back span:not(:last-child) {
   margin-bottom: 0.8%;
-}
+}*/
 @media screen and (min-width: 768px) {
   .elementor-id-data-back span {
     font-size: 0.75vw;
@@ -172,9 +185,19 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 }
 @media screen and (min-width: 1330px) {
   .elementor-id-data-back span {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
+
+  .elementor-id-data-back span {
+    display: block;
+    position: absolute;
+    left: 8.9%;
+    font-weight: 700;
+    font-size: 0.7vw;
+    line-height: 110%;
+  }
+
 </style>
 <link rel='stylesheet' id='contact-form-7-css' href='https://scope.directory/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.6.4' media='all' />
 <link rel='stylesheet' id='hfe-style-css' href='https://scope.directory/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=1.6.13' media='all' />
@@ -436,54 +459,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
               <p>Google Scholar: {{ $user->academicInformation->index }}</p>            </div>
         </div>
 
-        <!-- Publication Cover photo-->
-
-        <!-- <div class="elementor-element elementor-element-f8a3a57 elementor-widget elementor-widget-heading" data-id="f8a3a57" data-element_type="widget" data-widget_type="heading.default">
-        <div class="elementor-widget-container">
-      <h2 class="elementor-heading-title elementor-size-default">Publications</h2>    </div>
-        </div> -->
-       <!--  <section class="elementor-section elementor-inner-section elementor-element elementor-element-056de75 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="056de75" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-          <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7957c83" data-id="7957c83" data-element_type="column">
-      <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-3bea659 elementor-widget elementor-widget-image" data-id="3bea659" data-element_type="widget" data-widget_type="image.default">
-        <div class="elementor-widget-container">
-                                <a href="https://books.google.com.ph/books/about/The_Study_of_Second_Language_Acquisition.html?id=3KglibyrZ5sC&#038;redir_esc=y" target="_blank">
-              <img decoding="async" src="https://scope.directory/wp-content/uploads/elementor/thumbs/rod-ellis-book-pwkxv2lfagpoiovzag3mk2hk0x6f62kkifst7gxcx0.jpg" title="rod ellis book" alt="rod ellis book" />                </a>
-                              </div>
-        </div>
-          </div>
-    </div>
-        <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-b034590" data-id="b034590" data-element_type="column">
-      <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-2ab0bdd elementor-widget elementor-widget-image" data-id="2ab0bdd" data-element_type="widget" data-widget_type="image.default">
-        <div class="elementor-widget-container">
-                                <a href="https://books.google.com.ph/books/about/Second_Language_Acquisition.html?id=Wwdb7P0CG5AC&#038;redir_esc=y">
-              <img decoding="async" src="https://scope.directory/wp-content/uploads/elementor/thumbs/SLA-by-rod-pwkwmrhb4m238f8z0slqir0by1kjbpo2r4ptswmg84.jpg" title="SLA by rod" alt="SLA by rod" />                </a>
-                              </div>
-        </div>
-          </div>
-    </div>
-              </div>
-    </section> -->
-        <!-- <section class="elementor-section elementor-inner-section elementor-element elementor-element-8b09816 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="8b09816" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-default">
-          <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-4a76e13" data-id="4a76e13" data-element_type="column">
-      <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-15660c7 elementor-widget elementor-widget-image" data-id="15660c7" data-element_type="widget" data-widget_type="image.default">
-        <div class="elementor-widget-container">
-                                <a href="https://www.academics.education/eflij/">
-              <img decoding="async" width="595" height="842" src="https://scope.directory/wp-content/uploads/2022/10/eflij-newcover-med.jpg" class="attachment-large size-large" alt="" loading="lazy" srcset="https://scope.directory/wp-content/uploads/2022/10/eflij-newcover-med.jpg 595w, https://scope.directory/wp-content/uploads/2022/10/eflij-newcover-med-212x300.jpg 212w" sizes="(max-width: 595px) 100vw, 595px" />               </a>
-                              </div>
-        </div>
-          </div>
-    </div>
-        <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-9faca7f" data-id="9faca7f" data-element_type="column">
-      <div class="elementor-widget-wrap">
-                  </div>
-    </div>
-              </div>
-    </section> -->
+ 
           </div>
     </div>
         <div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-bc7f5c3" data-id="bc7f5c3" data-element_type="column">
@@ -544,7 +520,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                       <span class="elementor-id-data-name">
                         {{ ucwords($user->name) }}
                       </span>
-                      <span class="elementor-id-data-title">
+                      <span class="elementor-id-data-title" style="text-align: left;">
                         {{ $user->card->title }}
                       </span>
                       <span class="elementor-id-data-imapct-factor">
@@ -574,6 +550,28 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
           <div class="elementor-element elementor-element-925cb80 elementor-widget elementor-widget-image" data-id="925cb80" data-element_type="widget" data-widget_type="image.default">
             <div class="elementor-widget-container">
               <img decoding="async" width="631" height="396" src="{{ url('assets/images/card/back-ID-bg.png')}}" class="attachment-large size-large" alt="" loading="lazy" srcset="{{ url('assets/images/card/back-ID-bg.png')}} 631w, {{ url('assets/images/card/back-ID-bg.png')}} 300w" sizes="(max-width: 631px) 100vw, 631px" />
+
+              @if($user->hasRole('teacher'))
+                <div class="elementor-id-data elementor-id-data-back">
+                  <span class="elementor-id-data-board">
+                    Board Licensed:
+                    <small>{{ $data['board'] }}</small> 
+                  </span> 
+                  <span class="elementor-id-data-tesol">
+                    TESOL Certified: 
+                    <small>{{ $data['tesol'] }}</small> 
+                  </span>
+                  <span class="elementor-id-data-category">
+                    Teacher Category: 
+                    <small>{{ $user->card->academic_title }}</small>
+                  </span> 
+                  <span class="elementor-id-data-imapct-affiliation">
+                    Affiliation: 
+                    <small>{{ $data['affiliation'] }}</small>
+                  </span>
+                </div>
+              @endif
+
             </div>
           </div>
         </div>

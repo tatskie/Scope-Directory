@@ -187,6 +187,10 @@ class TwoFactorController extends Controller
             if ($user->hasRole('corporate')) {
                 return redirect()->to('corporate/dashboard');
             }
+
+            if ($user->user()->hasRole('editor')) {
+               return '/editor/dashboard';
+            }
         }
 
         return redirect()->back()->withErrors(['two_factor_code' => 'The two factor code you have entered does not match']);

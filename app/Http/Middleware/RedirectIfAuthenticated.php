@@ -152,6 +152,10 @@ class RedirectIfAuthenticated
                 return redirect()->to('admin/dashboard');
             }
 
+            if (auth()->user()->hasRole('editor')) {
+               return '/editor/dashboard';
+            }
+        
             if (Auth::user()->hasRole('corporate')) {
                 return redirect()->to('corporate/dashboard');
             }
