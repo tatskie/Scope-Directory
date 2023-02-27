@@ -22,6 +22,30 @@
       </router-link>
     </div>
     <div class="navigation-item">
+      <router-link class="navigation-link" to="/editor/profile">
+        <i class="fa fa-user" style="font-size:18px;color:#4b596a"></i>
+        <span>Public Profile</span>
+      </router-link>
+    </div>
+    <div class="navigation-item">
+      <router-link class="navigation-link" to="/editor/level">
+        <i class="fa fa-user-plus" style="font-size:18px;color:#4b596a"></i>
+        <span>Upgrade Level</span>
+      </router-link>
+    </div>
+    <div class="navigation-item">
+      <router-link class="navigation-link" to="/editor/order-card">
+        <i class="fa fa-credit-card" style="font-size:18px;color:#4b596a"></i>
+        <span>Order ID Card</span>
+      </router-link>
+    </div>
+    <div class="navigation-item">
+      <router-link class="navigation-link" to="/editor/billing">
+        <i class="fa fa-book" style="font-size:18px;color:#4b596a"></i>
+        <span>Billing</span>
+      </router-link>
+    </div>
+    <div class="navigation-item">
       <router-link class="navigation-link" to="#" href="{{ route('logout') }}"
          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="ico-logout"></i>

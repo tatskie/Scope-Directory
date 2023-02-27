@@ -39,7 +39,7 @@
               <span class="elementor-id-data-country">
                 {{ card.citizenship }}
               </span> 
-              <span class="elementor-id-data-validity"> 03/01/2023</span>
+              <span class="elementor-id-data-validity"> {{ back.validity }}</span>
             </div> 
           </div>
           <div class="dashboard-card-id-back">
@@ -69,6 +69,10 @@
         <br>
         <br>
 
+      <publish-public-profile v-if="!information || information.length"></publish-public-profile>
+
+      <br>
+
       <div class="alert alert-info" role="alert" v-if="information.length == 0">
         Please setup your public profile.
       </div>
@@ -94,9 +98,9 @@
         <div>
           <h5><strong>Bio: </strong><br>{{ information.bio }}</h5>
         </div>
-        <div>
+        <!-- <div>
           <h5><strong>H Index Google Scholar: </strong>{{ information.index }}</h5>
-        </div>
+        </div> -->
       <div>
 
         <div class="contents-head">
@@ -229,6 +233,32 @@
           </table>
         </div>
 
+        <div class="contents-head" v-if="!volunteerWork">
+          <h2><span style="font-size:20px; margin-bottom:20px; margin-left:-20px"><strong>Volunteer Works</strong></span></h2>
+          <create-volunteer-work></create-volunteer-work>
+        </div>
+        <div v-else>
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th width="400">Volunteer Works</th>
+              </tr>
+            </thead>
+            <br>
+            <tbody>
+              <tr>
+                <th v-html="volunteerWork.volunteer_work">
+                </th>
+                <th>
+                  <edit-volunteer-work :volunteerWork="volunteerWork"></edit-volunteer-work>
+                  <delete-volunteer-work :volunteerWork="volunteerWork"></delete-volunteer-work>
+                </th>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+
         </div>
       </div>
     </div><!--END dashboard-body-content-->
@@ -252,6 +282,9 @@
   import CreateVideo from '../videos/Create'
   import DeleteVideo from '../videos/Delete'
   import EditVideo from '../videos/Edit'
+  import CreateVolunteerWork from '../volunteer-works/Create'
+  import DeleteVolunteerWork from '../volunteer-works/Delete'
+  import EditVolunteerWork from '../volunteer-works/Edit'
 
     export default {
       components: {
@@ -269,7 +302,10 @@
         "edit-special-award": EditSpecialAward,
         "create-video": CreateVideo,
         "delete-video": DeleteVideo,
-        "edit-video": EditVideo
+        "edit-video": EditVideo,
+        "create-volunteer-work": CreateVolunteerWork,
+        "delete-volunteer-work": DeleteVolunteerWork,
+        "edit-volunteer-work": EditVolunteerWork
       },
 
       data () {
@@ -288,7 +324,8 @@
           publications: [],
           conferences: [],
           awards: [],
-          videos: []
+          videos: [],
+          volunteerWork: []
         }
       },
 
@@ -310,6 +347,8 @@
         this.loadVideos(); // Load Videos
 
         this.loadBackData(); //load questions details
+
+        this.loadVolunteerWork(); // load Volunteer Work
 
         Fire.$on('loadProfile',() =>{
               this.loadProfile();
@@ -341,6 +380,10 @@
 
         Fire.$on('loadVideos',() =>{
               this.loadVideos();
+        });
+
+        Fire.$on('loadVolunteerWork',() =>{
+              this.loadVolunteerWork();
         });
       },
 
@@ -378,6 +421,10 @@
 
         loadVideos() {
             axios.get('/api/teacher/videos').then(({data}) => (this.videos = data));
+        },
+
+        loadVolunteerWork() {
+            axios.get('/api/teacher/volunteer').then(({data}) => (this.volunteerWork = data));
         },
 
         publicProfile() {

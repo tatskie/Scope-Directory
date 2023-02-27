@@ -1,7 +1,7 @@
 <template>
 	<div class="col-md-12">
 		<div class="contents-head">
-	      <h2 style="margin-right:20px">Professional TESOL Designation ID Card</h2>
+	      <h2 style="margin-right:20px">Professional Scope Designation ID Card</h2>
 	      <order-licence></order-licence>
 		  <request-delete></request-delete>
 	    </div>
@@ -9,10 +9,10 @@
 		<div><h2>You have three choices to proceed with.</h2>
 			<br>
 			<h2>Option 1</h2>
-			<p>Order a hard copy of your TESOL card (production fee and delivery fees apply).</p>
+			<p>Order a hard copy of your SCOPE card (production fee and delivery fees apply).</p>
 			<br>
 			<h2>Option 2</h2>
-			<p>You may keep your PTD (Professional TESOL Designation) stored online.</p>
+			<p>You may keep your PTD (Professional SCOPE Designation) stored online.</p>
 			<br>
 			<h2>Option 3</h2>
 			<p>Leave the site and delete your application. You may re-apply in the future.</p>
@@ -27,21 +27,19 @@
 			<li>Step five: You confirm receipt of your card</li>
 			</ul>
 		</div>
-		<br>
+		<!-- <br>
 		<h2>SAMPLE ID Card</h2>
 			
 	    <div class="dashboard-card">
 		<div>
-			<!-- <div id="main-photo"><img :src="'/public/assets/images/user/'+card.photo" height="217" width="175"></div>
-		  	<div id="teacher-data"><h2>{{ ucwords(user.name) }}</h2></div>
-			<div id="background-photo"><img :src="'/public/assets/images/user/'+card.photo" height="104" width="87"></div> -->
+		
 	      	<div id="main-photo"><img :src="'/public/assets/images/user/'+card.photo" height="217" width="175"></div>
 		  	<div id="academic-name"><h3>{{ user.name }}</h3></div>
 			<div id="academic-categories"><h3>{{ category.specialist_title }}</h3></div>
 			<div id="academic-pif"><h3>{{ tif.title }}</h3></div>
 			<div id="valid-until"><h5>03/02/2021</h5></div>
 	   </div>
-	   </div>
+	   </div> -->
 	   <div style="width:140px"><order-licence></order-licence></div>
 	</div>
 	</div>
@@ -50,9 +48,9 @@
 <script>
 
 		// import QuestionModal from './QuestionModal'
-	  import '../../common/table/Table'
+	  import '../../../common/table/Table'
 
-	  import Modal from '../../common/Modal'
+	  import Modal from '../../../common/Modal'
       import RequestDelete from './RequestDelete'
       import OrderLicence from './OrderLicence'
 

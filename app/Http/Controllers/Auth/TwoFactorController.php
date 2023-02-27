@@ -188,8 +188,8 @@ class TwoFactorController extends Controller
                 return redirect()->to('corporate/dashboard');
             }
 
-            if ($user->user()->hasRole('editor')) {
-               return '/editor/dashboard';
+            if ($user->hasRole('editor')) {
+               return redirect()->to('editor/dashboard');
             }
         }
 

@@ -216,7 +216,15 @@
 	            <upload-photo></upload-photo>
 				<em style="font-size:11px">File format: JPG or PNG, not more than 2MB in file size</em>
 			</div>
+
 		</div><!--END dashboard-body-content-->
+
+    <div class="alert alert-danger" role="alert" v-if="!information || information.length">
+            Next - Setup Your Public Profile
+            <a href="#" class="float-right mark-as-read" @click="setupPublicProfile()">
+                Click Here!
+            </a>
+      </div>
 	</div>
 </template>
 

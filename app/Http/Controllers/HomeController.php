@@ -163,6 +163,53 @@ class HomeController extends Controller
             if (!$user or !$user->card->academiaCategory) {
                 abort(404);
             }
+
+            $affiliation = $user->academicInformation; // affiliation
+
+            if ($affiliation) {
+                $data->put('affiliation', $affiliation->employer);
+            } else {
+                $data->put('affiliation', 'N/A');
+            }
+
+            $board = $user->academicInformation;; //H index
+
+            if ($board) {
+                $data->put('board', $board->index);
+            } else {
+                $data->put('board', 'N/A');
+            }
+
+            $tesol = QuestionAnswer::where('user_id', $user->id)->where('question_id', 48)->where('followup_id', 26)->where('is_tif', false)->first(); // Editorial Board
+
+            if ($tesol) {
+                $data->put('tesol', $tesol->answer);
+            } else {
+
+                $tesolOne = QuestionAnswer::where('user_id', $user->id)->where('question_id', 49)->where('followup_id', 27)->where('is_tif', false)->first();
+
+                if ($tesolOne) {
+                    $data->put('tesol', $tesolOne->answer);
+                } else {
+                    $data->put('tesol', 'N/A');
+                }
+            }
+
+            $award = $user->awards->first(); // Distinction
+
+            if ($award) {
+                $data->put('award', $award->name);
+            } else {
+                $data->put('award', 'N/A');
+            }
+
+            $validity = $user->receipts->last();; // validity
+
+            if ($validity) {
+                $data->put('validity', date('d/m/Y', strtotime($validity->created_at->addYear(2))));
+            } else {
+                $data->put('validity', date('d/m/Y', strtotime($user->created_at->addYear(2))));
+            }
         }
 
         if ($user->hasRole('teacher')) {
@@ -193,6 +240,14 @@ class HomeController extends Controller
                 $data->put('tesol', $tesol->answer);
             } else {
                 $data->put('tesol', 'N/A');
+            }
+
+            $validity = $user->receipts->last();; // validity
+
+            if ($validity) {
+                $data->put('validity', date('d/m/Y', strtotime($validity->created_at->addYear(2))));
+            } else {
+                $data->put('validity', date('d/m/Y', strtotime($user->created_at->addYear(2))));
             }
         }
 

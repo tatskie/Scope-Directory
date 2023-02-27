@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users\Editor;
 use App\Country;
 use App\Journal;
 use App\AnswerScore;
+use App\LicenseCard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -80,6 +81,17 @@ class JournalController extends Controller
         $score->is_agree = 1;
 
         $score->save();
+
+        $card = new LicenseCard([
+            'gender' => 'NS',   
+            'photo' => 'default.jpg',
+            'title' => $request->get('type_of_application'),
+            'academic_title' => $request->get('type_of_application'),
+            'citizenship' => $request->get('country'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        $card->save();
 
         return redirect()->to('/editor/dashboard');
     }

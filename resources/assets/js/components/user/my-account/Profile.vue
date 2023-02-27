@@ -39,11 +39,29 @@
               <span class="elementor-id-data-country">
                 {{ card.citizenship }}
               </span> 
-              <span class="elementor-id-data-validity"> 03/01/2023</span>
+              <span class="elementor-id-data-validity"> {{ back.validity }}</span>
             </div> 
           </div>
           <div class="dashboard-card-id-back">
             <img height="318" src="/assets/images/card/back-ID-bg.png">
+            <div class="elementor-id-data elementor-id-data-back">
+              <span class="elementor-id-data-board">
+                Affiliation:
+                <small>{{ back.affiliation }}</small> 
+              </span> 
+              <span class="elementor-id-data-tesol">
+                H index: 
+                <small>{{ back.board }}</small> 
+              </span>
+              <span class="elementor-id-data-category">
+                Editorial Board: 
+                <small>{{ back.tesol }}</small>
+              </span> 
+              <span class="elementor-id-data-imapct-affiliation">
+                Distinction: 
+                <small>{{ back.award }}</small>
+              </span> 
+            </div> 
           </div>
         </div>
 
@@ -211,6 +229,32 @@
           </table>
         </div>
 
+        <div class="contents-head" v-if="!volunteerWork">
+          <h2><span style="font-size:20px; margin-bottom:20px; margin-left:-20px"><strong>Volunteer Works</strong></span></h2>
+          <create-volunteer-work></create-volunteer-work>
+        </div>
+        <div v-else>
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th width="400">Volunteer Works</th>
+              </tr>
+            </thead>
+            <br>
+            <tbody>
+              <tr>
+                <th v-html="volunteerWork.volunteer_work">
+                </th>
+                <th>
+                  <edit-volunteer-work :volunteerWork="volunteerWork"></edit-volunteer-work>
+                  <delete-volunteer-work :volunteerWork="volunteerWork"></delete-volunteer-work>
+                </th>
+              </tr>
+              <br>
+            </tbody>
+          </table>
+        </div>
+
         </div>
       </div>
     </div><!--END dashboard-body-content-->
@@ -234,6 +278,9 @@
   import CreateVideo from '../videos/Create'
   import DeleteVideo from '../videos/Delete'
   import EditVideo from '../videos/Edit'
+  import CreateVolunteerWork from '../volunteer-works/Create'
+  import DeleteVolunteerWork from '../volunteer-works/Delete'
+  import EditVolunteerWork from '../volunteer-works/Edit'
 
     export default {
       components: {
@@ -251,7 +298,10 @@
         "edit-special-award": EditSpecialAward,
         "create-video": CreateVideo,
         "delete-video": DeleteVideo,
-        "edit-video": EditVideo
+        "edit-video": EditVideo,
+        "create-volunteer-work": CreateVolunteerWork,
+        "delete-volunteer-work": DeleteVolunteerWork,
+        "edit-volunteer-work": EditVolunteerWork
       },
 
       data () {
@@ -261,6 +311,7 @@
           card: [],
           tif: [],
           loading: true,
+          back: [],
           category: {
             specialist_title: '',
             class: ''
@@ -269,7 +320,8 @@
           publications: [],
           conferences: [],
           awards: [],
-          videos: []
+          videos: [],
+          volunteerWork: []
         }
       },
 
@@ -289,6 +341,10 @@
         this.loadSpecialAward(); // Load Special Award
 
         this.loadVideos(); // Load Videos
+
+        this.loadBackData(); //load questions details
+
+        this.loadVolunteerWork(); // load Volunteer Work
 
         Fire.$on('loadProfile',() =>{
               this.loadProfile();
@@ -320,6 +376,10 @@
 
         Fire.$on('loadVideos',() =>{
               this.loadVideos();
+        });
+
+        Fire.$on('loadVolunteerWork',() =>{
+              this.loadVolunteerWork();
         });
       },
 
@@ -359,8 +419,16 @@
             axios.get('/api/academia/videos').then(({data}) => (this.videos = data));
         },
 
+        loadVolunteerWork() {
+            axios.get('/api/academia/volunteer').then(({data}) => (this.volunteerWork = data));
+        },
+
         publicProfile() {
             window.open("/"+ this.scope.scope);
+        },
+
+        loadBackData() {
+            axios.get('/api/academia/back-card-data').then(({data}) => (this.back = data));
         }
       }
     }
@@ -387,7 +455,7 @@
 }
 
 .dashboard-card-id-front .elementor-id-data-front,
-.dashboard-card-id-front .elementor-id-data-back {
+.dashboard-card-id-back .elementor-id-data-back {
   width: 100%;
   height: 100%;
   padding-left: 0;
@@ -429,6 +497,27 @@
   top: 81.6%;
 }
 
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-board {
+    top: 39%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-tesol {
+    top: 43%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-category {
+    top: 47%;
+    left: 9%;
+  }
+
+  .dashboard-card-id-back .elementor-id-data-back .elementor-id-data-imapct-affiliation {
+    top: 51%;
+    left: 9%;
+  }
+
+
   @media screen and (min-width: 1024px) {
     .dashboard-id {
       flex-direction: column;
@@ -451,6 +540,7 @@
     padding-top: 12%;
     padding-left: 22%;
   }
+
   .elementor-id-data-front span {
     display: block;
     position: absolute;
@@ -534,5 +624,50 @@
     .elementor-id-data-front .elementor-id-data-validity {
       font-size: 15px;
     }
+  }
+
+  .elementor-id-data-back {
+    padding-top: 89%;
+    padding-left: 72%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .elementor-id-data-back span {
+      font-size: 1vw;
+    }
+  }
+  @media screen and (min-width: 1330px) {
+    .elementor-id-data-back span {
+      font-size: 15px;
+    }
+  }
+
+  .elementor-id-data-back span {
+    display: block;
+    position: absolute;
+    left: 36.9%;
+    font-weight: 700;
+    font-size: 0.8vw;
+    line-height: 110%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-board {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-tesol {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-category {
+    top: 248.4%;
+    left: 48.8%;
+  }
+
+  .elementor-id-data-back .elementor-id-data-imapct-affiliation {
+    top: 248.4%;
+    left: 48.8%;
   }
 </style>

@@ -1,8 +1,9 @@
 {
     "/assets/js/app.js": "/assets/js/app.js?id=d9ccaa01c9271df3aae1a3191e553b66",
     "/assets/js/corporate.js": "/assets/js/corporate.js?id=0a63d88bbde488c67343fa78664f875a",
-    "/assets/js/teacher.js": "/assets/js/teacher.js?id=8ea6735f01d80c46e568757109eadf15",
-    "/assets/js/academia.js": "/assets/js/academia.js?id=db9fcec995168a71bffb1d6644796b2b",
+    "/assets/js/teacher.js": "/assets/js/teacher.js?id=458e3112719974956383455e0e216022",
+    "/assets/js/editor.js": "/assets/js/editor.js?id=ff7101dc428e5c3129084ed0fa383a57",
+    "/assets/js/academia.js": "/assets/js/academia.js?id=c00da8768c06ea26f47297d8a1579e8e",
     "/assets/js/submit.js": "/assets/js/submit.js?id=4535260babfc0beaf671e871e372a607",
     "/assets/js/hamburger.js": "/assets/js/hamburger.js?id=21d4c36e128083513a53b9e83cb044a1",
     "/js/popper.js": "/js/popper.js?id=9761f29229e7541ef4b3426eb1cabe39",
@@ -69,7 +70,9 @@
     "/assets/images/user/1674658770.png": "/assets/images/user/1674658770.png?id=071d659f6d4f9975561b36b656f10605",
     "/assets/images/user/1674659227.png": "/assets/images/user/1674659227.png?id=071d659f6d4f9975561b36b656f10605",
     "/assets/images/user/1674659958.png": "/assets/images/user/1674659958.png?id=071d659f6d4f9975561b36b656f10605",
+    "/assets/images/user/1675843511.png": "/assets/images/user/1675843511.png?id=071d659f6d4f9975561b36b656f10605",
     "/assets/images/user/default.jpg": "/assets/images/user/default.jpg?id=9c6512ebcf7d915ee10a43a648bf1872",
+    "/assets/images/user/questions": "/assets/images/user/questions?id=9c6512ebcf7d915ee10a43a648bf1872",
     "/assets/images/vendor/tinymce/skins/lightgray/loader.gif": "/assets/images/vendor/tinymce/skins/lightgray/loader.gif?id=c173d6fe364a2307ecccfa8cfb16710e",
     "/assets/images/world-bg.png": "/assets/images/world-bg.png?id=40dc5ee2861d79bc73bc1a377a1d2fe8"
 }

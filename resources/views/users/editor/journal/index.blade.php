@@ -35,8 +35,10 @@
                     <select name="type_of_application" required>
                       <option value="">Type of Application</option>
                       <option value="Chief Editor">Chief Editor</option>
-                      <option value="Editorial Board Member">Editorial Board Member</option>
-                      <option value="Journal">Journal</option>
+                      <option value="Associate Editor">Associate Editor</option>
+                      <option value="Editor">Editor</option>
+                      <option value="Advisor">Advisor</option>
+                      <option value="Revisor">Revisor</option>
                     </select>
                   </div>
                 </div>

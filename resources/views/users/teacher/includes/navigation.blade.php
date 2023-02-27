@@ -34,6 +34,12 @@
       </router-link>
     </div>
     <div class="navigation-item">
+      <router-link class="navigation-link" to="/teacher/order-card">
+        <i class="fa fa-credit-card" style="font-size:18px;color:#4b596a"></i>
+        <span>Order ID Card</span>
+      </router-link>
+    </div>
+    <div class="navigation-item">
       <router-link class="navigation-link" to="/teacher/billing">
         <i class="fa fa-book" style="font-size:18px;color:#4b596a"></i>
         <span>Billing</span>

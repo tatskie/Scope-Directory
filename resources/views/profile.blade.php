@@ -533,13 +533,13 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                       <span class="elementor-id-data-country">
                         {{ $user->card->citizenship }}
                       </span>
-                      <span class="elementor-id-data-validity"> 03/01/2023</span>
+                      <span class="elementor-id-data-validity"> {{ $data['validity'] }}</span>
                     </div>
               </div>
             </div>
           <div class="elementor-element elementor-element-dabf056 elementor-widget elementor-widget-text-editor" data-id="dabf056" data-element_type="widget" data-widget_type="text-editor.default">
             <div class="elementor-widget-container">
-              <p><em>Sample ID (front and back)</em></p>            
+              <p><em></em></p>            
             </div>
           </div>
         </div>
@@ -568,6 +568,27 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                   <span class="elementor-id-data-imapct-affiliation">
                     Affiliation: 
                     <small>{{ $data['affiliation'] }}</small>
+                  </span>
+                </div>
+              @endif
+
+              @if($user->hasRole('academia'))
+                <div class="elementor-id-data elementor-id-data-back">
+                  <span class="elementor-id-data-board">
+                    Affiliation:
+                    <small>{{ $data['affiliation'] }}</small> 
+                  </span> 
+                  <span class="elementor-id-data-tesol">
+                    H index: 
+                    <small>{{ $data['board'] }}</small> 
+                  </span>
+                  <span class="elementor-id-data-category">
+                    Editorial Board: 
+                    <small>{{ $data['tesol'] }}</small>
+                  </span> 
+                  <span class="elementor-id-data-imapct-affiliation">
+                    Distinction: 
+                    <small>{{ $data['award'] }}</small>
                   </span>
                 </div>
               @endif
@@ -662,7 +683,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
                 <div class="elementor-widget-wrap elementor-element-populated">
                   <div class="elementor-element elementor-element-9afacd0 elementor-widget elementor-widget-text-editor" data-id="9afacd0" data-element_type="widget" data-widget_type="text-editor.default">
                     <div class="elementor-widget-container">
-                      <p>Year: {{$publication->year}}<br />Joournal: {{$publication->journal}}<br />DOI: <a href="{{$publication->doi}}">{{$publication->doi}}</a><br />Source: {{$publication->source}}</p>           
+                      <p>Year: {{$publication->year}}<br />Joournal: {{$publication->journal}}<br />DOI: <a href="https://doi.org/{{$publication->doi}}" target="_blank">{{$publication->doi}}</a><br />Source: {{$publication->source}}</p>           
                     </div>
                   </div>
                 </div>
@@ -702,6 +723,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
           @endif
         @endforeach()
 
+        <!--  Conferences -->
         @if(!$user->conferences->isEmpty())
           <div class="elementor-element elementor-element-70803fd elementor-widget elementor-widget-heading" data-id="70803fd" data-element_type="widget" data-widget_type="heading.default">
             <div class="elementor-widget-container">
@@ -773,6 +795,31 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
         @endif
 
         @endforeach
+
+        <!--  Conferences -->
+        @if($user->volunteerWork)
+          <div class="elementor-element elementor-element-70803fd elementor-widget elementor-widget-heading" data-id="70803fd" data-element_type="widget" data-widget_type="heading.default">
+            <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">Community Volunteer Works</h2>   
+            </div>
+          </div>
+
+        <section class="elementor-section elementor-inner-section elementor-element elementor-element-c455bf5 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c455bf5" data-element_type="section">
+          <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-812a7e0" data-id="812a7e0" data-element_type="column">
+              <div class="elementor-widget-wrap elementor-element-populated">
+                <div class="elementor-element elementor-element-b6e219e elementor-widget elementor-widget-text-editor" data-id="b6e219e" data-element_type="widget" data-widget_type="text-editor.default">
+                  <div class="elementor-widget-container">
+                    {!! $user->volunteerWork->volunteer_work !!}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        @endif
+
       </div>
     </div>
   </div>

@@ -71,9 +71,9 @@
                <div class="form-input -select">
                  <select class="custom-select" id="citizenship" name="citizenship" v-model="form.citizenship">
                    <option v-for="country in countries"
-                      :value="country.nationality"
-                      :selected="country.nationality == form.citizenship">
-                    {{ country.nationality | upText }}
+                      :value="country.en_short_name"
+                      :selected="country.en_short_name == form.citizenship">
+                    {{ country.en_short_name | upText }}
                   </option>
                  </select>
                </div>

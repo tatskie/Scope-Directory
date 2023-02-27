@@ -1,3 +1,3 @@
-<script src="{{ asset('assets/js/teacher.js') }}" defer></script>
+<script src="{{ asset('assets/js/editor.js') }}" defer></script>
 
 

@@ -282,25 +282,37 @@ class QuestionController extends Controller
 
         $data = collect([]);
 
-        foreach ($answers as $key => $answer) {
+        $affiliation = QuestionAnswer::where('user_id', auth()->user()->id)->where('question_id', 2)->where('is_tif', false)->first();
 
-            if ($answer->question_id == 2) {
-                $data->put('affiliation', $answer->answer);
-            } else {
-                $data->put('affiliation', 'N/A');
-            }
+        if ($affiliation) {
+            $data->put('affiliation', $affiliation->answer);
+        } else {
+            $data->put('affiliation', 'N/A');
+        }
 
-            if ($answer->question_id == 5 && $answer->followup_id == 3) {
-                $data->put('board', $answer->answer);
-            } else {
-                $data->put('board', 'N/A');
-            }
+        $board = QuestionAnswer::where('user_id', auth()->user()->id)->where('question_id', 5)->where('followup_id', 3)->where('is_tif', false)->first();
 
-            if ($answer->question_id == 11 && $answer->followup_id == 4) {
-                $data->put('tesol', $answer->answer);
-            } else {
-                $data->put('tesol', 'N/A');
-            }
+        if ($board) {
+            $data->put('board', $board->answer);
+        } else {
+            $data->put('board', 'N/A');
+        }
+
+
+        $tesol = QuestionAnswer::where('user_id', auth()->user()->id)->where('question_id', 11)->where('followup_id', 4)->where('is_tif', false)->first();
+
+        if ($tesol) {
+            $data->put('tesol', $tesol->answer);
+        } else {
+            $data->put('tesol', 'N/A');
+        }
+
+        $validity = auth()->user()->receipts->last();; // validity
+
+        if ($validity) {
+            $data->put('validity', date('d/m/Y', strtotime($validity->created_at->addYear(2))));
+        } else {
+            $data->put('validity', date('d/m/Y', strtotime(auth()->user()->created_at->addYear(2))));
         }
 
         return $data;

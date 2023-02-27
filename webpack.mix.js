@@ -23,6 +23,7 @@ const mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/assets/js').vue()
 	.js('resources/assets/js/corporate.js', 'public/assets/js').vue()
 	.js('resources/assets/js/teacher.js', 'public/assets/js').vue()
+    .js('resources/assets/js/editor.js', 'public/assets/js').vue()
 	.js('resources/assets/js/academia.js', 'public/assets/js').vue()
 	.js('resources/assets/js/submit.js', 'public/assets/js').vue()
 	.js('resources/assets/js/hamburger.js', 'public/assets/js').vue()

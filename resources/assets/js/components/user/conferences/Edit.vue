@@ -173,7 +173,7 @@
 
         loadYears () {
           const year = new Date().getFullYear();
-          this.years = Array.from({length: year - 1900}, (value, index) => 1901 + index);
+          this.years = Array.from({length: year - 2000}, (value, index) => 2001 + index);
         }
 
       }

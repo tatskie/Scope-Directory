@@ -38,7 +38,7 @@ class AcademicInformationController extends Controller
     {
         $request->validate([
             'employer'=>'required|string|max:255',
-            'index'=>'required|int',
+            'index'=>'nullable|int',
             'from'=>'required|date',
             'to'=>'nullable|date',
             'bio'=>'required|string|max:2500',
@@ -47,7 +47,7 @@ class AcademicInformationController extends Controller
 
         $academicInformation = new AcademicInformation([
             'employer' => $request->get('employer'),
-            'index' => $request->get('index'),
+            'index' => $request->get('index') ?? '0',
             'from' => $request->get('from'),
             'to' => $request->get('to'),
             'is_present' => $request->get('is_present'),
@@ -87,7 +87,7 @@ class AcademicInformationController extends Controller
         
         $request->validate([
             'employer'=>'required|string|max:255',
-            'index'=>'required|int',
+            'index'=>'nullable|int',
             'from'=>'required|date',
             'to'=>'nullable|date',
             'bio'=>'required|string|max:2500',

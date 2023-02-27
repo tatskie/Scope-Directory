@@ -161,6 +161,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Relationship Has many to VolunteerWork
+     */
+    public function volunteerWork()
+    {
+      return $this->hasOne(VolunteerWork::class);
+    }
+
+    /**
      * Relationship Has many to shipping
      */
     public function shippingAddress()

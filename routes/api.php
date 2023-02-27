@@ -66,6 +66,7 @@ Route::prefix('academia')->group(function () {
 	    'conferences' => 'API\Academia\ConferenceController',
 	    'awards' => 'API\Academia\AwardController',
 	    'videos' => 'API\Academia\VideoController',
+	    'volunteer' => 'API\Academia\VolunteerWorkController',
 	]);
 
 	Route::get('year-and-month', 'API\Academia\UserController@yearAndMonth');
@@ -83,6 +84,8 @@ Route::prefix('academia')->group(function () {
 	Route::get('download-receipt/{id}', 'API\Academia\ReceiptController@downloadReceipt');
 	Route::put('change-password', 'API\Academia\UserController@changePassword');
 
+	Route::get('back-card-data', 'API\Academia\QuestionController@backCardData');
+	
 	Route::get('shipping-address', 'API\Academia\ShippingController@index');
 	Route::post('shipping-address', 'API\Academia\ShippingController@store');
 });
@@ -97,6 +100,7 @@ Route::prefix('teacher')->group(function () {
 	    'conferences' => 'API\Teacher\ConferenceController',
 	    'awards' => 'API\Teacher\AwardController',
 	    'videos' => 'API\Teacher\VideoController',
+	    'volunteer' => 'API\Teacher\VolunteerWorkController',
 	]);
 
 	Route::get('year-and-month', 'API\Teacher\UserController@yearAndMonth');
@@ -121,3 +125,24 @@ Route::prefix('teacher')->group(function () {
 	Route::post('shipping-address', 'API\Teacher\ShippingController@store');
 });
 
+// Editor API
+Route::prefix('editor')->group(function () {
+
+	Route::get('countries', 'API\Editor\UserController@country');
+	Route::get('profile', 'API\Editor\UserController@profile');
+	Route::get('license-category', 'API\Editor\UserController@licenseCategory');
+	Route::get('tif-level', 'API\Editor\UserController@tifLevel');
+	Route::put('photo', 'API\Editor\UserController@updatePhoto');
+	Route::put('profile', 'API\Editor\UserController@updateProfile');
+	Route::get('pdf', 'API\Editor\UserController@pdfExport');
+
+	Route::post('receipt', 'API\Editor\ReceiptController@store');
+	Route::get('receipts', 'API\Editor\ReceiptController@index');
+	Route::get('download-receipt/{id}', 'API\Editor\ReceiptController@downloadReceipt');
+	Route::put('change-password', 'API\Editor\UserController@changePassword');
+
+	Route::get('back-card-data', 'API\Editor\QuestionController@backCardData');
+
+	Route::get('shipping-address', 'API\Editor\ShippingController@index');
+	Route::post('shipping-address', 'API\Editor\ShippingController@store');
+});
